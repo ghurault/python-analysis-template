@@ -1,4 +1,6 @@
 # Python analysis template
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This repository can be used as a template for data science projects.
 After cloning the repository, you can change:
@@ -56,4 +58,5 @@ In particular, I use:
 
 This template is inspired by the concept of a [research compendium](https://doi.org/10.1080/00031305.2017.1375986).
 
-This template is relatively simple, and more sophisticated templates are available elsewhere such as the [Cookiecutter Data Science](https://github.com/drivendataorg/cookiecutter-data-science/) template.
+This template is relatively simple and tailored to my needs.
+More sophisticated templates are available elsewhere, such as the [Cookiecutter Data Science](https://github.com/drivendataorg/cookiecutter-data-science/) template.
