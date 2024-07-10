@@ -55,7 +55,7 @@ I usually work with Visual Studio code, and I have predefined some settings.
 In particular, I use:
 
 - [Black](https://black.readthedocs.io/en/stable/index.html) for formatting.
-- [Flake8](https://flake8.pycqa.org/en/latest/) for linting.
+- [Flake8](https://flake8.pycqa.org/en/latest/) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) for linting.
 - [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) to document functions and classes, with the help of the [autoDocstring extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring). 
 
 ## Related
