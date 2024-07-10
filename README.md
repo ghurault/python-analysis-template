@@ -28,18 +28,23 @@ The repository structure could also be extended with:
 
 To set up the environment with conda, navigate to the repository directory and run the following in the command line:
 
-```
-conda create -n myenv python=3.11
-conda activate myenv
-pip install -e .
+```bash
+$ conda create -n myenv python=3.11
+$ conda activate myenv
+$ pip install -e .
 ```
 
-The environment can then be exported with `conda env export > environment.yml` and recreated with `conda create -n myenv -f environment.yml`.
+The environment can then be exported and recreated with:
 
-NB: to access the different folders, I use the `here()` function from the `pyprojroot` package.
+```bash
+$ conda env export > environment.yml
+$ conda create -n myenv -f environment.yml
+```
+
+NB: to access the different folders, I use the `here()` function from the [`pyprojroot`](https://github.com/chendaniely/pyprojroot) package.
 For example:
 
-```{python}
+```python
 from pyprojroot import here
 
 DATA_DIR = here("data")
@@ -51,8 +56,8 @@ I usually work with Visual Studio code, and I have predefined some settings.
 In particular, I use:
 
 - [Black](https://black.readthedocs.io/en/stable/index.html) for formatting.
-- Flake8 for linting.
-- [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) to document functions and classes, with the help of the autoDocstring extension. 
+- [Flake8](https://flake8.pycqa.org/en/latest/) for linting.
+- [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) to document functions and classes, with the help of the [autoDocstring extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring). 
 
 ## Related
 
