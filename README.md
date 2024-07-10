@@ -13,7 +13,9 @@ After cloning the repository, you can change:
 - Analysis scripts and notebooks should go to [`analysis/`](analysis/)
 - Data files should go to [`data/`](data/). By default, files in `data/` are ignored by Git.
 - Results/output files (e.g. figures, output data) should go to [`results/`](results/). These files are ignored by Git.
-- Reusable functions and modules are stored in the local package [`src/`](src/). The package can then be installed in development mode with `pip install -e .`
+- Reusable functions and modules are stored in the local package [`src/`](src/).
+  - The package can then be installed in development mode with `pip install -e .`
+  - [`src/config.py`](src/config.py) can be used to store variables, constants and configurations.
 - Tests for functions in [`src/`](src/) should go to [`tests/`](tests/) and follow the convention `test_*.py`.
 
 The repository structure could also be extended with:
@@ -21,7 +23,6 @@ The repository structure could also be extended with:
 - `docs/` to store documentation (e.g. of the `src` package). For example, a documentation could be generated using [mkdocs](https://www.mkdocs.org/) or [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html).
 - `data-raw/` to store data processing functions whose output is stored in [`data/`](data/). For example when data is scrapped from the web and cleaned before saving it.
 - `models/` to store model files.
-- `src/constants.py` to store various constants (incl. directory paths).
 
 ## Computational environment
 
@@ -38,15 +39,6 @@ The environment can then be exported and recreated with:
 ```bash
 $ conda env export > environment.yml
 $ conda create -n myenv -f environment.yml
-```
-
-NB: to access the different folders, I use the `here()` function from the [`pyprojroot`](https://github.com/chendaniely/pyprojroot) package.
-For example:
-
-```python
-from pyprojroot import here
-
-DATA_DIR = here("data")
 ```
 
 ## Development environment
