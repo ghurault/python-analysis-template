@@ -6,7 +6,6 @@ This repository can be used as a template for data science projects.
 After cloning the repository, you can change:
 
 - The repository name
-- The name of the VS code workspace file (`*.code-workspace`).
 - Project information in [`pyproject.toml`](pyproject.toml)
 
 ## File structure
