@@ -47,7 +47,7 @@ $ conda env export > environment.yml
 $ conda create -n myenv -f environment.yml
 ```
 
-## Development environment
+### Development environment
 
 I usually work with Visual Studio code, for which various settings are already predefined.
 In particular, I use:
