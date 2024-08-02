@@ -3,6 +3,8 @@
 # %%
 # Imports
 
+import os
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 from plotnine import theme_set, theme_bw
@@ -22,6 +24,13 @@ except ModuleNotFoundError:
 
 DATA_DIR = PROJ_ROOT / "data"
 RES_DIR = PROJ_ROOT / "results"
+
+# %%
+# MLflow
+
+MLRUNS_DIR = RES_DIR / "mlruns"
+TRACKING_URI = "file:///" + MLRUNS_DIR.as_posix()
+os.environ["MLFLOW_TRACKING_URI"] = TRACKING_URI
 
 # %%
 # Palette and plotting styles
