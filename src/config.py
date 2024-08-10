@@ -1,3 +1,13 @@
+"""Configurations.
+
+Usage:
+
+    >>> from src import config
+"""
+
+# %%
+# Paths
+
 try:
     from pyprojroot import here
     # Safer to use here() than relying on relative path
