@@ -1,5 +1,5 @@
 # Keep setup.py to facilitate local package installation in editable mode
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
-setup(name="src", packages=find_packages())
+setup(name="src", packages=["src"])
