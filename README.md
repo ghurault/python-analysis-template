@@ -22,7 +22,7 @@ Moreover, I use the following the directories that are (usually) ignored by Git:
 
 ### Getting started
 
-First clone/fork/copy the repository.
+First clone/fork/copy the repository (on GitHub, you can use it as a template directly).
 Then, you should update:
 
 - the repository name
@@ -30,7 +30,7 @@ Then, you should update:
 - the README
 - the license 
 
-### Computational environment
+### Conda setup
 
 To set up the environment with conda, navigate to the repository directory and run the following in the command line (specify the Python version and environment name as appropriate):
 
@@ -46,6 +46,18 @@ The environment can then be exported and recreated with:
 $ conda env export > environment.yml
 $ conda create -n myenv -f environment.yml
 ```
+
+### venv setup
+
+Alternatively, a virtual environment (`.venv`) can be initialised with:
+
+```bash
+$ python -m venv .venv
+$ .venv/Scripts/activate
+$ pip install -e .
+```
+
+And the environment can be exported with the usual `pip freeze requirements.txt`.
 
 ### Development environment
 
