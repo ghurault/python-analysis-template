@@ -53,11 +53,11 @@ Alternatively, a virtual environment (`.venv`) can be initialised with:
 
 ```bash
 $ python -m venv .venv
-$ .venv/Scripts/activate
+$ source .venv/Scripts/activate
 $ pip install -e .
 ```
 
-And the environment can be exported with the usual `pip freeze requirements.txt`.
+The environment can be exported with the usual `pip freeze > requirements.txt` and recreated with `pip install -r requirements.txt`.
 
 ### Development environment
 
