@@ -17,18 +17,11 @@ Moreover, I use the following the directories that are (usually) ignored by Git:
 - [`data/`](data/) to store data files.
 - [`results/`](results/) to store results/output files such as figures, output data, etc.
 
-## Using the template
-*This section can be deleted when using the template.*
+## Development environment
 
-### Getting started
+> I can set up the environment differently depending on the project.
+> The irrelevant sections can be deleted when using the template.
 
-First clone/fork/copy the repository (on GitHub, you can use it as a template directly).
-Then, you should update:
-
-- the repository name
-- project information in [`pyproject.toml`](pyproject.toml)
-- the README
-- the license 
 
 ### Conda setup
 
@@ -59,14 +52,30 @@ $ pip install -e .
 
 The environment can be exported with the usual `pip freeze > requirements.txt` and recreated with `pip install -r requirements.txt`.
 
-### Development environment
+## Using the template
+
+> This section can be deleted when using the template.
+
+### Getting started
+
+First clone/fork/copy the repository (on GitHub, you can use it as a template directly).
+Then, you should update:
+
+- the repository name
+- project information in [`pyproject.toml`](pyproject.toml)
+- the README
+- the license 
+
+Finally, you can set up your preferred development environment (see above).
+
+### VS Code
 
 I usually work with Visual Studio code, for which various settings are already predefined.
-In particular, I use:
+In particular, I use the following extensions for Python development.
 
 - [Black](https://black.readthedocs.io/en/stable/index.html) for formatting.
 - [Flake8](https://flake8.pycqa.org/en/latest/) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) for linting.
-- [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) to document functions and classes, with the help of the [autoDocstring extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring). 
+- [autoDocstring extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) to generate docstrings skeleton following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
 
 ### Possible extensions
 
