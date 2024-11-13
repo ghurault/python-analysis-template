@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+	"name": "Python 3",
+	"build": {
+        // Path is relative to the devcontainer.json file.
+        "dockerfile": "Dockerfile"
+    },
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// Ideally install directly in a docker image for caching, but need local creds to
+	// install git dependencies
+	"postCreateCommand": "pip install -e .",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.black-formatter",
+				"ms-python.flake8",
+				"sonarsource.sonarlint-vscode",
+				"njpwerner.autodocstring",
+				"ms-toolsai.jupyter",
+				"ms-toolsai.datawrangler",
+				"waderyan.gitblame",
+				"mhutchie.git-graph",
+				"yzhang.markdown-all-in-one"
+			]
+		}
+	}
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+
+	// "runArgs": ["--env-file", ".env"]
+}

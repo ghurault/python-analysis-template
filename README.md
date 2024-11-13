@@ -52,6 +52,16 @@ $ pip install -e .
 
 The environment can be exported with the usual `pip freeze > requirements.txt` and recreated with `pip install -r requirements.txt`.
 
+### VS Code Dev Containers (Docker)
+
+Additionally, development can be carried in a Docker container.
+In VS Code, this can be implemented using [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers), which are configured in the [`.devcontainer`](.devcontainer/) directory.
+Essentially, a Docker image of Python is created (with optional requirements), and the current directory is mounted in the corresponding container.
+The Python Docker image can be changed by modifying the [Dockerfile](.devcontainer/Dockerfile).
+
+To open the container, use the command palette in VS Code (`Ctrl + Shift + P`) to search for "Dev Containers: Open Folder in Container...".
+If needed, the container can be rebuilt by searching for "Dev Containers: Rebuild Container...".
+
 ## Using the template
 
 > This section can be deleted when using the template.
@@ -103,7 +113,7 @@ More sophisticated templates are available elsewhere, such as:
 
 - [Cookiecutter Data Science](https://github.com/drivendataorg/cookiecutter-data-science/).
 - [https://joserzapata.github.io/data-science-project-template/](https://joserzapata.github.io/data-science-project-template/)
-- [Data Science for Social Good's hitchikers guide template](https://github.com/dssg/hitchhikers-guide/tree/master/sources/curriculum/0_before_you_start/pipelines-and-project-workflow)
+- [Data Science for Social Good's hitchhikers guide template](https://github.com/dssg/hitchhikers-guide/tree/master/sources/curriculum/0_before_you_start/pipelines-and-project-workflow)
 - [https://github.com/khuyentran1401/data-science-template](https://github.com/khuyentran1401/data-science-template)
 
 As opposed to other templates, this template is more focused on experimentation rather than sharing a single final product.
