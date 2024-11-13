@@ -22,10 +22,23 @@ Moreover, I use the following the directories that are (usually) ignored by Git:
 > I can set up the environment differently depending on the project.
 > The irrelevant sections can be deleted when using the template.
 
+### venv setup
+ 
+To setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html), using the currently installed Python's version, navigate to the repository directory and run the following in the command line:
+
+Alternatively, a virtual environment (`.venv`) can be initialised with:
+
+```bash
+$ python -m venv .venv
+$ source .venv/Scripts/activate
+$ pip install -e .
+```
+
+The environment can be exported with the usual `pip freeze > requirements.txt` and recreated with `pip install -r requirements.txt`.
 
 ### Conda setup
 
-To set up the environment with conda, navigate to the repository directory and run the following in the command line (specify the Python version and environment name as appropriate):
+To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run the following in the command line (specify the Python version and environment name as appropriate):
 
 ```bash
 $ conda create -n myenv python=3.11
@@ -40,26 +53,18 @@ $ conda env export > environment.yml
 $ conda create -n myenv -f environment.yml
 ```
 
-### venv setup
-
-Alternatively, a virtual environment (`.venv`) can be initialised with:
-
-```bash
-$ python -m venv .venv
-$ source .venv/Scripts/activate
-$ pip install -e .
-```
-
-The environment can be exported with the usual `pip freeze > requirements.txt` and recreated with `pip install -r requirements.txt`.
-
 ### VS Code Dev Containers (Docker)
 
-Additionally, development can be carried in a Docker container.
-In VS Code, this can be implemented using [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers), which are configured in the [`.devcontainer`](.devcontainer/) directory.
+A Docker container can be used as a development environment.
+In VS Code, this can be achieved using [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers), which are configured in the [`.devcontainer`](.devcontainer/) directory.
 Essentially, a Docker image of Python is created (with optional requirements), and the current directory is mounted in the corresponding container.
 The Python Docker image can be changed by modifying the [Dockerfile](.devcontainer/Dockerfile).
 
-To open the container, use the command palette in VS Code (`Ctrl + Shift + P`) to search for "Dev Containers: Open Folder in Container...".
+To set up the dev container:
+
+1. Install [Docker](https://www.docker.com/) and run it.
+2. Open the container by using the command palette in VS Code (`Ctrl + Shift + P`) to search for "Dev Containers: Open Folder in Container...".
+
 If needed, the container can be rebuilt by searching for "Dev Containers: Rebuild Container...".
 
 ## Using the template
