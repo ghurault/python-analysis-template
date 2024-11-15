@@ -22,19 +22,48 @@ Moreover, I use the following the directories that are (usually) ignored by Git:
 > I can set up the environment differently depending on the project.
 > The irrelevant sections can be deleted when using the template.
 
+### Requirements
+
+The requirements are specified in several files:
+
+- [`requirements-src.txt`](requirements-src.txt) for direct requirements of the [`src`](src/) package.
+- [`requirements.in`](requirements.in) for direct requirements, that also links to [`requirements-src.txt`](requirements-src.txt).
+This requirements are used when initialising the project, or resetting pinned requirements.
+
+The full requirements can then be pinned in a `requirements.txt` file, or in a `environment.yml` file when using conda.
+A `requirements.txt` file can be generated `pip freeze > requirements.txt`, or using `pip-compile` from [pip-tools](https://pip-tools.readthedocs.io/en/latest/) to resolve the dependencies specified in [`requirements.in`](requirements.in).
+The environment can then be recreated from the pinned requirements using `pip install -r requirements.txt`.
+
+In conda, the requirements are pinned and the environment recreated with:
+
+```bash
+$ conda env export > environment.yml
+$ conda create -n myenv -f environment.yml
+```
+
 ### venv setup
  
-To setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html), using the currently installed Python's version, navigate to the repository directory and run the following in the command line:
-
-Alternatively, a virtual environment (`.venv`) can be initialised with:
+To setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html) called `.venv`, using the currently installed Python's version, navigate to the repository directory and run the following in the command line:
 
 ```bash
 $ python -m venv .venv
 $ source .venv/Scripts/activate
-$ pip install -e .
 ```
 
-The environment can be exported with the usual `pip freeze > requirements.txt` and recreated with `pip install -r requirements.txt`.
+To recreate the environment from an existing `requirements.txt` file, skip the following.
+Otherwise, to initialise the project, run the following to generate a `requirements.txt` file:
+
+```bash
+$ pip install pip-tools
+$ pip-compile
+```
+
+Then, run:
+
+```bash
+$ pip install -r requirements.txt
+$ pip install -e .
+```
 
 ### Conda setup
 
@@ -43,14 +72,8 @@ To set up the environment with [conda](https://docs.conda.io/projects/conda/en/s
 ```bash
 $ conda create -n myenv python=3.11
 $ conda activate myenv
+$ pip install -r requirements.in
 $ pip install -e .
-```
-
-The environment can then be exported and recreated with:
-
-```bash
-$ conda env export > environment.yml
-$ conda create -n myenv -f environment.yml
 ```
 
 ### VS Code Dev Containers (Docker)
@@ -58,7 +81,11 @@ $ conda create -n myenv -f environment.yml
 A Docker container can be used as a development environment.
 In VS Code, this can be achieved using [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers), which are configured in the [`.devcontainer`](.devcontainer/) directory.
 Essentially, a Docker image of Python is created (with optional requirements), and the current directory is mounted in the corresponding container.
-The Python Docker image can be changed by modifying the [Dockerfile](Dockerfile).
+
+The [Dockerfile](Dockerfile) can be edited to change:
+
+- The Python Docker image, in particular the Python version.
+- The Python packages that are installed. By default, the docker image uses [`requirements.in`](requirements.in) rather than pinned requirements.
 
 To set up the dev container:
 

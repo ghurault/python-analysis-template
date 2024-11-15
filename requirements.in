@@ -1,3 +1,4 @@
-# Direct dependencies for analysis (independently of src package)
+# Direct dependencies for analysis
 ipykernel
 ipywidgets
+-r requirements-src.txt
