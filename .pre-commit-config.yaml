@@ -1,0 +1,7 @@
+repos:
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 24.8.0
+    hooks:
+      - id: black
+# default_language_version:
+#     python: python3.12

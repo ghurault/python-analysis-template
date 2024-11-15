@@ -94,6 +94,12 @@ To set up the dev container:
 
 If needed, the container can be rebuilt by searching for "Dev Containers: Rebuild Container...".
 
+### Setup Git pre-commit hooks
+
+Pre-commit hooks are configured using the [pre-commit](https://pre-commit.com/) tool.
+Currently, the hooks consists in formatting with [Black](https://black.readthedocs.io/en/stable/index.html).
+When this repository is first initialised, the hooks need to be installed with `pre-commit install`.
+
 ## Using the template
 
 > This section can be deleted when using the template.
