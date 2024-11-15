@@ -58,7 +58,7 @@ $ conda create -n myenv -f environment.yml
 A Docker container can be used as a development environment.
 In VS Code, this can be achieved using [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers), which are configured in the [`.devcontainer`](.devcontainer/) directory.
 Essentially, a Docker image of Python is created (with optional requirements), and the current directory is mounted in the corresponding container.
-The Python Docker image can be changed by modifying the [Dockerfile](.devcontainer/Dockerfile).
+The Python Docker image can be changed by modifying the [Dockerfile](Dockerfile).
 
 To set up the dev container:
 

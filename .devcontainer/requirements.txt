@@ -1,3 +1,0 @@
-# Direct dependencies for analysis installed in Docker image (independently of src package)
-ipykernel
-ipywidgets
