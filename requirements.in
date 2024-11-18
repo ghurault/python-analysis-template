@@ -1,5 +1,8 @@
 # Direct dependencies for analysis
 ipykernel
 ipywidgets
+matplotlib
+numpy
+pandas
 pre-commit
 -r requirements-src.txt
