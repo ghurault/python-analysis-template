@@ -10,6 +10,8 @@ Usage:
 
 import logging
 
+import matplotlib
+import matplotlib.pyplot as plt
 from pyprojroot import here
 
 logging.basicConfig(
@@ -34,7 +36,7 @@ DATA_DIR = PROJ_ROOT / "data"
 RES_DIR = PROJ_ROOT / "results"
 
 # %%
-# Palettes
+# Palettes and plotting defaults
 
 CB_PALETTE = [
     "#999999",
@@ -48,5 +50,14 @@ CB_PALETTE = [
 ]
 CBB_PALETTE = CB_PALETTE.copy()
 CBB_PALETTE[0] = "#000000"
+
+plt.rcParams.update(
+    {
+        "axes.prop_cycle": matplotlib.cycler(color=CB_PALETTE),
+        "figure.dpi": 300,
+        "savefig.dpi": 300,
+        "savefig.bbox": "tight",
+    }
+)
 
 # %%

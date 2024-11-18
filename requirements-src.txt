@@ -1,2 +1,3 @@
 # Direct requirements for src package
+matplotlib
 pyprojroot
