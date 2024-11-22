@@ -14,9 +14,8 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// Ideally install directly in a docker image for caching, but need local creds to
-	// install git dependencies
-	"postCreateCommand": "pip install -e .",
+	// Install remaining packages from requirements, i.e. editable (local) packages
+	"postCreateCommand": "grep -E '(^-e)' requirements.txt | pip install -r /dev/stdin",
 
 	// Configure tool-specific properties.
 	"customizations": {

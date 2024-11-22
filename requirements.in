@@ -1,8 +1,11 @@
-# Direct dependencies for analysis
+# Direct dependencies for analyses
+
+-e . # Local package
+
 ipykernel
 ipywidgets
 matplotlib
 numpy
 pandas
+pip-tools
 pre-commit
--r requirements-src.txt

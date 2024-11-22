@@ -24,22 +24,33 @@ Moreover, I use the following the directories that are (usually) ignored by Git:
 
 ### Requirements
 
-The requirements are specified in several files:
+> The following does not apply when managing requirements with conda, see the section below.
 
-- [`requirements-src.txt`](requirements-src.txt) for direct requirements of the [`src`](src/) package.
-- [`requirements.in`](requirements.in) for direct requirements, that also links to [`requirements-src.txt`](requirements-src.txt).
-This requirements are used when initialising the project, or resetting pinned requirements.
+The requirements are specified in the following files:
 
-The full requirements can then be pinned in a `requirements.txt` file, or in a `environment.yml` file when using conda.
-A `requirements.txt` file can be generated `pip freeze > requirements.txt`, or using `pip-compile` from [pip-tools](https://pip-tools.readthedocs.io/en/latest/) to resolve the dependencies specified in [`requirements.in`](requirements.in).
-The environment can then be recreated from the pinned requirements using `pip install -r requirements.txt`.
+- [`requirements.in`](requirements.in) to specify direct dependencies.
+- [`requirements.txt`](requirements.txt) to pin the dependencies (direct and indirect).
+This is the file used to recreate the environment from scratch using `pip install -r requirements.txt`.
+- [`pyproject.toml`](pyproject.toml) to store the direct dependencies of the `src` package.
 
-In conda, the requirements are pinned and the environment recreated with:
+The [`requirements.txt`](requirements.txt) file should not be updated manually.
+Instead, I use `pip-compile` from [pip-tools](https://pip-tools.readthedocs.io/en/latest/) to generate `requirements.txt`.
 
-```bash
-$ conda env export > environment.yml
-$ conda create -n myenv -f environment.yml
-```
+#### Initial setup
+
+1. Start with an empty `requirements.txt`.
+2. Install pip-tools with `pip install pip-tools`.
+3. Compile requirements with `pip-compile` to generate a `requirements.txt` file.
+4. Install requirements with `pip-sync` (or `pip install -r requirements.txt`).
+
+NB: the advantage of using `pip-sync` over `pip install -r requirements.txt` is that `pip-sync` will make sure the environment matches `requirements.txt`, i.e. removing packages in the environment but not in `requirements.txt`, if required.
+
+#### Update the environment
+
+- To upgrade packages, run `pip-compile --upgrade`.
+- To add new packages, add packages in `requirements.in` and then compile requirements with `pip-compile`.
+
+Then, the environment can be updated with `pip-sync`.
 
 ### venv setup
  
@@ -48,21 +59,6 @@ To setup a Python virtual environment with [venv](https://docs.python.org/3/libr
 ```bash
 $ python -m venv .venv
 $ source .venv/Scripts/activate
-```
-
-To recreate the environment from an existing `requirements.txt` file, skip the following.
-Otherwise, to initialise the project, run the following to generate a `requirements.txt` file:
-
-```bash
-$ pip install pip-tools
-$ pip-compile
-```
-
-Then, run:
-
-```bash
-$ pip install -r requirements.txt
-$ pip install -e .
 ```
 
 ### Conda setup
@@ -76,20 +72,31 @@ $ pip install -r requirements.in
 $ pip install -e .
 ```
 
+Then pin the requirements with:
+
+```bash
+$ conda env export > environment.yml
+```
+
+Finally, the environment can be recreated with:
+
+```bash
+$ conda create -n myenv -f environment.yml
+```
+
 ### VS Code Dev Containers (Docker)
 
 A Docker container can be used as a development environment.
 In VS Code, this can be achieved using [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers), which are configured in the [`.devcontainer`](.devcontainer/) directory.
-Essentially, a Docker image of Python is created (with optional requirements), and the current directory is mounted in the corresponding container.
+The environment is automatically built as follows:
 
-The [Dockerfile](Dockerfile) can be edited to change:
-
-- The Python Docker image, in particular the Python version.
-- The Python packages that are installed. By default, the docker image uses [`requirements.in`](requirements.in) rather than pinned requirements.
+1. A Docker image of Python is created with packages installed from `requirements.txt` (except local packages). The Python's version can be edited in the [Dockerfile](Dockerfile).
+2. The image is ran in a container and the current directory is mounted.
+3. The local packages are installed in the container, along with some VS Code extensions.
 
 To set up the dev container:
 
-1. Install [Docker](https://www.docker.com/) and run it.
+1. Install and launch [Docker](https://www.docker.com/).
 2. Open the container by using the command palette in VS Code (`Ctrl + Shift + P`) to search for "Dev Containers: Open Folder in Container...".
 
 If needed, the container can be rebuilt by searching for "Dev Containers: Rebuild Container...".
