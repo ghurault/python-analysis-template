@@ -54,7 +54,7 @@ Then, the environment can be updated with `pip-sync`.
 
 ### venv setup
  
-To setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html) called `.venv`, using the currently installed Python's version, navigate to the repository directory and run the following in the command line:
+To setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html) called `.venv`, using the currently installed Python's version, navigate to the repository directory and run `./setup_venv.sh`
 
 ```bash
 $ python -m venv .venv
