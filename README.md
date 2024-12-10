@@ -114,12 +114,12 @@ When this repository is first initialised, the hooks need to be installed with `
 
 1. Initialise your GitHub repository with this template. Alternatively, fork (or copy the content of) this repository.
 2. Update
-   - the repository name
-   - project information in [`pyproject.toml`](pyproject.toml)
-   - the README
-   - the license
-3. Set up your preferred development environment.
-4. Add a git tag for the inital version with `git tag -a "v0.1.0" -m "Initial setup"`, and push it with `git push origin --tags`.
+   - [ ] project information in [`pyproject.toml`](pyproject.toml), such as the description and the authors.
+   - [ ] the repository name (if the template was forked).
+   - [ ] the README (title, badges, sections).
+   - [ ] the license.
+3. Set up your preferred development environment, notably specifying the Python's version.
+4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`.
 
 ### VS Code
 
