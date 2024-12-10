@@ -55,13 +55,9 @@ NB: the advantage of using `pip-sync` over `pip install -r requirements.txt` is 
 Then, the environment can be updated with `pip-sync`.
 
 ### venv setup
- 
-To setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html) called `.venv`, using the currently installed Python's version, navigate to the repository directory and run the following in the command line:
 
-```bash
-$ python -m venv .venv
-$ source .venv/Scripts/activate
-```
+Run `scripts/setup_venv.sh` to setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html) and install packages in `requirements.txt`.
+By default, the environment is called `.venv` and is created using the default Python interpreter in the current directory.
 
 ### Conda setup
 
