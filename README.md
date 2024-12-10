@@ -11,6 +11,7 @@ This repository serves as a personal template for data science projects.
 - Reusable functions and modules are stored in the local package [`src/`](src/).
   - The package can then be installed in development mode with `pip install -e .` for easy prototyping.
   - [`src/config.py`](src/config.py) is used to store variables, constants and configurations.
+  - The package version is extracted from git tags using [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/) following [semantic versioning](https://semver.org/).
 - Tests for functions in [`src/`](src/) should go to [`tests/`](tests/) and follow the convention `test_*.py`.
 
 Moreover, I use the following the directories that are (usually) ignored by Git:
@@ -114,15 +115,14 @@ When this repository is first initialised, the hooks need to be installed with `
 
 ### Getting started
 
-First clone/fork/copy the repository (on GitHub, you can use it as a template directly).
-Then, you should update:
-
-- the repository name
-- project information in [`pyproject.toml`](pyproject.toml)
-- the README
-- the license 
-
-Finally, you can set up your preferred development environment (see above).
+1. Initialise your GitHub repository with this template. Alternatively, fork (or copy the content of) this repository.
+2. Update
+   - the repository name
+   - project information in [`pyproject.toml`](pyproject.toml)
+   - the README
+   - the license
+3. Set up your preferred development environment.
+4. Add a git tag for the inital version with `git tag -a "v0.1.0" -m "Initial setup"`, and push it with `git push origin --tags`.
 
 ### VS Code
 
@@ -146,7 +146,9 @@ The `src/` package could contain the following modules or sub-packages depending
 
 The repository structure could be extended with:
 
-- `docs/` to store documentation (e.g. of the `src` package). For example, a documentation could be generated using [mkdocs](https://www.mkdocs.org/) or [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html).
+- `docs/` to store documentation, for example
+  - A simple API documentation of the `src` package could be generated using [pdoc](https://pdoc.dev/docs/pdoc.html), for example.
+  - A full project documentation could be generated using [mkdocs](https://www.mkdocs.org/) or [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html).
 - subfolders in `data/` such as `data/raw/` for storing raw data.
 - `models/` to store model files.
 
