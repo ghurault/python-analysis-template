@@ -25,3 +25,8 @@ requires-python = ">=3.8"
 # Documentation = ""
 # Repository = ""
 # Issues = ""
+
+[tool.isort]
+known_first_party = ["src"]  # Add others local/private packages
+# Not distinguishing first_party and local_folder following PEP8 and also for
+# consistency as src is used outside the package
