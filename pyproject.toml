@@ -1,10 +1,9 @@
 [build-system]
-requires = ["setuptools >= 64"]
+requires = ["setuptools >= 64", "setuptools_scm >= 8"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "src"
-version = "0.1.0"
 description = ""
 authors = [
   {name = "Guillem Hurault", email = "guillem.hurault@hotmail.fr"}
@@ -19,12 +18,15 @@ dependencies = [
   "pyprojroot",
 ]
 requires-python = ">=3.8"
+dynamic = ["version"]
 
 [project.urls]
 # Homepage = ""
 # Documentation = ""
 # Repository = ""
 # Issues = ""
+
+[tool.setuptools_scm]
 
 [tool.isort]
 known_first_party = ["src"]  # Add others local/private packages
