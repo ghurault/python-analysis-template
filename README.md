@@ -17,6 +17,7 @@ This repository serves as a personal template for data science projects.
 Moreover, I use the following the directories that are (usually) ignored by Git:
 
 - [`data/`](data/) to store data files.
+- [`docs/`](docs/) to store API documentation generated with [pdoc](https://pdoc.dev/docs/pdoc.html) by running `scripts/build_docs.sh`.
 - [`results/`](results/) to store results/output files such as figures, output data, etc.
 
 ## Development environment
@@ -142,11 +143,10 @@ The `src/` package could contain the following modules or sub-packages depending
 
 The repository structure could be extended with:
 
-- `docs/` to store documentation, for example
-  - A simple API documentation of the `src` package could be generated using [pdoc](https://pdoc.dev/docs/pdoc.html), for example.
-  - A full project documentation could be generated using [mkdocs](https://www.mkdocs.org/) or [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html).
 - subfolders in `data/` such as `data/raw/` for storing raw data.
 - `models/` to store model files.
+
+Finally, a full project documentation (beyond the API) could be generated using [mkdocs](https://www.mkdocs.org/) or [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html).
 
 ### Related
 

@@ -7,5 +7,6 @@ ipywidgets
 matplotlib
 numpy
 pandas
+pdoc
 pip-tools
 pre-commit
