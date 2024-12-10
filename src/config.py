@@ -55,6 +55,7 @@ plt.rcParams.update(
     {
         "axes.prop_cycle": matplotlib.cycler(color=CB_PALETTE),
         "figure.dpi": 300,
+        "figure.figsize": (6.4, 4.0),
         "savefig.dpi": 300,
         "savefig.bbox": "tight",
     }
