@@ -19,5 +19,5 @@
         "--max-line-length=88",
         "--ignore=D100, D202, E203, D412, W503",
     ],
-    "sonarlint.analysisExcludesStandalone": "**/analysis/**",
+    "sonarlint.analysisExcludesStandalone": "**/analysis/**,**/site-packages/**",
 }
