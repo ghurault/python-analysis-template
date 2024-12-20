@@ -62,3 +62,7 @@ plt.rcParams.update(
 )
 
 # %%
+
+logger.info("All configurations have been set.")
+
+# %%
