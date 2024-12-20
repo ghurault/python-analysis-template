@@ -25,6 +25,7 @@
 				"ms-python.vscode-pylance",
 				"ms-python.black-formatter",
 				"ms-python.flake8",
+				"ms-python.mypy-type-checker",
 				"sonarsource.sonarlint-vscode",
 				"njpwerner.autodocstring",
 				"ms-toolsai.jupyter",

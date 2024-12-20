@@ -20,4 +20,5 @@
         "--ignore=D100, D202, E203, D412, W503",
     ],
     "sonarlint.analysisExcludesStandalone": "**/analysis/**,**/site-packages/**",
+    "mypy-type-checker.ignorePatterns": ["**/analysis/**"],
 }
