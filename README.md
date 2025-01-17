@@ -1,4 +1,5 @@
 # Python analysis template
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -33,7 +34,7 @@ The requirements are specified in the following files:
 
 - [`requirements.in`](requirements.in) to specify direct dependencies.
 - [`requirements.txt`](requirements.txt) to pin the dependencies (direct and indirect).
-This is the file used to recreate the environment from scratch using `pip install -r requirements.txt`.
+  This is the file used to recreate the environment from scratch using `pip install -r requirements.txt`.
 - [`pyproject.toml`](pyproject.toml) to store the direct dependencies of the `src` package.
 
 The [`requirements.txt`](requirements.txt) file should not be updated manually.

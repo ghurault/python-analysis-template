@@ -1,20 +1,20 @@
 {
-    "recommendations": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-toolsai.jupyter",
-        "ms-toolsai.datawrangler",
-        "ms-python.black-formatter",
-        "ms-python.flake8",
-        "ms-python.mypy-type-checker",
-        "sonarsource.sonarlint-vscode",
-        "njpwerner.autodocstring",
-        "kevinrose.vsc-python-indent",
-        "mhutchie.git-graph",
-        "waderyan.gitblame",
-        "yzhang.markdown-all-in-one",
-        "esbenp.prettier-vscode",
-        // "sdras.night-owl",
-        // "pkief.material-icon-theme",
-    ]
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-toolsai.jupyter",
+    "ms-toolsai.datawrangler",
+    "ms-python.black-formatter",
+    "ms-python.flake8",
+    "ms-python.mypy-type-checker",
+    "sonarsource.sonarlint-vscode",
+    "njpwerner.autodocstring",
+    "kevinrose.vsc-python-indent",
+    "mhutchie.git-graph",
+    "waderyan.gitblame",
+    "yzhang.markdown-all-in-one",
+    "esbenp.prettier-vscode"
+    // "sdras.night-owl",
+    // "pkief.material-icon-theme",
+  ]
 }
