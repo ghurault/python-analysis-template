@@ -100,6 +100,24 @@ To set up the dev container:
 
 If needed, the container can be rebuilt by searching for "Dev Containers: Rebuild Container...".
 
+#### Private Git packages
+
+If `requirements.txt` contains Python packages in private Git repositories, it is easier to install them in the devcontainer post-creation step since Git credentials used in VSC are shared with the devcontainer (alternatively, credentials have to be made available in the Dockerfile).
+
+One way to achieve this is to exclude git packages from being installed in the Docker image and update the devcontainer post-creation step to install these packages, similarly to how local package are excluded.
+
+For example, in the [Dockerfile](Dockerfile):
+
+```
+RUN grep -vE '(^-e|@ ?git ?+)' /tmp/pip-tmp/requirements.txt | pip --no-cache-dir install -r /dev/stdin
+```
+
+And in [`devcontainer.json`](.devcontainer/devcontainer.json):
+
+```json
+"postCreateCommand": "grep -E '(^-e|@ ?git ?+)' requirements.txt | pip install -r /dev/stdin"
+```
+
 ### Setup Git pre-commit hooks
 
 Pre-commit hooks are configured using the [pre-commit](https://pre-commit.com/) tool.
