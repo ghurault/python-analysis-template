@@ -18,7 +18,7 @@ This repository serves as a personal template for data science projects.
 Moreover, I use the following the directories that are (usually) ignored by Git:
 
 - [`data/`](data/) to store data files.
-- [`docs/`](docs/) to store API documentation generated with [pdoc](https://pdoc.dev/docs/pdoc.html) by running `scripts/build_docs.sh`.
+- [`docs/`](docs/) to store API documentation generated with [pdoc](https://pdoc.dev/docs/pdoc.html) by running `make docs`.
 - [`results/`](results/) to store results/output files such as figures, output data, etc.
 
 ## Development environment
@@ -147,6 +147,14 @@ In particular, I use the following extensions for Python development.
 - [Black](https://black.readthedocs.io/en/stable/index.html) for formatting.
 - [Flake8](https://flake8.pycqa.org/en/latest/) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) for linting.
 - [autoDocstring extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) to generate docstrings skeleton following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
+
+### Makefile
+
+A Makefile is provided as an interface to various utility scripts:
+
+- `make docs` to generate the package documentation.
+- `make venv` to setup a venv environment (see [`scripts/setup_venv.sh`](scripts/setup_venv.sh)).
+- `make deps` to install requirements in [`requirements.txt`](requirements.txt).
 
 ### Possible extensions
 
