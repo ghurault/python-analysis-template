@@ -1,5 +1,6 @@
 # Keep setup.py to facilitate local package installation in editable mode
+# cf. https://setuptools.pypa.io/en/latest/userguide/quickstart.html#development-mode
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
-setup(name="src", packages=["src"])
+setup(name="src", packages=find_packages())
