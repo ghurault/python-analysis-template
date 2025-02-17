@@ -2,17 +2,22 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
   "name": "Python 3",
+
   "build": {
     "dockerfile": "../Dockerfile",
     "context": ".."
   },
+
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},
+
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
+
   // Use 'postCreateCommand' to run commands after the container is created.
   // Install remaining packages from requirements, i.e. editable (local) packages
   "postCreateCommand": "grep -E '(^-e)' requirements.txt | pip install -r /dev/stdin",
+
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
@@ -32,7 +37,9 @@
       ]
     }
   }
+
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "root"
+
   // "runArgs": ["--env-file", ".env"]
 }
