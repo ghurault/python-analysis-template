@@ -10,7 +10,7 @@ This repository serves as a personal template for data science projects.
 
 - Analysis scripts and notebooks are located in [`analysis/`](analysis/).
 - Reusable functions and modules are stored in the local package [`src/`](src/).
-  - The package can then be installed in development mode with `pip install -e .` for easy prototyping.
+  - The package can then be installed in development mode with `pip install -e .[dev]` for easy prototyping.
   - [`src/config.py`](src/config.py) is used to store variables, constants and configurations.
   - The package version is extracted from git tags using [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/) following [semantic versioning](https://semver.org/).
 - Tests for functions in [`src/`](src/) should go to [`tests/`](tests/) and follow the convention `test_*.py`.
@@ -26,39 +26,50 @@ Moreover, I use the following the directories that are (usually) ignored by Git:
 > I can set up the environment differently depending on the project.
 > The irrelevant sections can be deleted when using the template.
 
-### Requirements
+tldr, the steps to set up the development environment are
 
-> The following does not apply when managing requirements with conda, see the section below.
+1. Set up a virtual environment (venv, conda, Docker, etc.).
+2. Install dependencies: `pip install -r requirements.txt`.
+3. Install the local package: `pip install -e .[dev]`.
+
+This steps are automated, for example when using the [`setup_venv.sh`](scripts/setup_venv.sh) script or when using a VS Code Dev Container (see below).
+
+### Requirements
 
 The requirements are specified in the following files:
 
-- [`requirements.in`](requirements.in) to specify direct dependencies.
+- [`pyproject.toml`](pyproject.toml) to store the direct dependencies of the `src` package and development dependencies (e.g. for the analysis).
 - [`requirements.txt`](requirements.txt) to pin the dependencies (direct and indirect).
   This is the file used to recreate the environment from scratch using `pip install -r requirements.txt`.
-- [`pyproject.toml`](pyproject.toml) to store the direct dependencies of the `src` package.
 
 The [`requirements.txt`](requirements.txt) file should not be updated manually.
 Instead, I use `pip-compile` from [pip-tools](https://pip-tools.readthedocs.io/en/latest/) to generate `requirements.txt`.
+
+NB1: the [`requirements.txt`](requirements.txt) file does not include the local package (`src`), hence the two-steps process of installing dependencies.
+
+NB2: When using a conda environment, the dependencies are pinned in an `environment.yml` file instead, see below.
 
 #### Initial setup
 
 1. Start with an empty `requirements.txt`.
 2. Install pip-tools with `pip install pip-tools`.
-3. Compile requirements with `pip-compile` to generate a `requirements.txt` file.
+3. Compile requirements with `pip-compile --extra=dev` to generate a `requirements.txt` file.
 4. Install requirements with `pip-sync` (or `pip install -r requirements.txt`).
+5. Install the local package: `pip install -e .[dev]`.
 
 NB: the advantage of using `pip-sync` over `pip install -r requirements.txt` is that `pip-sync` will make sure the environment matches `requirements.txt`, i.e. removing packages in the environment but not in `requirements.txt`, if required.
+However, the resulting not environment will not include the local package.
 
 #### Update the environment
 
 - To upgrade packages, run `pip-compile --upgrade`.
-- To add new packages, add packages in `requirements.in` and then compile requirements with `pip-compile`.
+- To add new packages, add packages in `requirements.in` and then compile requirements with `pip-compile --extra=dev`.
 
 Then, the environment can be updated with `pip-sync`.
 
 ### venv setup
 
-Run `scripts/setup_venv.sh` to setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html) and install packages in `requirements.txt`.
+Run `scripts/setup_venv.sh` (or `make venv`) to setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html), install dependencies in `requirements.txt` and the local package.
 By default, the environment is called `.venv` and is created using the default Python interpreter in the current directory.
 
 ### Conda setup
@@ -154,7 +165,7 @@ A Makefile is provided as an interface to various utility scripts:
 
 - `make docs` to generate the package documentation.
 - `make venv` to setup a venv environment (see [`scripts/setup_venv.sh`](scripts/setup_venv.sh)).
-- `make deps` to install requirements in [`requirements.txt`](requirements.txt).
+- `make deps` to install requirements in [`requirements.txt`](requirements.txt) and the local package.
 
 ### Possible extensions
 

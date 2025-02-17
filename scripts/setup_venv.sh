@@ -63,4 +63,7 @@ else
   echo "requirements.txt not found. No packages installed."
 fi
 
+# Install local package
+pip install -e .[dev]
+
 echo "Virtual environment '$VENV_NAME' is ready."

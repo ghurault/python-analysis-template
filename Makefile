@@ -6,7 +6,7 @@ venv:
 # Install dependencies
 .PHONY: deps
 deps:
-	pip install -r requirements.txt
+	pip install -r requirements.txt && pip install -e .[dev]
 
 # Generate documentation
 .PHONY: docs

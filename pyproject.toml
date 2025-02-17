@@ -20,6 +20,19 @@ dependencies = [
 requires-python = ">=3.9"
 dynamic = ["version"]
 
+[project.optional-dependencies]
+# Additional dependencies, e.g. for the analysis
+dev = [
+  "ipykernel",
+  "ipywidgets",
+  "matplotlib",
+  "numpy",
+  "pandas",
+  "pdoc",
+  "pip-tools",
+  "pre-commit"
+]
+
 [project.urls]
 # Homepage = ""
 # Documentation = ""
