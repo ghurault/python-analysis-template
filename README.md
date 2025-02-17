@@ -13,7 +13,7 @@ This repository serves as a personal template for data science projects.
   - The package can then be installed in development mode with `pip install -e .[dev]` for easy prototyping.
   - [`src/config.py`](src/config.py) is used to store variables, constants and configurations.
   - The package version is extracted from git tags using [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/) following [semantic versioning](https://semver.org/).
-- Tests for functions in [`src/`](src/) should go to [`tests/`](tests/) and follow the convention `test_*.py`.
+- Tests for functions in [`src/`](src/) are in [`tests/`](tests/) and follow the convention `test_*.py`.
 
 Moreover, I use the following the directories that are (usually) ignored by Git:
 
@@ -112,6 +112,11 @@ To set up the dev container:
 
 If needed, the container can be rebuilt by searching for "Dev Containers: Rebuild Container...".
 
+NB: Python packages in `requirements.txt` are installed in the global location of the Docker image.
+However, within the container (unless logging in as a root user), packages are installed in the user location and packages in the global location cannot be updated/removed.
+This can be problematic when running `pip-sync`.
+Instead we should use `sudo -E pip-sync` (the -E option prevents re-specifying git credentials when they are available as a non-root user)
+
 #### Private Git packages
 
 If `requirements.txt` contains Python packages in private Git repositories, it is easier to install them in the devcontainer post-creation step since Git credentials used in VSC are shared with the devcontainer (alternatively, credentials have to be made available in the Dockerfile).
@@ -157,6 +162,7 @@ In particular, I use the following extensions for Python development.
 
 - [Black](https://black.readthedocs.io/en/stable/index.html) for formatting.
 - [Flake8](https://flake8.pycqa.org/en/latest/) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) for linting.
+- [Mypy](https://marketplace.visualstudio.com/items?itemName=ms-python.mypy-type-checker) for type checking.
 - [autoDocstring extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) to generate docstrings skeleton following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
 
 ### Makefile
