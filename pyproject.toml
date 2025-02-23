@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "src"
-description = ""
+description = "Package for storing reusable functions and classes during experimentations."
 authors = [
-  {name = "Guillem Hurault", email = "guillem.hurault@hotmail.fr"}
+  {name = "Guillem Hurault"}
 ]
 readme = "README.md"
 license = {file = "LICENSE"}
