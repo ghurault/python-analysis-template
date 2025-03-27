@@ -12,3 +12,8 @@ deps:
 .PHONY: docs
 docs:
 	pdoc -d google -t rust -o docs/ src
+
+# Increment git tag
+.PHONY: tag
+tag:
+	./scripts/increment-git-tag.sh
