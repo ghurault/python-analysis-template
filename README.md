@@ -63,7 +63,7 @@ However, the resulting not environment will not include the local package.
 #### Update the environment
 
 - To upgrade packages, run `pip-compile --upgrade`.
-- To add new packages, add packages in `requirements.in` and then compile requirements with `pip-compile --extra=dev`.
+- To add new packages, add packages in `pyproject.toml` and then compile requirements with `pip-compile --extra=dev`.
 
 Then, the environment can be updated with `pip-sync`.
 
@@ -79,8 +79,8 @@ To set up the environment with [conda](https://docs.conda.io/projects/conda/en/s
 ```bash
 $ conda create -n myenv python=3.11
 $ conda activate myenv
-$ pip install -r requirements.in
-$ pip install -e .
+$ pip install -r requirements.txt
+$ pip install -e .[dev]
 ```
 
 Then pin the requirements with:
