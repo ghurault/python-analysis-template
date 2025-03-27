@@ -63,7 +63,7 @@ However, the resulting not environment will not include the local package.
 #### Update the environment
 
 - To upgrade packages, run `pip-compile --upgrade`.
-- To add new packages, add packages in `requirements.in` and then compile requirements with `pip-compile --extra=dev`.
+- To add new packages, add packages in `pyproject.toml` and then compile requirements with `pip-compile --extra=dev`.
 
 Then, the environment can be updated with `pip-sync`.
 
@@ -79,8 +79,8 @@ To set up the environment with [conda](https://docs.conda.io/projects/conda/en/s
 ```bash
 $ conda create -n myenv python=3.11
 $ conda activate myenv
-$ pip install -r requirements.in
-$ pip install -e .
+$ pip install -r requirements.txt
+$ pip install -e .[dev]
 ```
 
 Then pin the requirements with:
@@ -152,7 +152,11 @@ When this repository is first initialised, the hooks need to be installed with `
    - [ ] the repository name (if the template was forked).
    - [ ] the README (title, badges, sections).
    - [ ] the license.
-3. Set up your preferred development environment, notably specifying the Python's version.
+3. Set up your preferred development environment:
+   - Choose a virtual environment and a Python version.
+   - Specify direct requirements.
+   - Compile requirements.
+   - Install pre-commit.
 4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`.
 
 ### VS Code
@@ -172,6 +176,7 @@ A Makefile is provided as an interface to various utility scripts:
 - `make docs` to generate the package documentation.
 - `make venv` to setup a venv environment (see [`scripts/setup_venv.sh`](scripts/setup_venv.sh)).
 - `make deps` to install requirements in [`requirements.txt`](requirements.txt) and the local package.
+- `make tag` to add and push a new Git tag by incrementing the version.
 
 ### Possible extensions
 

@@ -15,6 +15,11 @@ repos:
     hooks:
       - id: isort
         args: ["--profile", "black", "--filter-files"]
+  - repo: https://github.com/PyCQA/docformatter
+    rev: eb1df347edd128b30cd3368dddc3aa65edcfac38 # Don't autoupdate until https://github.com/PyCQA/docformatter/issues/293 is fixed
+    hooks:
+      - id: docformatter
+        args: ["--in-place", "--black"]
 default_install_hook_types: [pre-commit, commit-msg]
 # default_language_version:
 #     python: python3.12

@@ -10,8 +10,8 @@ Usage:
 
 import logging
 
-import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.rcsetup import cycler
 from pyprojroot import here
 
 logging.basicConfig(
@@ -53,7 +53,7 @@ CBB_PALETTE[0] = "#000000"
 
 plt.rcParams.update(
     {
-        "axes.prop_cycle": matplotlib.cycler(color=CB_PALETTE),
+        "axes.prop_cycle": cycler(color=CB_PALETTE),
         "figure.dpi": 300,
         "figure.figsize": (6.4, 4.0),
         "savefig.dpi": 300,

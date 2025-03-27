@@ -16,7 +16,7 @@
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // Install remaining packages from requirements, i.e. editable (local) packages
-  "postCreateCommand": "grep -E '(^-e)' requirements.txt | pip install -r /dev/stdin",
+  "postCreateCommand": "grep -E '(^-e)' requirements.txt | pip install -r /dev/stdin && pip install -e .[dev]",
 
   // Configure tool-specific properties.
   "customizations": {
@@ -33,7 +33,8 @@
         "ms-toolsai.datawrangler",
         "mhutchie.git-graph",
         "yzhang.markdown-all-in-one",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "ms-vscode.live-server"
       ]
     }
   }
