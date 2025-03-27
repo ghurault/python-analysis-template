@@ -152,7 +152,11 @@ When this repository is first initialised, the hooks need to be installed with `
    - [ ] the repository name (if the template was forked).
    - [ ] the README (title, badges, sections).
    - [ ] the license.
-3. Set up your preferred development environment, notably specifying the Python's version.
+3. Set up your preferred development environment:
+   - Choose a virtual environment and a Python version.
+   - Specify direct requirements.
+   - Compile requirements.
+   - Install pre-commit.
 4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`.
 
 ### VS Code
@@ -172,6 +176,7 @@ A Makefile is provided as an interface to various utility scripts:
 - `make docs` to generate the package documentation.
 - `make venv` to setup a venv environment (see [`scripts/setup_venv.sh`](scripts/setup_venv.sh)).
 - `make deps` to install requirements in [`requirements.txt`](requirements.txt) and the local package.
+- `make tag` to add and push a new Git tag by incrementing the version.
 
 ### Possible extensions
 
