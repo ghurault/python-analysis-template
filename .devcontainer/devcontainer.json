@@ -33,7 +33,8 @@
         "ms-toolsai.datawrangler",
         "mhutchie.git-graph",
         "yzhang.markdown-all-in-one",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "ms-vscode.live-server"
       ]
     }
   }
