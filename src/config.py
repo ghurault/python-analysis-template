@@ -9,6 +9,7 @@ Usage:
 # Preamble
 
 import logging
+import os
 
 import matplotlib.pyplot as plt
 from matplotlib.rcsetup import cycler
@@ -34,6 +35,13 @@ logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
 
 DATA_DIR = PROJ_ROOT / "data"
 RES_DIR = PROJ_ROOT / "results"
+
+# %%
+# MLflow
+
+MLRUNS_DIR = RES_DIR / "mlruns"
+TRACKING_URI = "file:///" + MLRUNS_DIR.as_posix()
+os.environ["MLFLOW_TRACKING_URI"] = TRACKING_URI
 
 # %%
 # Palettes and plotting defaults
