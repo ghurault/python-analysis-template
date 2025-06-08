@@ -3,6 +3,11 @@
 venv:
 	./scripts/setup_venv.sh
 
+# Compile requirements
+.PHONY: reqs
+reqs:
+	pip-compile --extra=dev
+
 # Install dependencies
 .PHONY: deps
 deps:

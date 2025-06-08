@@ -175,6 +175,7 @@ A Makefile is provided as an interface to various utility scripts:
 
 - `make docs` to generate the package documentation.
 - `make venv` to setup a venv environment (see [`scripts/setup_venv.sh`](scripts/setup_venv.sh)).
+- `make reqs` to compile requirements.
 - `make deps` to install requirements in [`requirements.txt`](requirements.txt) and the local package.
 - `make tag` to add and push a new Git tag by incrementing the version.
 
