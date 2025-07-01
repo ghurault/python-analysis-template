@@ -114,7 +114,7 @@ One way to achieve this is to exclude git packages from being installed in the D
 
 For example, in the [Dockerfile](Dockerfile):
 
-```
+```docker
 RUN grep -vE '(^-e|@ ?git ?+)' /tmp/pip-tmp/requirements.txt | pip --no-cache-dir install -r /dev/stdin
 ```
 
@@ -143,10 +143,10 @@ When this repository is first initialised, the hooks need to be installed with `
    - [ ] the license.
 3. Set up your preferred development environment:
    - Choose a virtual environment and a Python version.
-   - Specify direct requirements.
+   - Specify direct requirements in [`pyproject.toml`](pyproject.toml).
    - Compile requirements.
    - Install pre-commit.
-4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`.
+4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tags`.
 
 ### VS Code
 
@@ -173,7 +173,7 @@ A Makefile is provided as an interface to various utility scripts:
 The `src/` package could contain the following modules or sub-packages depending on the project:
 
 - `utils` for utility functions.
-- `data_processing` for data processing functions (this could be imported as `dp`).
+- `data_processing` or `data` for data processing functions.
 - `features`: for extracting features.
 - `models`: for defining models.
 - `evaluation`: for evaluating performance.
