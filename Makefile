@@ -11,7 +11,7 @@ reqs:
 # Install dependencies
 .PHONY: deps
 deps:
-	pip install -r requirements.txt && pip install -e .[dev]
+	pip install -r requirements.txt && pip install -e .[all]
 
 # Generate documentation
 .PHONY: docs

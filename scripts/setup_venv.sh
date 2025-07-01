@@ -64,6 +64,6 @@ else
 fi
 
 # Install local package
-pip install -e .[dev]
+pip install -e .[all]
 
 echo "Virtual environment '$VENV_NAME' is ready."
