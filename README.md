@@ -72,14 +72,7 @@ By default, the environment is called `.venv` and is created using the default P
 
 ### Conda setup
 
-To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run the following in the command line (specify the Python version and environment name as appropriate):
-
-```bash
-$ conda create -n myenv python=3.11
-$ conda activate myenv
-$ pip install -r requirements.txt
-$ pip install -e .[all]
-```
+To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run `scripts/setup_conda.sh` (specify the Python version and environment name as appropriate with with the `-p` argument):
 
 Then pin the requirements with:
 
