@@ -16,7 +16,7 @@
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // Install remaining packages from requirements, i.e. editable (local) packages
-  "postCreateCommand": "grep -E '(^-e)' requirements.txt | pip install -r /dev/stdin && pip install -e .[dev]",
+  "postCreateCommand": "grep -E '(^-e)' requirements.txt | pip install -r /dev/stdin && pip install -e .[all]",
 
   // Configure tool-specific properties.
   "customizations": {

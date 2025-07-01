@@ -10,7 +10,7 @@ This repository serves as a personal template for data science projects.
 
 - Analysis scripts and notebooks are located in [`analysis/`](analysis/).
 - Reusable functions and modules are stored in the local package [`src/`](src/).
-  - The package can then be installed in development mode with `pip install -e .[dev]` for easy prototyping.
+  - The package can then be installed in development/editable mode for easy prototyping.
   - [`src/config.py`](src/config.py) is used to store variables, constants and configurations.
   - The package version is extracted from git tags using [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/) following [semantic versioning](https://semver.org/).
 - Tests for functions in [`src/`](src/) are in [`tests/`](tests/) and follow the convention `test_*.py`.
@@ -30,9 +30,11 @@ tldr, the steps to set up the development environment are
 
 1. Set up a virtual environment (venv, conda, Docker, etc.).
 2. Install dependencies: `pip install -r requirements.txt`.
-3. Install the local package: `pip install -e .[dev]`.
+3. Install the local package: `pip install -e .[all]`.
 
-This steps are automated, for example when using the [`setup_venv.sh`](scripts/setup_venv.sh) script or when using a VS Code Dev Container (see below).
+NB1: This steps are automated, for example when using the [`setup_venv.sh`](scripts/setup_venv.sh) script or when using a VS Code Dev Container (see below).
+
+NB2: A shortcut for steps 2 and 3 is to use `make deps`.
 
 ### Requirements
 
@@ -43,29 +45,25 @@ The requirements are specified in the following files:
   This is the file used to recreate the environment from scratch using `pip install -r requirements.txt`.
 
 The [`requirements.txt`](requirements.txt) file should not be updated manually.
-Instead, I use `pip-compile` from [pip-tools](https://pip-tools.readthedocs.io/en/latest/) to generate `requirements.txt`.
+Instead, I use [`uv`](https://docs.astral.sh/uv/) to generate `requirements.txt`.
 
 NB1: the [`requirements.txt`](requirements.txt) file does not include the local package (`src`), hence the two-steps process of installing dependencies.
 
 NB2: When using a conda environment, the dependencies are pinned in an `environment.yml` file instead, see below.
 
+NB3: For the moment I am only using `uv` to compile requirements (as a replacement to `pip-compile`), and not as a package manager (yet?).
+
 #### Initial setup
 
 1. Start with an empty `requirements.txt`.
-2. Install pip-tools with `pip install pip-tools`.
-3. Compile requirements with `pip-compile --extra=dev` to generate a `requirements.txt` file.
-4. Install requirements with `pip-sync` (or `pip install -r requirements.txt`).
-5. Install the local package: `pip install -e .[dev]`.
-
-NB: the advantage of using `pip-sync` over `pip install -r requirements.txt` is that `pip-sync` will make sure the environment matches `requirements.txt`, i.e. removing packages in the environment but not in `requirements.txt`, if required.
-However, the resulting not environment will not include the local package.
+2. Install uv with `pip install uv`.
+3. Compile requirements with `uv pip compile pyproject.toml -o requirements.txt --all-extras` (or `make reqs`) to generate a `requirements.txt` file.
+4. Install requirements with `pip install -r requirements.txt` and then the local package with `pip install -e .[all]`.
 
 #### Update the environment
 
-- To upgrade packages, run `pip-compile --upgrade`.
-- To add new packages, add packages in `pyproject.toml` and then compile requirements with `pip-compile --extra=dev`.
-
-Then, the environment can be updated with `pip-sync`.
+- To upgrade packages, run `uv pip compile pyproject.toml -o requirements.txt --all-extras --upgrade`.
+- To add new packages, add packages in `pyproject.toml` and then compile requirements as above.
 
 ### venv setup
 
@@ -74,14 +72,7 @@ By default, the environment is called `.venv` and is created using the default P
 
 ### Conda setup
 
-To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run the following in the command line (specify the Python version and environment name as appropriate):
-
-```bash
-$ conda create -n myenv python=3.11
-$ conda activate myenv
-$ pip install -r requirements.txt
-$ pip install -e .[dev]
-```
+To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run `scripts/setup_conda.sh` (specify the Python version and environment name as appropriate with with the `-p` argument):
 
 Then pin the requirements with:
 
@@ -114,8 +105,6 @@ If needed, the container can be rebuilt by searching for "Dev Containers: Rebuil
 
 NB: Python packages in `requirements.txt` are installed in the global location of the Docker image.
 However, within the container (unless logging in as a root user), packages are installed in the user location and packages in the global location cannot be updated/removed.
-This can be problematic when running `pip-sync`.
-Instead we should use `sudo -E pip-sync` (the -E option prevents re-specifying git credentials when they are available as a non-root user)
 
 #### Private Git packages
 
@@ -125,7 +114,7 @@ One way to achieve this is to exclude git packages from being installed in the D
 
 For example, in the [Dockerfile](Dockerfile):
 
-```
+```docker
 RUN grep -vE '(^-e|@ ?git ?+)' /tmp/pip-tmp/requirements.txt | pip --no-cache-dir install -r /dev/stdin
 ```
 
@@ -154,10 +143,10 @@ When this repository is first initialised, the hooks need to be installed with `
    - [ ] the license.
 3. Set up your preferred development environment:
    - Choose a virtual environment and a Python version.
-   - Specify direct requirements.
+   - Specify direct requirements in [`pyproject.toml`](pyproject.toml).
    - Compile requirements.
    - Install pre-commit.
-4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`.
+4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tags`.
 
 ### VS Code
 
@@ -184,7 +173,7 @@ A Makefile is provided as an interface to various utility scripts:
 The `src/` package could contain the following modules or sub-packages depending on the project:
 
 - `utils` for utility functions.
-- `data_processing` for data processing functions (this could be imported as `dp`).
+- `data_processing` or `data` for data processing functions.
 - `features`: for extracting features.
 - `models`: for defining models.
 - `evaluation`: for evaluating performance.
