@@ -10,7 +10,7 @@ This repository serves as a personal template for data science projects.
 
 - Analysis scripts and notebooks are located in [`analysis/`](analysis/).
 - Reusable functions and modules are stored in the local package [`src/`](src/).
-  - The package can then be installed in development mode with `pip install -e .[dev]` for easy prototyping.
+  - The package can then be installed in development/editable mode for easy prototyping.
   - [`src/config.py`](src/config.py) is used to store variables, constants and configurations.
   - The package version is extracted from git tags using [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/) following [semantic versioning](https://semver.org/).
 - Tests for functions in [`src/`](src/) are in [`tests/`](tests/) and follow the convention `test_*.py`.
@@ -30,9 +30,11 @@ tldr, the steps to set up the development environment are
 
 1. Set up a virtual environment (venv, conda, Docker, etc.).
 2. Install dependencies: `pip install -r requirements.txt`.
-3. Install the local package: `pip install -e .[dev]`.
+3. Install the local package: `pip install -e .[all]`.
 
-This steps are automated, for example when using the [`setup_venv.sh`](scripts/setup_venv.sh) script or when using a VS Code Dev Container (see below).
+NB1: This steps are automated, for example when using the [`setup_venv.sh`](scripts/setup_venv.sh) script or when using a VS Code Dev Container (see below).
+
+NB2: A shortcut for steps 2 and 3 is to use `make deps`.
 
 ### Requirements
 
@@ -56,7 +58,7 @@ NB3: For the moment I am only using `uv` to compile requirements (as a replaceme
 1. Start with an empty `requirements.txt`.
 2. Install uv with `pip install uv`.
 3. Compile requirements with `uv pip compile pyproject.toml -o requirements.txt --all-extras` (or `make reqs`) to generate a `requirements.txt` file.
-4. Install requirements with `pip install -r requirements.txt` and then the local package with `pip install -e .[dev]`. Alternatively, use `make deps`.
+4. Install requirements with `pip install -r requirements.txt` and then the local package with `pip install -e .[all]`.
 
 #### Update the environment
 
@@ -76,7 +78,7 @@ To set up the environment with [conda](https://docs.conda.io/projects/conda/en/s
 $ conda create -n myenv python=3.11
 $ conda activate myenv
 $ pip install -r requirements.txt
-$ pip install -e .[dev]
+$ pip install -e .[all]
 ```
 
 Then pin the requirements with:
