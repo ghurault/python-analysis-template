@@ -43,29 +43,25 @@ The requirements are specified in the following files:
   This is the file used to recreate the environment from scratch using `pip install -r requirements.txt`.
 
 The [`requirements.txt`](requirements.txt) file should not be updated manually.
-Instead, I use `pip-compile` from [pip-tools](https://pip-tools.readthedocs.io/en/latest/) to generate `requirements.txt`.
+Instead, I use [`uv`](https://docs.astral.sh/uv/) to generate `requirements.txt`.
 
 NB1: the [`requirements.txt`](requirements.txt) file does not include the local package (`src`), hence the two-steps process of installing dependencies.
 
 NB2: When using a conda environment, the dependencies are pinned in an `environment.yml` file instead, see below.
 
+NB3: For the moment I am only using `uv` to compile requirements (as a replacement to `pip-compile`), and not as a package manager (yet?).
+
 #### Initial setup
 
 1. Start with an empty `requirements.txt`.
-2. Install pip-tools with `pip install pip-tools`.
-3. Compile requirements with `pip-compile --extra=dev` to generate a `requirements.txt` file.
-4. Install requirements with `pip-sync` (or `pip install -r requirements.txt`).
-5. Install the local package: `pip install -e .[dev]`.
-
-NB: the advantage of using `pip-sync` over `pip install -r requirements.txt` is that `pip-sync` will make sure the environment matches `requirements.txt`, i.e. removing packages in the environment but not in `requirements.txt`, if required.
-However, the resulting not environment will not include the local package.
+2. Install uv with `pip install uv`.
+3. Compile requirements with `uv pip compile pyproject.toml -o requirements.txt --all-extras` (or `make reqs`) to generate a `requirements.txt` file.
+4. Install requirements with `pip install -r requirements.txt` and then the local package with `pip install -e .[dev]`. Alternatively, use `make deps`.
 
 #### Update the environment
 
-- To upgrade packages, run `pip-compile --upgrade`.
-- To add new packages, add packages in `pyproject.toml` and then compile requirements with `pip-compile --extra=dev`.
-
-Then, the environment can be updated with `pip-sync`.
+- To upgrade packages, run `uv pip compile pyproject.toml -o requirements.txt --all-extras --upgrade`.
+- To add new packages, add packages in `pyproject.toml` and then compile requirements as above.
 
 ### venv setup
 
@@ -114,8 +110,6 @@ If needed, the container can be rebuilt by searching for "Dev Containers: Rebuil
 
 NB: Python packages in `requirements.txt` are installed in the global location of the Docker image.
 However, within the container (unless logging in as a root user), packages are installed in the user location and packages in the global location cannot be updated/removed.
-This can be problematic when running `pip-sync`.
-Instead we should use `sudo -E pip-sync` (the -E option prevents re-specifying git credentials when they are available as a non-root user)
 
 #### Private Git packages
 
