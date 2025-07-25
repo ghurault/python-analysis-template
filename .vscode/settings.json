@@ -1,8 +1,4 @@
 {
-  "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "test_*.py"],
-  "python.testing.pytestEnabled": false,
-  "python.testing.unittestEnabled": true,
-  // "python.defaultInterpreterPath": "python",
   "editor.rulers": [100],  // Default line length
   "editor.formatOnSave": false,
   "[python]": {
@@ -29,6 +25,10 @@
     "editor.defaultFormatter": "tamasfe.even-better-toml",
     "editor.formatOnSave": true
   },
+  "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "test_*.py"],
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true,
+  // "python.defaultInterpreterPath": "python",
   "autoDocstring.docstringFormat": "google",
   "sonarlint.analysisExcludesStandalone": "**/analysis/**,**/site-packages/**",
   "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
