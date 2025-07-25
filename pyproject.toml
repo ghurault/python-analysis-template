@@ -48,11 +48,66 @@ all = [
 
 [tool.setuptools_scm]
 
-[tool.isort]
-profile = "black"
-known_first_party = ["src"] # Add others local/private packages
-# Not distinguishing first_party and local_folder following PEP8 and also for
-# consistency as src is used outside the package
-
 [tool.mypy]
 ignore_missing_imports = true
+
+[tool.ruff.lint]
+select = [
+  "A", # builtins
+  "B", # flake8-bugbear
+  "C4", # comprehensions
+  "C90", # McCabe cyclomatic complexity
+  "D", # pydocstyle
+  # "DOC", # pydoclint # TODO add when no longer in preview
+  "E", # pycodestyle error
+  # TODO "EM", # error messages
+  "F", # pyflakes
+  "FURB", # modernising Python codebase
+  "I", # isort
+  "ICN", # import conventions
+  "N", # PEP8 naming
+  "NPY", # numpy
+  "PD", # pandas
+  "PERF", # performance
+  # TODO pylint? PLC, PLE, PLR, PLW
+  "S", # bandit (security issues)
+  "SIM", # # flake8-simplify
+  # "UP", # pyupgrade
+  "W", # pycodestyle warning
+]
+ignore = [
+  "D102", # Missing docstring in public method
+  "D103", # Missing docstring in public function
+  "D107", # Missing docstring in __init__
+  "D202", # Blank line after function docstring
+  "E501", # Avoid enforcing line-length violations
+  "PD015", # Use pd.merge
+  "PD901", # Naming dataframe df instead of method
+  "PERF203", # Try-except in loop
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"] # Ignore import violations
+"analysis/*" = [
+  "B018", # Useless expression
+  "B028", # No explicit stacklevel for warnings
+  "D101", # Missing docstring in public class
+  "F403", # Use of wildcard imports
+  "F405", # Undefined names because of wildcard imports
+  "S", # Disable bandit on analysis files
+]
+"tests/*" = [
+  "D100", # Undocumented public module
+  "D101", # Missing docstring in public class
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.isort]
+known-first-party = [
+  "src",
+] # Add others local/private packages
+# Not distinguishing first_party and local_folder following PEP8 and also for
+# consistency as src is used outside the package
+# required-imports = ["from src import config"]

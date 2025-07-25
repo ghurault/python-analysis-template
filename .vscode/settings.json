@@ -30,11 +30,6 @@
     "editor.formatOnSave": true
   },
   "autoDocstring.docstringFormat": "google",
-  "flake8.args": [
-    "--exclude=analysis/*py",
-    "--max-line-length=88",
-    "--ignore=D100, D202, E203, D412, W503"
-  ],
   "sonarlint.analysisExcludesStandalone": "**/analysis/**,**/site-packages/**",
   "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
   "mypy-type-checker.ignorePatterns": ["**/analysis/**"]
