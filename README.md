@@ -6,20 +6,45 @@
 
 This repository serves as a personal template for data science projects.
 
+The template comes with the following features/customisations:
+
+- The project is organised as a research compendium (see the [File Structure](#file-structure) section).
+- [Visual Studio Code](https://code.visualstudio.com/) is used as an IDE, along with [various extensions](.vscode/extensions.json).
+- A [VS Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) ([Docker](https://www.docker.com/)) is used as a preferred development environment.
+- [pre-commit](https://pre-commit.com/) is used to manage git hooks.
+- Python tooling
+  - [Black](https://black.readthedocs.io/en/stable/index.html) is used as a formatter (pre-commit and VSC extension).
+  - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) are used as linters.
+  - [mypy](https://www.mypy-lang.org/) is used as a type checker (VSC extension).
+  - [uv](https://docs.astral.sh/uv/) is used to compile requirements (not as a package manager, yet).
+  - [pdoc](https://pdoc.dev/docs/pdoc.html) is used to generate API documentation.
+    Python docstrings are written following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and with the help of the [autoDocstring VSC extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
+  - Automatic versioning of the local package from git tags using [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/), following [semantic versioning](https://semver.org/).
+- [SQLFluff](https://sqlfluff.com/) is used as a linter and formatter for SQL files (pre-commit and VSC extension).
+- [prettier](https://prettier.io/) (VSC extension) is used as a formatter for YAML, JSON and Markdown files.
+- [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files
+- [Make](https://www.gnu.org/software/make/) is used as an interface to various utility scripts (see the [Make commands](#make-commands) section).
+
 ## File structure
 
-- Analysis scripts and notebooks are located in [`analysis/`](analysis/).
-- Reusable functions and modules are stored in the local package [`src/`](src/).
-  - The package can then be installed in development/editable mode for easy prototyping.
-  - [`src/config.py`](src/config.py) is used to store variables, constants and configurations.
-  - The package version is extracted from git tags using [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/) following [semantic versioning](https://semver.org/).
-- Tests for functions in [`src/`](src/) are in [`tests/`](tests/) and follow the convention `test_*.py`.
-
-Moreover, I use the following the directories that are (usually) ignored by Git:
-
-- [`data/`](data/) to store data files.
-- [`docs/`](docs/) to store API documentation generated with [pdoc](https://pdoc.dev/docs/pdoc.html) by running `make docs`.
-- [`results/`](results/) to store results/output files such as figures, output data, etc.
+```
+.
+├── analysis/              # Notebooks and analysis scripts
+├── data/                  # Data files (usually git ignored)
+├── docs/                  # API documentation (git ignored)
+├── results/               # Output files: figures, tables, etc. (git ignored)
+├── src/                   # Local Python package
+│   ├── __init__.py
+│   └── config.py          # Configs, constants, settings
+├── tests/                 # Unit tests for src/
+│   └── test_*.py
+├── .devcontainer/         # VS Code dev container setup
+├── .vscode/               # VS Code settings and extensions
+├── scripts/               # Utility scripts (e.g. env setup)
+├── Makefile               # Utility commands (docs, env, versioning)
+├── pyproject.toml         # Package/Project configuration, direct dependencies
+├── requirements.txt       # Pinned dependencies (generated)
+```
 
 ## Development environment
 
@@ -29,12 +54,10 @@ Moreover, I use the following the directories that are (usually) ignored by Git:
 tldr, the steps to set up the development environment are
 
 1. Set up a virtual environment (venv, conda, Docker, etc.).
-2. Install dependencies: `pip install -r requirements.txt`.
-3. Install the local package: `pip install -e .[all]`.
+2. Install dependencies with `pip install -r requirements.txt` and the local package `src` in editable mode for convenience with `pip install -e .[all]`. A shortcut for this is `make deps`.
+3. Install pre-commit hooks with `pre-commit install`.
 
-NB1: This steps are automated, for example when using the [`setup_venv.sh`](scripts/setup_venv.sh) script or when using a VS Code Dev Container (see below).
-
-NB2: A shortcut for steps 2 and 3 is to use `make deps`.
+NB: This steps are automated, for example when using the [`setup_venv.sh`](scripts/setup_venv.sh) script or when using a VS Code Dev Container (see below).
 
 ### Requirements
 
@@ -42,16 +65,11 @@ The requirements are specified in the following files:
 
 - [`pyproject.toml`](pyproject.toml) to store the direct dependencies of the `src` package and development dependencies (e.g. for the analysis).
 - [`requirements.txt`](requirements.txt) to pin the dependencies (direct and indirect).
-  This is the file used to recreate the environment from scratch using `pip install -r requirements.txt`.
-
-The [`requirements.txt`](requirements.txt) file should not be updated manually.
-Instead, I use [`uv`](https://docs.astral.sh/uv/) to generate `requirements.txt`.
+  This file is automatically generated with [`uv`](https://docs.astral.sh/uv/) and can then be used to recreate the environment from scratch, e.g. using `pip install -r requirements.txt`.
 
 NB1: the [`requirements.txt`](requirements.txt) file does not include the local package (`src`), hence the two-steps process of installing dependencies.
 
 NB2: When using a conda environment, the dependencies are pinned in an `environment.yml` file instead, see below.
-
-NB3: For the moment I am only using `uv` to compile requirements (as a replacement to `pip-compile`), and not as a package manager (yet?).
 
 #### Initial setup
 
@@ -124,10 +142,15 @@ And in [`devcontainer.json`](.devcontainer/devcontainer.json):
 "postCreateCommand": "grep -E '(^-e|@ ?git ?+)' requirements.txt | pip install -r /dev/stdin"
 ```
 
-### Setup Git pre-commit hooks
+## Make commands
 
-Pre-commit hooks are configured using the [pre-commit](https://pre-commit.com/) tool.
-When this repository is first initialised, the hooks need to be installed with `pre-commit install`.
+A Makefile is provided as an interface to various utility scripts:
+
+- `make docs` to generate the package documentation.
+- `make venv` to setup a venv environment (see [`scripts/setup_venv.sh`](scripts/setup_venv.sh)).
+- `make reqs` to compile requirements.
+- `make deps` to install requirements in [`requirements.txt`](requirements.txt) and the local package.
+- `make tag` to add and push a new Git tag by incrementing the version.
 
 ## Using the template
 
@@ -141,32 +164,8 @@ When this repository is first initialised, the hooks need to be installed with `
    - [ ] the repository name (if the template was forked).
    - [ ] the README (title, badges, sections).
    - [ ] the license.
-3. Set up your preferred development environment:
-   - Choose a virtual environment and a Python version.
-   - Specify direct requirements in [`pyproject.toml`](pyproject.toml).
-   - Compile requirements.
-   - Install pre-commit.
-4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tags`.
-
-### VS Code
-
-I usually work with Visual Studio code, for which various settings are already predefined.
-In particular, I use the following extensions for Python development.
-
-- [Black](https://black.readthedocs.io/en/stable/index.html) for formatting.
-- [Flake8](https://flake8.pycqa.org/en/latest/) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) for linting.
-- [Mypy](https://marketplace.visualstudio.com/items?itemName=ms-python.mypy-type-checker) for type checking.
-- [autoDocstring extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) to generate docstrings skeleton following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
-
-### Makefile
-
-A Makefile is provided as an interface to various utility scripts:
-
-- `make docs` to generate the package documentation.
-- `make venv` to setup a venv environment (see [`scripts/setup_venv.sh`](scripts/setup_venv.sh)).
-- `make reqs` to compile requirements.
-- `make deps` to install requirements in [`requirements.txt`](requirements.txt) and the local package.
-- `make tag` to add and push a new Git tag by incrementing the version.
+3. Set up your preferred development environment (see the [Development Environment section](#development-environment)).
+4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
 
 ### Possible extensions
 
