@@ -22,7 +22,8 @@
     "editor.formatOnSave": true
   },
   "[sql]": {
-    "editor.rulers": [88] // For consistency with SQL embedded in Python code
+    "editor.rulers": [88], // For consistency with SQL embedded in Python code
+    "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
   },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml",
@@ -35,5 +36,6 @@
     "--ignore=D100, D202, E203, D412, W503"
   ],
   "sonarlint.analysisExcludesStandalone": "**/analysis/**,**/site-packages/**",
+  "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
   "mypy-type-checker.ignorePatterns": ["**/analysis/**"]
 }

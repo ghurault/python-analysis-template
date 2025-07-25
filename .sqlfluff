@@ -1,0 +1,16 @@
+[sqlfluff]
+dialect = ansi
+max_line_length = 88
+templater = placeholder
+rules = core, AL01, CV08, LT09, ST09, RF04
+# Only raise a warning when these rules are violated (useful for pre-commit)
+warnings = CV08, RF04
+
+[sqlfluff:indentation]
+tab_space_size = 2
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+
+[sqlfluff:templater:placeholder]
+param_style = colon

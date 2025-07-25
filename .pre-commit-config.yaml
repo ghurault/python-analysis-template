@@ -27,6 +27,11 @@ repos:
         language: system
         types: [file]
         files: ^(src/|README\.md)$
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 3.4.2
+    hooks:
+      # - id: sqlfluff-lint
+      - id: sqlfluff-fix
 default_install_hook_types: [pre-commit, commit-msg]
 # default_language_version:
 #     python: python3.12

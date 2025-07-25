@@ -35,6 +35,7 @@
         "yzhang.markdown-all-in-one",
         "esbenp.prettier-vscode",
         "tamasfe.even-better-toml",
+        "dorzey.vscode-sqlfluff",
         "ms-vscode.live-server"
       ]
     }
