@@ -1,0 +1,8 @@
+# Configuration for TOML formatter
+
+[formatting]
+align_comments = false
+array_trailing_comma = true
+array_auto_collapse = false
+reorder_arrays = true
+column_width = 100

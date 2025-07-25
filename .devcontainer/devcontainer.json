@@ -34,6 +34,7 @@
         "mhutchie.git-graph",
         "yzhang.markdown-all-in-one",
         "esbenp.prettier-vscode",
+        "tamasfe.even-better-toml",
         "ms-vscode.live-server"
       ]
     }
