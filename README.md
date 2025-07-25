@@ -8,7 +8,7 @@
 
 This repository follows a standard setup I use for data science projects, which includes:
 
-- A research compendium layout, including a local Python package (see [File Structure](#file-structure)).
+- A research compendium layout, including a local Python package (see [File Structure](#️-file-structure)).
 - [Visual Studio Code](https://code.visualstudio.com/) (VSC) as the preferred IDE, with [recommended extensions](.vscode/extensions.json).
 - A [VS Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers), powered by [Docker](https://www.docker.com/), as a reproducible development environment.
 - [pre-commit](https://pre-commit.com/) to manage git hooks.
@@ -23,7 +23,7 @@ This repository follows a standard setup I use for data science projects, which 
 - [SQLFluff](https://sqlfluff.com/) as a linter and formatter for SQL files (pre-commit and VSC extension).
 - [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
-- A [Makefile](Makefile) to provide an interface to common tasks (see the [Make commands](#make-commands)).
+- A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
 
 ## 🗂️ File structure
 
@@ -90,7 +90,17 @@ Common utility commands are available via the Makefile:
 - `make deps`: Install requirements and the local package.
 - `make docs`: Generate the package documentation.
 - `make tag`: Create and push a new Git tag by incrementing the version.
-- `make venv`: Set up a venv environment (see [DEVELOPMENT.md](DEVELOPMENT.md))
+- `make venv`: Set up a venv environment (see [DEVELOPMENT.md](DEVELOPMENT.md)).
+
+## 🪛 Tool configuration
+
+Configuration for the main tools lives in the following files:
+
+- Ruff, mypy: [`pyproject.toml`](pyproject.toml)
+- SQLFluff: [`.sqlfluff`](.sqlfluff)
+- pre-commit: [`.pre-commit-config.yaml`](.pre-commit-config.yaml)
+- Taplo: [`taplo.toml`](taplo.toml)
+- VS Code settings: [`.vscode/settings.json`](.vscode/settings.json)
 
 ## 🧰 Using the template
 
@@ -104,8 +114,9 @@ Common utility commands are available via the Makefile:
    - [ ] the repository name (if the template was forked).
    - [ ] the README (title, badges, sections).
    - [ ] the license.
-3. Set up your preferred development environment (see the [Development Environment section](#development-environment)).
-4. Add a git tag for the initial version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
+3. Set up your preferred development environment (see [Development Environment](#-development-environment)).
+4. Specify, compile and install your requirements (see [Managing requirements](#-managing-requirements)).
+5. Add a git tag for the initial version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
 
 ### Possible extensions
 
