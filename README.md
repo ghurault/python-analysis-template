@@ -4,28 +4,28 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This repository serves as a personal template for data science projects.
+## ⚙️ Project setup
 
-The template comes with the following features/customisations:
+This repository follows a standard setup I use for data science projects, which includes:
 
-- The project is organised as a research compendium (see the [File Structure](#file-structure) section).
-- [Visual Studio Code](https://code.visualstudio.com/) is used as an IDE, along with [various extensions](.vscode/extensions.json).
-- A [VS Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) ([Docker](https://www.docker.com/)) is used as a preferred development environment.
-- [pre-commit](https://pre-commit.com/) is used to manage git hooks.
-- Python tooling
-  - [Black](https://black.readthedocs.io/en/stable/index.html) is used as a formatter (pre-commit and VSC extension).
-  - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) are used as linters.
-  - [mypy](https://www.mypy-lang.org/) is used as a type checker (VSC extension).
-  - [uv](https://docs.astral.sh/uv/) is used to compile requirements (not as a package manager, yet).
-  - [pdoc](https://pdoc.dev/docs/pdoc.html) is used to generate API documentation.
+- A research compendium layout, including a local Python package (see [File Structure](#file-structure)).
+- [Visual Studio Code](https://code.visualstudio.com/) (VSC) as the preferred IDE, with [recommended extensions](.vscode/extensions.json).
+- A [VS Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers), powered by [Docker](https://www.docker.com/), as a reproducible development environment.
+- [pre-commit](https://pre-commit.com/) to manage git hooks.
+- Python tooling:
+  - [Black](https://black.readthedocs.io/en/stable/index.html) for code formatting (pre-commit and VSC extension).
+  - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) for linting.
+  - [mypy](https://www.mypy-lang.org/) for type checking (VSC extension).
+  - [uv](https://docs.astral.sh/uv/) to compile requirements.
+  - [pdoc](https://pdoc.dev/docs/pdoc.html) to generate API documentation.
     Python docstrings are written following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and with the help of the [autoDocstring VSC extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
-  - Automatic versioning of the local package from git tags using [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/), following [semantic versioning](https://semver.org/).
-- [SQLFluff](https://sqlfluff.com/) is used as a linter and formatter for SQL files (pre-commit and VSC extension).
-- [prettier](https://prettier.io/) (VSC extension) is used as a formatter for YAML, JSON and Markdown files.
-- [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files
-- [Make](https://www.gnu.org/software/make/) is used as an interface to various utility scripts (see the [Make commands](#make-commands) section).
+  - Automatic versioning of the local package from git tags via [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/), following [semantic versioning](https://semver.org/).
+- [SQLFluff](https://sqlfluff.com/) as a linter and formatter for SQL files (pre-commit and VSC extension).
+- [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
+- [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
+- A [Makefile](Makefile) to provide an interface to common tasks (see the [Make commands](#make-commands)).
 
-## File structure
+## 🗂️ File structure
 
 ```
 .
@@ -46,7 +46,7 @@ The template comes with the following features/customisations:
 ├── requirements.txt       # Pinned dependencies (generated)
 ```
 
-## Development environment
+## 🐳 Development environment
 
 The preferred development environment for this project is a **VS Code Dev Container**, which provides a consistent and reproducible setup using Docker.
 
@@ -61,41 +61,40 @@ For more details regarding Dev Containers, or alternative environment setups (ve
 
 Regardless of the environment, install Git hooks after setup with `pre-commit install` to ensure the code is automatically linted and formatted on commit.
 
-## Managing requirements
+## 📦 Managing requirements
 
-The requirements are specified in the following files:
+Requirements are managed with:
 
-- [`pyproject.toml`](pyproject.toml) to store the direct dependencies of the `src` package and development dependencies (e.g. for the analysis).
-- [`requirements.txt`](requirements.txt) to pin the dependencies (direct and indirect).
-  This file is automatically generated with [`uv`](https://docs.astral.sh/uv/) and can then be used to recreate the environment from scratch.
+- [`pyproject.toml`](pyproject.toml): lists direct dependencies of the `src` package and development dependencies (e.g. for the analysis).
+- [`requirements.txt`](requirements.txt): pins alls dependencies (direct and indirect).
+  This file is automatically generated with [`uv`](https://docs.astral.sh/uv/) and is used to fully recreate the environment.
 
-NB: the [`requirements.txt`](requirements.txt) file does not include the local package (`src`), hence the two-steps process of installing dependencies.
+⚠️ The local package (`src`) is not included in `requirements.txt`, so installation is a two-step process.
 
-### Initial setup
+### Workflow
 
-1. Start with an empty `requirements.txt`.
-2. Install uv with `pip install uv`.
-3. Compile requirements with `uv pip compile pyproject.toml -o requirements.txt --all-extras` (or `make reqs`) to generate a `requirements.txt` file.
-4. Install requirements with `pip install -r requirements.txt` and then the local package with `pip install -e .[all]`.
+- **Initial setup** or **adding new direct dependencies**:
 
-### Update the environment
+1. Add dependencies to `pyproject.toml`.
+2. Run `make reqs` to compile `requirements.txt`.
 
-- To upgrade packages, run `uv pip compile pyproject.toml -o requirements.txt --all-extras --upgrade`.
-- To add new packages, add packages in `pyproject.toml` and then compile requirements as above.
+- **Upgrading packages**: compile new requirements with `uv pip compile pyproject.toml -o requirements.txt --all-extras --upgrade`, then make deps.
 
-## Make commands
+Finally, run `make deps` to install pinned dependencies and the local package in editable mode.
 
-A Makefile is provided as an interface to various utility scripts:
+## 🛠️ Make commands
 
-- `make docs` to generate the package documentation.
-- `make reqs` to compile requirements.
-- `make deps` to install requirements in [`requirements.txt`](requirements.txt) and the local package.
-- `make tag` to add and push a new Git tag by incrementing the version.
-- `make venv` to setup a venv environment (see [`scripts/setup_venv.sh`](scripts/setup_venv.sh)).
+Common utility commands are available via the Makefile:
 
-## Using the template
+- `make reqs`: Compile `requirements.txt` from `pyproject.toml`.
+- `make deps`: Install requirements and the local package.
+- `make docs`: Generate the package documentation.
+- `make tag`: Create and push a new Git tag by incrementing the version.
+- `make venv`: Set up a venv environment (see [DEVELOPMENT.md](DEVELOPMENT.md))
 
-> This section can be deleted when using the template.
+## 🧰 Using the template
+
+> Delete this section after initialising a project from the template.
 
 ### Getting started
 
@@ -106,7 +105,7 @@ A Makefile is provided as an interface to various utility scripts:
    - [ ] the README (title, badges, sections).
    - [ ] the license.
 3. Set up your preferred development environment (see the [Development Environment section](#development-environment)).
-4. Add a git tag for the inital version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
+4. Add a git tag for the initial version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
 
 ### Possible extensions
 
