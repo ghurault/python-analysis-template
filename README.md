@@ -8,7 +8,7 @@
 
 This repository follows a standard setup I use for data science projects, which includes:
 
-- A research compendium layout, including a local Python package (see [File Structure](#️-file-structure)).
+- A [research compendium](https://doi.org/10.1080/00031305.2017.1375986) layout, including a local Python package (see [File Structure](#️-file-structure)).
 - [Visual Studio Code](https://code.visualstudio.com/) (VSC) as the preferred IDE, with [recommended extensions](.vscode/extensions.json).
 - A [VS Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers), powered by [Docker](https://www.docker.com/), as a reproducible development environment.
 - [pre-commit](https://pre-commit.com/) to manage git hooks.
@@ -29,21 +29,25 @@ This repository follows a standard setup I use for data science projects, which 
 
 ```
 .
-├── analysis/              # Notebooks and analysis scripts
-├── data/                  # Data files (usually git ignored)
-├── docs/                  # API documentation (git ignored)
-├── results/               # Output files: figures, tables, etc. (git ignored)
-├── src/                   # Local Python package
+├── analysis/                  # Analysis scripts and notebooks
+├── data/                      # Data files (usually git ignored)
+├── docs/                      # API documentation (git ignored)
+├── results/                   # Output files: figures, tables, etc. (git ignored)
+├── scripts/                   # Utility scripts (e.g. env setup)
+├── src/                       # Local Python package
 │   ├── __init__.py
-│   └── config.py          # Configs, constants, settings
-├── tests/                 # Unit tests for src/
+│   └── config.py              # Configs, constants, settings
+├── tests/                     # Unit tests for src/
 │   └── test_*.py
-├── .devcontainer/         # VS Code dev container setup
-├── .vscode/               # VS Code settings and extensions
-├── scripts/               # Utility scripts (e.g. env setup)
-├── Makefile               # Utility commands (docs, env, versioning)
-├── pyproject.toml         # Package/Project configuration, direct dependencies
-├── requirements.txt       # Pinned dependencies (generated)
+├── .devcontainer/             # VS Code Dev container setup
+├── .vscode/                   # VS Code settings and extensions
+├── Dockerfile                 # Dockerfile used for dev container
+├── Makefile                   # Utility commands (docs, env, versioning)
+├── pyproject.toml             # Configs for package, tools (Ruff, mypy, etc.) and direct deps
+├── requirements.txt           # Pinned dependencies (generated)
+├── taplo.toml                 # Configs for TOML formatter
+├── .pre-commit-config.yaml    # Configs for pre-commit
+├── .sqlfluff                  # Configs for SQLFluff
 ```
 
 ## 🐳 Development environment
@@ -75,8 +79,8 @@ Requirements are managed with:
 
 - **Initial setup** or **adding new direct dependencies**:
 
-1. Add dependencies to `pyproject.toml`.
-2. Run `make reqs` to compile `requirements.txt`.
+  1. Add dependencies to `pyproject.toml`.
+  2. Run `make reqs` to compile `requirements.txt`.
 
 - **Upgrading packages**: compile new requirements with `uv pip compile pyproject.toml -o requirements.txt --all-extras --upgrade`, then make deps.
 
@@ -92,16 +96,6 @@ Common utility commands are available via the Makefile:
 - `make tag`: Create and push a new Git tag by incrementing the version.
 - `make venv`: Set up a venv environment (see [DEVELOPMENT.md](DEVELOPMENT.md)).
 
-## 🪛 Tool configuration
-
-Configuration for the main tools lives in the following files:
-
-- Ruff, mypy: [`pyproject.toml`](pyproject.toml)
-- SQLFluff: [`.sqlfluff`](.sqlfluff)
-- pre-commit: [`.pre-commit-config.yaml`](.pre-commit-config.yaml)
-- Taplo: [`taplo.toml`](taplo.toml)
-- VS Code settings: [`.vscode/settings.json`](.vscode/settings.json)
-
 ## 🧰 Using the template
 
 > Delete this section after initialising a project from the template.
@@ -110,10 +104,12 @@ Configuration for the main tools lives in the following files:
 
 1. Initialise your GitHub repository with this template. Alternatively, fork (or copy the content of) this repository.
 2. Update
-   - [ ] project information in [`pyproject.toml`](pyproject.toml), such as the description and the authors.
-   - [ ] the repository name (if the template was forked).
-   - [ ] the README (title, badges, sections).
-   - [ ] the license.
+
+   - project information in [`pyproject.toml`](pyproject.toml), such as the description and the authors.
+   - the repository name (if the template was forked).
+   - the README (title, badges, sections).
+   - the license.
+
 3. Set up your preferred development environment (see [Development Environment](#-development-environment)).
 4. Specify, compile and install your requirements (see [Managing requirements](#-managing-requirements)).
 5. Add a git tag for the initial version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
