@@ -105,16 +105,19 @@ Common utility commands are available via the Makefile:
 1. Initialise your GitHub repository with this template. Alternatively, fork (or copy the content of) this repository.
 2. Update
 
-   - project information in [`pyproject.toml`](pyproject.toml), such as the description and the authors.
+   - project metada in [`pyproject.toml`](pyproject.toml), such as the description and the authors.
    - the repository name (if the template was forked).
    - the README (title, badges, sections).
    - the license.
 
 3. Set up your preferred development environment (see [Development Environment](#-development-environment)).
 4. Specify, compile and install your requirements (see [Managing requirements](#-managing-requirements)).
-5. Add a git tag for the initial version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
+5. Adjust the configurations to your needs (e.g. Python configuration in `src/config.py`, the SQL dialect in `.sqlfluff`, etc.).
+6. Add a git tag for the initial version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
 
 ### Possible extensions
+
+#### Suggested module for the local package
 
 The `src/` package could contain the following modules or sub-packages depending on the project:
 
@@ -125,12 +128,48 @@ The `src/` package could contain the following modules or sub-packages depending
 - `evaluation`: for evaluating performance.
 - `plots`: for plotting functions.
 
+#### Additional directories
+
 The repository structure could be extended with:
 
-- subfolders in `data/` such as `data/raw/` for storing raw data.
 - `models/` to store model files.
+- subfolders in `data/` such as `data/raw/` for storing raw data.
 
-Finally, a full project documentation (beyond the API) could be generated using [mkdocs](https://www.mkdocs.org/) or [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html).
+#### Experiment tracking with MLflow
+
+[MLflow](https://mlflow.org/) can be used as a tool to track Machine Learning experiments.
+Often, MLflow will be configured so that the results are saved on a remote database and artifact store.
+If this is not the case, the following can be added in [`src/config.py`](src/config.py) to set up a local storage for MLflow experiments:
+
+```python
+MLRUNS_DIR = RES_DIR / "mlruns"
+TRACKING_URI = "file:///" + MLRUNS_DIR.as_posix()
+os.environ["MLFLOW_TRACKING_URI"] = TRACKING_URI
+```
+
+Then, the MLflow UI can be launched with:
+
+```bash
+mlflow ui --backend-store-uri file:///path/to/results/mlruns
+```
+
+#### Environment configuration via `.env`
+
+Configurations, such as credentials, can be loaded from a `.env` file.
+
+This can be achieved by [mounting a `.env` file directly in the Dev Container](https://code.visualstudio.com/remote/advancedcontainers/environment-variables#_option-2-use-an-env-file), updating the `runArgs` option in [`.devcontainer/devcontainer.json`](.devcontainer/devcontainer.json) accordingly.
+
+Alternatively, one can use the [python-dotenv](https://pypi.org/project/python-dotenv/) package and add the following in [`src/config.py`](src/config.py):
+
+```python
+from dotenv import load_dotenv
+
+load_dotenv()
+```
+
+#### Project documentation
+
+A full project documentation (beyond the API) could be generated using [mkdocs](https://www.mkdocs.org/) or [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html).
 
 ### Related
 

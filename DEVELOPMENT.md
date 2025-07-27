@@ -31,12 +31,21 @@ And in [`devcontainer.json`](.devcontainer/devcontainer.json):
 "postCreateCommand": "grep -E '(^-e|@ ?git ?+)' requirements.txt | pip install -r /dev/stdin"
 ```
 
-## venv setup
+## Alternative environments
+
+While the preferred setup uses Docker (via VS Code Dev Containers) to ensure full environment reproducibility, other Python environments (e.g. virtualenv, conda) are also supported.
+
+This template relies on a pinned `requirements.txt` file for dependency management.
+This approach is broadly compatible and should work across different tools and platforms.
+
+Below are setup instructions for some alternatives to Docker.
+
+### venv setup
 
 Run `scripts/setup_venv.sh` (or `make venv`) to setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html), install dependencies in `requirements.txt` and the local package.
 By default, the environment is called `.venv` and is created using the default Python interpreter in the current directory.
 
-## Conda setup
+### Conda setup
 
 To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run `scripts/setup_conda.sh` (specify the Python version and environment name as appropriate with with the `-p` argument):
 
