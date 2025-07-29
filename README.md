@@ -14,16 +14,18 @@ This repository follows a standard setup I use for data science projects, which 
 - [pre-commit](https://pre-commit.com/) to manage git hooks.
 - Python tooling:
   - [Black](https://black.readthedocs.io/en/stable/index.html) for code formatting (pre-commit and VSC extension).
+    In addition, I follow the [Google style guide](https://google.github.io/styleguide/pyguide.html).
   - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) for linting.
   - [mypy](https://www.mypy-lang.org/) for type checking (VSC extension).
   - [uv](https://docs.astral.sh/uv/) to compile requirements.
-  - [pdoc](https://pdoc.dev/docs/pdoc.html) to generate API documentation.
+  - [pdoc](https://pdoc.dev/docs/pdoc.html) to generate API documentation (including a pre-commit hook for generating a local documentation).
     Python docstrings are written following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and with the help of the [autoDocstring VSC extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
   - Automatic versioning of the local package from git tags via [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/), following [semantic versioning](https://semver.org/).
 - [SQLFluff](https://sqlfluff.com/) as a linter and formatter for SQL files (pre-commit and VSC extension).
 - [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
+- [Conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) (enforced by pre-commit).
 
 ## 🗂️ File structure
 
@@ -100,6 +102,10 @@ Common utility commands are available via the Makefile:
 
 > Delete this section after initialising a project from the template.
 
+This template aims to be relatively lightweight and tailored to my needs.
+It is therefore opinionated and also in constant evolution, reflecting with data science journey with Python.
+It is also worth noting that this template is more focused on experimentation rather than sharing a single final product.
+
 ### Getting started
 
 1. Initialise your GitHub repository with this template. Alternatively, fork (or copy the content of) this repository.
@@ -117,12 +123,12 @@ Common utility commands are available via the Makefile:
 
 ### Possible extensions
 
-#### Suggested module for the local package
+#### Suggested modules for the local package
 
 The `src/` package could contain the following modules or sub-packages depending on the project:
 
 - `utils` for utility functions.
-- `data_processing` or `data` for data processing functions.
+- `data_processing`, `data` or `datasets` for data processing functions.
 - `features`: for extracting features.
 - `models`: for defining models.
 - `evaluation`: for evaluating performance.
@@ -171,16 +177,20 @@ load_dotenv()
 
 A full project documentation (beyond the API) could be generated using [mkdocs](https://www.mkdocs.org/) or [quartodoc](https://machow.github.io/quartodoc/get-started/overview.html).
 
+#### Continuous Integration
+
+This template is not tied to a specific platform and does not include continuous integration workflows.
+Nevertheless, the template could be extended with the following integrations:
+
+- [GitHub's Dependabot](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide) for dependency updates, or [pip-audit](https://pypi.org/project/pip-audit/).
+- Testing and code coverage.
+- Building and hosting documentation.
+
 ### Related
 
-This template is inspired by the concept of a [research compendium](https://doi.org/10.1080/00031305.2017.1375986) and similar projects I created for R projects (e.g. [reproducible-workflow](https://github.com/ghurault/reproducible-workflow)).
-
-This template is relatively simple and tailored to my needs.
-More sophisticated templates are available elsewhere, such as:
+This template is inspired by the concept of a [research compendium](https://doi.org/10.1080/00031305.2017.1375986), similar projects I created for R projects (e.g. [reproducible-workflow](https://github.com/ghurault/reproducible-workflow)), and other, more exhaustive, templates such as:
 
 - [Cookiecutter Data Science](https://github.com/drivendataorg/cookiecutter-data-science/).
 - [https://joserzapata.github.io/data-science-project-template/](https://joserzapata.github.io/data-science-project-template/)
 - [Data Science for Social Good's hitchhikers guide template](https://github.com/dssg/hitchhikers-guide/tree/master/sources/curriculum/0_before_you_start/pipelines-and-project-workflow)
 - [https://github.com/khuyentran1401/data-science-template](https://github.com/khuyentran1401/data-science-template)
-
-As opposed to other templates, this template is more focused on experimentation rather than sharing a single final product.
