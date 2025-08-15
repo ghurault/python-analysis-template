@@ -2,4 +2,4 @@
 .. include:: ../README.md
 """
 
-# ruff: noqa
+# ruff: noqa: D200, D212, D415
