@@ -69,10 +69,17 @@ select = [
   "NPY", # numpy
   "PD", # pandas
   "PERF", # performance
-  # TODO pylint? PLC, PLE, PLR, PLW
+  "PGH004", # Use specific rules in noqa
+  "PIE790", # Unnecessary placeholders
+  "PLC", # pylint convention
+  "PLE", # pylint error
+  "PLR", # pylint refactoring
+  "PLW", # pylint warning
+  "RUF", # ruff specific rules
   "S", # bandit (security issues)
   "SIM", # # flake8-simplify
-  # "UP", # pyupgrade
+  "TRY300", # Use else block in try-except
+  "UP", # pyupgrade
   "W", # pycodestyle warning
 ]
 ignore = [
@@ -94,6 +101,7 @@ ignore = [
   "D101", # Missing docstring in public class
   "F403", # Use of wildcard imports
   "F405", # Undefined names because of wildcard imports
+  "PLR2004", # Magic values
   "S", # Disable bandit on analysis files
 ]
 "tests/*" = [
