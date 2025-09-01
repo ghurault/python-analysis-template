@@ -32,6 +32,8 @@ dev = [
   "ipywidgets",
   "pdoc",
   "pre-commit",
+  "pytest",
+  "pytest-cov",
   "sqlfluff",
   "uv",
 ]
@@ -119,3 +121,11 @@ known-first-party = [
 # Not distinguishing first_party and local_folder following PEP8 and also for
 # consistency as src is used outside the package
 # required-imports = ["from src import config"]
+
+[tool.pytest.ini_options]
+testpaths = ["src", "tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--doctest-modules"
+doctest_optionflags = "NORMALIZE_WHITESPACE ELLIPSIS"
