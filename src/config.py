@@ -20,7 +20,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 # The global config should not be redefine
-# The config can still be overriden in custom loggers
+# The config can still be overridden in custom loggers
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)

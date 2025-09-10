@@ -7,7 +7,7 @@ The Dev Container is configured in the [`.devcontainer`](.devcontainer/) directo
 The environment is automatically built as follows:
 
 1. A Docker image of Python is created with packages installed from `requirements.txt` (except local packages). The Python's version can be edited in the [Dockerfile](Dockerfile).
-2. The image is ran in a container and the current directory is mounted.
+2. The image is run in a container and the current directory is mounted.
 3. The local packages are installed in the container, along with some VS Code extensions.
 
 NB: Python packages in `requirements.txt` are installed in the global location of the Docker image.
@@ -42,21 +42,21 @@ Below are setup instructions for some alternatives to Docker.
 
 ### venv setup
 
-Run `scripts/setup_venv.sh` (or `make venv`) to setup a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html), install dependencies in `requirements.txt` and the local package.
+Run `scripts/setup_venv.sh` (or `make venv`) to set up a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html), install dependencies in `requirements.txt` and the local package.
 By default, the environment is called `.venv` and is created using the default Python interpreter in the current directory.
 
 ### Conda setup
 
-To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run `scripts/setup_conda.sh` (specify the Python version and environment name as appropriate with with the `-p` argument):
+To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run `scripts/setup_conda.sh` (specify the Python version and environment name as appropriate with the `-p` argument):
 
 Then pin the requirements with:
 
 ```bash
-$ conda env export > environment.yml
+conda env export > environment.yml
 ```
 
 Finally, the environment can be recreated with:
 
 ```bash
-$ conda create -n myenv -f environment.yml
+conda create -n myenv -f environment.yml
 ```
