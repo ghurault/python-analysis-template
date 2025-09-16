@@ -13,6 +13,7 @@
     "kevinrose.vsc-python-indent",
     "mhutchie.git-graph",
     "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
     "tamasfe.even-better-toml",
     "dorzey.vscode-sqlfluff",
     "esbenp.prettier-vscode"

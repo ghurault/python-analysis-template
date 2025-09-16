@@ -33,6 +33,7 @@
         "ms-toolsai.datawrangler",
         "mhutchie.git-graph",
         "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
         "esbenp.prettier-vscode",
         "tamasfe.even-better-toml",
         "dorzey.vscode-sqlfluff",
