@@ -31,5 +31,6 @@
   "autoDocstring.docstringFormat": "google",
   "sonarlint.analysisExcludesStandalone": "**/analysis/**,**/site-packages/**",
   "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
-  "mypy-type-checker.ignorePatterns": ["**/analysis/**"]
+  "mypy-type-checker.ignorePatterns": ["**/analysis/**"],
+  "typos.diagnosticSeverity": "Information"
 }

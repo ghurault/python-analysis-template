@@ -26,6 +26,7 @@ This repository follows a standard setup I use for data science projects, which 
 - [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
+- [typos](https://github.com/crate-ci/typos) (VSC extension) as a code spell checker.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
 - [Conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) (enforced by pre-commit).
 
