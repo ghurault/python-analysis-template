@@ -15,14 +15,11 @@ repos:
       - id: ruff-check
         name: ruff-isort
         args: ["--select", "I", "--fix"]
+      - id: ruff-check
+        name: ruff-docformatter
+        args: ["--select", "D", "--ignore", "D202", "--fix-only", "--fix"]
       - id: ruff-check # linter but not fixing issues
       # may fail if running against all files for legacy reasons
-  - repo: https://github.com/PyCQA/docformatter
-    # TODO probably remove as redundant with ruff
-    rev: v1.7.7
-    hooks:
-      - id: docformatter
-        args: ["--in-place", "--black"]
   - repo: local
     hooks:
       - id: make-docs
