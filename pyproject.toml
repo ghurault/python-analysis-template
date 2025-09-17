@@ -91,7 +91,6 @@ ignore = [
   "D202", # Blank line after function docstring
   "E501", # Avoid enforcing line-length violations
   "PD015", # Use pd.merge
-  "PD901", # Naming dataframe df instead of method
   "PERF203", # Try-except in loop
 ]
 
