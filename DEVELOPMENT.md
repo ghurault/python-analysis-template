@@ -19,7 +19,7 @@ If `requirements.txt` contains Python packages in private Git repositories, it i
 
 One way to achieve this is to exclude git packages from being installed in the Docker image and update the devcontainer post-creation step to install these packages, similarly to how local package are excluded.
 
-For example, in the [Dockerfile](Dockerfile):
+For example, in the [`Dockerfile`](Dockerfile):
 
 ```docker
 RUN grep -vE '(^-e|@ ?git ?+)' /tmp/pip-tmp/requirements.txt | pip --no-cache-dir install -r /dev/stdin
@@ -33,7 +33,7 @@ And in [`devcontainer.json`](.devcontainer/devcontainer.json):
 
 ## Alternative environments
 
-While the preferred setup uses Docker (via VS Code Dev Containers) to ensure full environment reproducibility, other Python environments (e.g. virtualenv, conda) are also supported.
+While the preferred setup uses Docker (via VS Code Dev Containers) to ensure full environment reproducibility, other Python environments (e.g. virtualenv, Conda) are also supported.
 
 This template relies on a pinned `requirements.txt` file for dependency management.
 This approach is broadly compatible and should work across different tools and platforms.
@@ -47,7 +47,7 @@ By default, the environment is called `.venv` and is created using the default P
 
 ### Conda setup
 
-To set up the environment with [conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run `scripts/setup_conda.sh` (specify the Python version and environment name as appropriate with the `-p` argument):
+To set up the environment with [Conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run `scripts/setup_conda.sh` (specify the Python version and environment name as appropriate with the `-p` argument):
 
 Then pin the requirements with:
 
