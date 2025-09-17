@@ -18,8 +18,7 @@ repos:
       - id: ruff-check
         name: ruff-docformatter
         args: ["--select", "D", "--ignore", "D202", "--fix-only", "--fix"]
-      - id: ruff-check # linter but not fixing issues
-      # may fail if running against all files for legacy reasons
+      # - id: ruff-check # linter but not fixing issues
   - repo: local
     hooks:
       - id: make-docs
