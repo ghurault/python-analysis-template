@@ -123,6 +123,7 @@ It is also worth noting that this template is more focused on experimentation ra
 4. Specify, compile and install your requirements (see [Managing requirements](#-managing-requirements)).
 5. Adjust the configurations to your needs (e.g. Python configuration in `src/config.py`, the SQL dialect in `.sqlfluff`, etc.).
 6. Add a git tag for the initial version with `git tag -a v0.1.0 -m "Initial setup"`, and push it with `git push origin --tags`. Alternatively, use `make tag`.
+7. (Optional) Update pre-commit with `pre-commit autoupdate`.
 
 ### Possible extensions
 
