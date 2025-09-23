@@ -9,10 +9,10 @@ Usage:
 # Preamble
 
 import logging
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 from matplotlib.rcsetup import cycler
-from pyprojroot import here
 
 logging.basicConfig(
     format="{asctime} - {levelname} - {name} - {message}",
@@ -28,7 +28,7 @@ logger.setLevel(logging.INFO)
 # %%
 # Paths
 
-PROJ_ROOT = here()
+PROJ_ROOT = Path(__file__).resolve().parents[1]
 
 logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
 
