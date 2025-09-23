@@ -79,7 +79,8 @@ select = [
   "PLW", # pylint warning
   "RUF", # ruff specific rules
   "S", # bandit (security issues)
-  "SIM", # # flake8-simplify
+  "SIM", # flake8-simplify
+  "TID", # Tidy imports
   "TRY300", # Use else block in try-except
   "UP", # pyupgrade
   "W", # pycodestyle warning
