@@ -6,11 +6,11 @@ repos:
         stages: [commit-msg]
         args: [--verbose]
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 25.1.0
+    rev: 25.9.0
     hooks:
       - id: black
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.13.0
+    rev: v0.13.1
     hooks:
       - id: ruff-check
         name: ruff-isort
@@ -18,7 +18,6 @@ repos:
       - id: ruff-check
         name: ruff-docformatter
         args: ["--select", "D", "--ignore", "D202", "--fix-only", "--fix"]
-      # - id: ruff-check # linter but not fixing issues
   - repo: local
     hooks:
       - id: make-docs
