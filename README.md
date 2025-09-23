@@ -93,13 +93,15 @@ Finally, run `make deps` to install pinned dependencies and the local package in
 
 ## 🛠️ Make commands
 
-Common utility commands are available via the Makefile:
+Common utility commands are available via the Makefile, including:
 
 - `make reqs`: Compile `requirements.txt` from `pyproject.toml`.
 - `make deps`: Install requirements and the local package.
 - `make docs`: Generate the package documentation.
 - `make tag`: Create and push a new Git tag by incrementing the version.
 - `make venv`: Set up a venv environment (see [`DEVELOPMENT.md`](DEVELOPMENT.md)).
+
+The full list of targets can be listed with `make help`.
 
 ## 🧰 Using the template
 
