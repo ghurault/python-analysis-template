@@ -14,7 +14,7 @@ This repository follows a standard setup I use for data science projects, which 
 - [pre-commit](https://pre-commit.com/) to manage git hooks.
 - Python tooling:
   - [Black](https://black.readthedocs.io/en/stable/index.html) for code formatting (pre-commit and VSC extension).
-    In addition, I follow the [Google style guide](https://google.github.io/styleguide/pyguide.html).
+    In addition, I mostly follow the [Google style guide](https://google.github.io/styleguide/pyguide.html).
   - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) for linting.
   - [mypy](https://www.mypy-lang.org/) for type checking (VSC extension).
   - [uv](https://docs.astral.sh/uv/) to compile requirements.
@@ -24,7 +24,7 @@ This repository follows a standard setup I use for data science projects, which 
   - Automatic versioning of the local package from git tags via [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/), following [semantic versioning](https://semver.org/).
 - [SQLFluff](https://sqlfluff.com/) as a linter and formatter for SQL files (pre-commit and VSC extension).
 - [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
-- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown.
+- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown files.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
 - [typos](https://github.com/crate-ci/typos) (VSC extension) as a code spell checker.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
