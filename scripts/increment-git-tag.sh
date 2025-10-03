@@ -55,11 +55,6 @@ while getopts ":v:m:h" opt; do
   esac
 done
 
-# Check if the message is provided and ask the user otherwise
-while [ -z "$tag_message" ]; do
-  read -p "Tag message is required. Please enter a message: " tag_message
-done
-
 case $version_component in
   major)
     major=$((major + 1))
@@ -82,6 +77,13 @@ esac
 # Create the new version tag
 new_tag="v$major.$minor.$patch"
 
+echo "Next version: $new_tag"
+
+# Check if the message is provided and ask the user otherwise
+while [ -z "$tag_message" ]; do
+  read -p "Tag message is required. Please enter a message: " tag_message
+done
+
 # Prompt for confirmation
 echo "New tag to be created: $new_tag with message: $tag_message"
 read -p "Are you sure you want to create this tag? (y/n): " confirm
@@ -95,6 +97,7 @@ fi
 git tag -a "$new_tag" -m "$tag_message"
 
 # Push the tag to the remote repository
-git push origin "$new_tag"
-
-echo "New tag created: $new_tag with message: $tag_message"
+read -p "Do you want to push this tag? (y/n): " push
+if [[ $push = "y" ]]; then
+  git push origin "$new_tag"
+fi
