@@ -27,7 +27,7 @@ logger.setLevel(logging.INFO)
 
 PROJ_ROOT = Path(__file__).resolve().parents[1]
 
-logger.info(f"PROJ_ROOT path is: {PROJ_ROOT}")
+logger.info("PROJ_ROOT path is: %s", PROJ_ROOT)
 
 DATA_DIR = PROJ_ROOT / "data"
 RES_DIR = PROJ_ROOT / "results"
