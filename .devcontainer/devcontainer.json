@@ -47,7 +47,8 @@
   // "remoteUser": "root"
 
   "remoteEnv": {
-    "PROJ_ROOT": "${containerWorkspaceFolder}"
+    "PROJ_ROOT": "${containerWorkspaceFolder}",
+    "MATPLOTLIBRC": "${containerWorkspaceFolder}/matplotlibrc"
   }
 
   // "runArgs": ["--env-file", ".env"]

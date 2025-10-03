@@ -11,9 +11,6 @@ Usage:
 import logging
 from pathlib import Path
 
-import matplotlib.pyplot as plt
-from matplotlib.rcsetup import cycler
-
 logging.basicConfig(
     format="{asctime} - {levelname} - {name} - {message}",
     style="{",
@@ -51,15 +48,7 @@ CB_PALETTE = [
 CBB_PALETTE = CB_PALETTE.copy()
 CBB_PALETTE[0] = "#000000"
 
-plt.rcParams.update(
-    {
-        "axes.prop_cycle": cycler(color=CB_PALETTE),
-        "figure.dpi": 300,
-        "figure.figsize": (6.4, 4.0),
-        "savefig.dpi": 300,
-        "savefig.bbox": "tight",
-    }
-)
+# os.environ["MATPLOTLIBRC"] = str(PROJ_ROOT / "matplotlibrc")
 
 # %%
 

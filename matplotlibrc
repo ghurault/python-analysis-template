@@ -1,0 +1,8 @@
+# Overwriting matplotlib default plotting configuration
+# https://matplotlib.org/stable/users/explain/customizing.html#customizing-with-matplotlibrc-files
+
+axes.prop_cycle: cycler('color', ['999999', 'E69F00', '56B4E9', '009E73', 'F0E442', '0072B2', 'D55E00', 'CC79A7'])
+figure.dpi: 300
+figure.figsize: 6.4, 4.0
+savefig.dpi: 300
+savefig.bbox: tight
