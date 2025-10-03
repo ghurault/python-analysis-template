@@ -47,7 +47,7 @@
   // "remoteUser": "root"
 
   "remoteEnv": {
-    "WORKSPACE_PATH": "${containerWorkspaceFolder}"
+    "PROJ_ROOT": "${containerWorkspaceFolder}"
   }
 
   // "runArgs": ["--env-file", ".env"]
