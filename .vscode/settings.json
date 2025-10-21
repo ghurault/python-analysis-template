@@ -1,10 +1,4 @@
 {
-  "editor.rulers": [100], // Default line length
-  "editor.formatOnSave": false,
-  "[python]": {
-    "editor.rulers": [88],
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
@@ -13,28 +7,34 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.rulers": [88]
+  },
   "[sql]": {
-    "editor.rulers": [88], // For consistency with SQL embedded in Python code
-    "editor.defaultFormatter": "dorzey.vscode-sqlfluff"
+    "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
+    "editor.rulers": [88] // For consistency with SQL embedded in Python code
   },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml",
     "editor.formatOnSave": true
   },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "autoDocstring.docstringFormat": "google",
+  "editor.formatOnSave": false,
+  "editor.rulers": [100], // Default line length
+  "mypy-type-checker.ignorePatterns": ["**/analysis/**"],
+  // "python.defaultInterpreterPath": "python",
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
-  // "python.defaultInterpreterPath": "python",
-  "autoDocstring.docstringFormat": "google",
   "sonarlint.analysisExcludesStandalone": "**/analysis/**,**/site-packages/**",
   "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
-  "mypy-type-checker.ignorePatterns": ["**/analysis/**"],
   "typos.diagnosticSeverity": "Information"
 }

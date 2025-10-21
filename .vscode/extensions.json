@@ -1,24 +1,22 @@
 {
   "recommendations": [
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-    "ms-toolsai.jupyter",
-    "ms-toolsai.datawrangler",
-    "ms-vscode.live-server",
-    "ms-python.black-formatter",
     "charliermarsh.ruff",
-    "ms-python.mypy-type-checker",
-    "sonarsource.sonarlint-vscode",
-    "njpwerner.autodocstring",
+    "davidanson.vscode-markdownlint",
+    "dorzey.vscode-sqlfluff",
+    "esbenp.prettier-vscode",
     "kevinrose.vsc-python-indent",
     "mhutchie.git-graph",
-    "yzhang.markdown-all-in-one",
-    "davidanson.vscode-markdownlint",
-    "tekumara.typos-vscode",
+    "ms-python.black-formatter",
+    "ms-python.mypy-type-checker",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-toolsai.datawrangler",
+    "ms-toolsai.jupyter",
+    "ms-vscode.live-server",
+    "njpwerner.autodocstring",
+    "sonarsource.sonarlint-vscode",
     "tamasfe.even-better-toml",
-    "dorzey.vscode-sqlfluff",
-    "esbenp.prettier-vscode"
-    // "sdras.night-owl",
-    // "pkief.material-icon-theme",
+    "tekumara.typos-vscode",
+    "yzhang.markdown-all-in-one"
   ]
 }
