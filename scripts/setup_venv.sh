@@ -31,7 +31,7 @@ VENV_PATH="$VENV_LOCATION/$VENV_NAME"
 
 # Check if the virtual environment already exists
 if [ -d "$VENV_PATH" ]; then
-  read -p "The virtual environment '$VENV_PATH' already exists. Do you want to delete it and create a new one? (y/n): " choice
+  read -rp "The virtual environment '$VENV_PATH' already exists. Do you want to delete it and create a new one? (y/n): " choice
   if [ "$choice" != "y" ]; then
     echo "Exiting without creating a new virtual environment."
     exit 0

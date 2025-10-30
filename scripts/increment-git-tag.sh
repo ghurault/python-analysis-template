@@ -10,7 +10,7 @@ usage() {
 }
 
 # Get the latest git tag
-latest_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+latest_tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
 
 # Check if there are no tags
 if [ -z "$latest_tag" ]; then
@@ -81,12 +81,12 @@ echo "Next version: $new_tag"
 
 # Check if the message is provided and ask the user otherwise
 while [ -z "$tag_message" ]; do
-  read -p "Tag message is required. Please enter a message: " tag_message
+  read -rp "Tag message is required. Please enter a message: " tag_message
 done
 
 # Prompt for confirmation
 echo "New tag to be created: $new_tag with message: $tag_message"
-read -p "Are you sure you want to create this tag? (y/n): " confirm
+read -rp "Are you sure you want to create this tag? (y/n): " confirm
 
 if [[ $confirm != "y" ]]; then
   echo "Tag creation aborted."
@@ -97,7 +97,7 @@ fi
 git tag -a "$new_tag" -m "$tag_message"
 
 # Push the tag to the remote repository
-read -p "Do you want to push this tag? (y/n): " push
+read -rp "Do you want to push this tag? (y/n): " push
 if [[ $push = "y" ]]; then
   git push origin "$new_tag"
 fi
