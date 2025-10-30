@@ -9,7 +9,9 @@
   },
 
   // Features to add to the dev container. More info: https://containers.dev/features.
-  // "features": {},
+  "features": {
+    "ghcr.io/devcontainers-extra/features/shfmt:1": {}
+  },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
@@ -27,6 +29,7 @@
         "dorzey.vscode-sqlfluff",
         "esbenp.prettier-vscode",
         "mhutchie.git-graph",
+        "mkhl.shfmt",
         "ms-python.black-formatter",
         "ms-python.mypy-type-checker",
         "ms-python.python",

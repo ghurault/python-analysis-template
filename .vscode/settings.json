@@ -15,6 +15,10 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.rulers": [88]
   },
+  "[shellscript]": {
+    "editor.defaultFormatter": "mkhl.shfmt",
+    "editor.formatOnSave": true
+  },
   "[sql]": {
     "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
     "editor.rulers": [88] // For consistency with SQL embedded in Python code
