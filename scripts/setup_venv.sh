@@ -7,23 +7,23 @@ PYTHON_PATH="python"
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 [-n venv_name] [-l location] [-p python_path] [-h]"
-    echo "  -n venv_name    Name of the virtual environment (default: .venv)"
-    echo "  -l location     Location to create the virtual environment (default: current directory)"
-    echo "  -p python_path  Path to the Python interpreter (default: python)"
-    echo "  -h              Display this help message"
-    exit 1
+  echo "Usage: $0 [-n venv_name] [-l location] [-p python_path] [-h]"
+  echo "  -n venv_name    Name of the virtual environment (default: .venv)"
+  echo "  -l location     Location to create the virtual environment (default: current directory)"
+  echo "  -p python_path  Path to the Python interpreter (default: python)"
+  echo "  -h              Display this help message"
+  exit 1
 }
 
 # Parse command line arguments
 while getopts "n:l:p:h" opt; do
-    case $opt in
-        n) VENV_NAME=$OPTARG ;;
-        l) VENV_LOCATION=$OPTARG ;;
-        p) PYTHON_PATH=$OPTARG ;;
-        h) usage ;;
-        *) usage ;;
-    esac
+  case $opt in
+    n) VENV_NAME=$OPTARG ;;
+    l) VENV_LOCATION=$OPTARG ;;
+    p) PYTHON_PATH=$OPTARG ;;
+    h) usage ;;
+    *) usage ;;
+  esac
 done
 
 # Full path to the virtual environment
@@ -45,12 +45,12 @@ $PYTHON_PATH -m venv "$VENV_PATH"
 
 # Check the operating system and activate the virtual environment accordingly
 if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]; then
-    source "$VENV_PATH/bin/activate"
+  source "$VENV_PATH/bin/activate"
 elif [[ "$OSTYPE" == "cygwin" || "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
-    source "$VENV_PATH/Scripts/activate"
+  source "$VENV_PATH/Scripts/activate"
 else
-    echo "Unsupported OS"
-    exit 1
+  echo "Unsupported OS"
+  exit 1
 fi
 
 # Upgrade pip

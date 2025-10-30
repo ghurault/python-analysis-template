@@ -8,21 +8,21 @@ PYTHON_VERSION="3.12"
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 [-n env_name] [-p python_version] [-h]"
-    echo "  -n env_name        Name of the conda environment (default: .conda)"
-    echo "  -p python_version  Python version to use (default: 3.10.15)"
-    echo "  -h                 Display this help message"
-    exit 1
+  echo "Usage: $0 [-n env_name] [-p python_version] [-h]"
+  echo "  -n env_name        Name of the conda environment (default: .conda)"
+  echo "  -p python_version  Python version to use (default: 3.10.15)"
+  echo "  -h                 Display this help message"
+  exit 1
 }
 
 # Parse command line arguments
 while getopts "n:p:h" opt; do
-    case $opt in
-        n) ENV_NAME="$OPTARG" ;;
-        p) PYTHON_VERSION="$OPTARG" ;;
-        h) usage ;;
-        *) usage ;;
-    esac
+  case $opt in
+    n) ENV_NAME="$OPTARG" ;;
+    p) PYTHON_VERSION="$OPTARG" ;;
+    h) usage ;;
+    *) usage ;;
+  esac
 done
 
 # Path to conda.sh - this is usually in your Anaconda or Miniconda installation
