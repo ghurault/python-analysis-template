@@ -22,23 +22,23 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "charliermarsh.ruff",
+        "davidanson.vscode-markdownlint",
+        "dorzey.vscode-sqlfluff",
+        "esbenp.prettier-vscode",
+        "mhutchie.git-graph",
+        "ms-python.black-formatter",
+        "ms-python.mypy-type-checker",
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "ms-python.black-formatter",
-        "charliermarsh.ruff",
-        "ms-python.mypy-type-checker",
-        "sonarsource.sonarlint-vscode",
-        "njpwerner.autodocstring",
-        "ms-toolsai.jupyter",
         "ms-toolsai.datawrangler",
-        "mhutchie.git-graph",
-        "yzhang.markdown-all-in-one",
-        "davidanson.vscode-markdownlint",
-        "tekumara.typos-vscode",
-        "esbenp.prettier-vscode",
+        "ms-toolsai.jupyter",
+        "ms-vscode.live-server",
+        "njpwerner.autodocstring",
+        "sonarsource.sonarlint-vscode",
         "tamasfe.even-better-toml",
-        "dorzey.vscode-sqlfluff",
-        "ms-vscode.live-server"
+        "tekumara.typos-vscode",
+        "yzhang.markdown-all-in-one"
       ]
     }
   },
