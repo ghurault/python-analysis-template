@@ -26,6 +26,7 @@ This repository follows a standard setup I use for data science projects, which 
 - [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown files.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
+- [shfmt](https://github.com/mvdan/sh) (VSC extension) as a formatter for shell scripts.
 - [typos](https://github.com/crate-ci/typos) (VSC extension) as a code spell checker.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
 - [Conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) (enforced by pre-commit).
@@ -51,6 +52,7 @@ This repository follows a standard setup I use for data science projects, which 
 ├── pyproject.toml             # Configs for package, tools (Ruff, mypy, etc.) and direct deps
 ├── requirements.txt           # Pinned dependencies (generated)
 ├── taplo.toml                 # Configs for TOML formatter
+├── .editorconfig              # Configs for Shell formatter
 ├── .pre-commit-config.yaml    # Configs for pre-commit
 ├── .sqlfluff                  # Configs for SQLFluff
 ```
