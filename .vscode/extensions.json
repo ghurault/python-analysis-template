@@ -6,6 +6,7 @@
     "esbenp.prettier-vscode",
     "kevinrose.vsc-python-indent",
     "mhutchie.git-graph",
+    "mkhl.shfmt",
     "ms-python.black-formatter",
     "ms-python.mypy-type-checker",
     "ms-python.python",
