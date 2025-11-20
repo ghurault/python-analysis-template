@@ -10,7 +10,7 @@ This repository follows a standard setup I use for data science projects, which 
 
 - A [research compendium](https://doi.org/10.1080/00031305.2017.1375986) layout, including a local Python package (see [File Structure](#️-file-structure)).
 - [Visual Studio Code](https://code.visualstudio.com/) (VSC) as the preferred IDE, with [recommended extensions](.vscode/extensions.json).
-- A [VS Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers), powered by [Docker](https://www.docker.com/), as a reproducible development environment.
+- A [VS Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers), powered by [Docker](https://www.docker.com/), as a reproducible development environment (using a Debian image).
 - [pre-commit](https://pre-commit.com/) to manage git hooks.
 - Python tooling:
   - [Black](https://black.readthedocs.io/en/stable/index.html) for code formatting (pre-commit and VSC extension).
