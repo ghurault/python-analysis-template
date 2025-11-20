@@ -39,6 +39,7 @@
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
   "sonarlint.analysisExcludesStandalone": "**/analysis/**,**/site-packages/**",
+  "sonarlint.disableTelemetry": true,
   "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
   "typos.diagnosticSeverity": "Information"
 }
