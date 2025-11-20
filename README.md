@@ -15,18 +15,19 @@ This repository follows a standard setup I use for data science projects, which 
 - Python tooling:
   - [Black](https://black.readthedocs.io/en/stable/index.html) for code formatting (pre-commit and VSC extension).
     In addition, I mostly follow the [Google style guide](https://google.github.io/styleguide/pyguide.html).
-  - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) and [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) for linting.
+  - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) for linting.
   - [mypy](https://www.mypy-lang.org/) for type checking (VSC extension).
   - [uv](https://docs.astral.sh/uv/) to compile requirements.
   - [pdoc](https://pdoc.dev/docs/pdoc.html) to generate API documentation (including a pre-commit hook for generating a local documentation).
     Python docstrings are written following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and with the help of the [autoDocstring VSC extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
   - [pytest](https://docs.pytest.org/en/stable/) for testing, with [doctest](https://docs.python.org/3/library/doctest.html) enabled.
   - Automatic versioning of the local package from git tags via [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/), following [semantic versioning](https://semver.org/).
-- [SQLFluff](https://sqlfluff.com/) as a linter and formatter for SQL files (pre-commit and VSC extension).
+- [SQLFluff](https://sqlfluff.com/) as a formatter and linter for SQL files (pre-commit and VSC extension).
 - [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown files.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
 - [shfmt](https://github.com/mvdan/sh) (VSC extension) as a formatter for shell scripts.
+- [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) as an additional multi-language linter.
 - [typos](https://github.com/crate-ci/typos) (VSC extension) as a code spell checker.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
 - [Conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) (enforced by pre-commit).
