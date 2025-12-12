@@ -16,7 +16,7 @@ deps:
 ## Generate documentation
 .PHONY: docs
 docs:
-	pdoc -d google -t rust -o docs/ --docformat google src
+	pdoc --docformat google -o docs/ src
 
 ## Increment git tag
 .PHONY: tag
