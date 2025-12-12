@@ -1,4 +1,6 @@
-FROM mcr.microsoft.com/devcontainers/python:1-3.13-bookworm
+ARG PYTHON_VERSION=3.13
+
+FROM mcr.microsoft.com/devcontainers/python:${PYTHON_VERSION}-bookworm
 
 # Install Java Runtime 17 for SonarQube
 RUN apt update -y && apt install -y openjdk-17-jre && apt clean
