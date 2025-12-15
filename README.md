@@ -66,7 +66,7 @@ The preferred development environment for this project is a **VS Code Dev Contai
 2. Install and open the project in VS Code.
 3. Open the container by using the command palette in VS Code (`Ctrl + Shift + P`) to search for "Dev Containers: Open Folder in Container...".
 
-Once inside the container, the dependencies specified in [`requirements.txt`](requirements.txt) are installed and the local package is available in editable mode.
+The dependencies specified in [`requirements.txt`](requirements.txt) are automatically installed in the container and the local package is available in editable mode.
 If needed, the container can be rebuilt by searching for "Dev Containers: Rebuild Container...".
 
 For more details regarding Dev Containers, or alternative environment setups (venv, Conda, etc.), please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md).
