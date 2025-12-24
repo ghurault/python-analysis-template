@@ -168,6 +168,8 @@ Then, the MLflow UI can be launched with:
 mlflow ui --backend-store-uri file:///path/to/results/mlruns
 ```
 
+For a slightly more elaborate setup running a MLflow server with a local database and artifact store as part of a DevContainer, see [ghurault/mlflow-devcontainer](https://github.com/ghurault/mlflow-devcontainer).
+
 #### Environment configuration via `.env`
 
 Configurations, such as credentials, can be loaded from a `.env` file.
