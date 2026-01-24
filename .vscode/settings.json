@@ -34,7 +34,6 @@
   "autoDocstring.docstringFormat": "google",
   "editor.formatOnSave": false,
   "editor.rulers": [100], // Default line length
-  "mypy-type-checker.ignorePatterns": ["**/analysis/**"],
   // "python.defaultInterpreterPath": "python",
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,

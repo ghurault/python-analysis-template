@@ -16,7 +16,7 @@ This repository follows a standard setup I use for data science projects, which 
   - [Black](https://black.readthedocs.io/en/stable/index.html) for code formatting (pre-commit and VSC extension).
     In addition, I mostly follow the [Google style guide](https://google.github.io/styleguide/pyguide.html).
   - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) for linting.
-  - [mypy](https://www.mypy-lang.org/) for type checking (VSC extension).
+  - [pyright](https://microsoft.github.io/pyright/) for type checking (via Pylance VSC extension).
   - [uv](https://docs.astral.sh/uv/) to compile requirements.
   - [pdoc](https://pdoc.dev/docs/pdoc.html) to generate API documentation (including a pre-commit hook for generating a local documentation).
     Python docstrings are written following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and with the help of the [autoDocstring VSC extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
@@ -50,7 +50,7 @@ This repository follows a standard setup I use for data science projects, which 
 ├── .vscode/                   # VS Code settings and extensions
 ├── Dockerfile                 # Dockerfile used for dev container
 ├── Makefile                   # Utility commands (docs, env, versioning)
-├── pyproject.toml             # Configs for package, tools (Ruff, mypy, etc.) and direct deps
+├── pyproject.toml             # Configs for package, tools (Ruff, pyright, etc.) and direct deps
 ├── requirements.txt           # Pinned dependencies (generated)
 ├── taplo.toml                 # Configs for TOML formatter
 ├── .editorconfig              # Configs for Shell formatter
@@ -86,7 +86,6 @@ Requirements are managed with:
 ### Workflow
 
 - **Initial setup** or **adding new direct dependencies**:
-
   1. Add dependencies to `pyproject.toml`.
   2. Run `make reqs` to compile `requirements.txt`.
 
@@ -118,7 +117,6 @@ It is also worth noting that this template is more focused on experimentation ra
 
 1. Initialise your GitHub repository with this template. Alternatively, fork (or copy the content of) this repository.
 2. Update
-
    - project metadata in [`pyproject.toml`](pyproject.toml), such as the description and the authors.
    - the repository name (if the template was forked).
    - the README (title, badges, sections).

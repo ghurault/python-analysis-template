@@ -47,8 +47,10 @@ all = [
 
 [tool.setuptools_scm]
 
-[tool.mypy]
-ignore_missing_imports = true
+[tool.pyright]
+typeCheckingMode = "standard"
+ignore = ["analysis"]
+reportUnnecessaryTypeIgnoreComment = true
 
 [tool.ruff.lint]
 select = [
