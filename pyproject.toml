@@ -111,6 +111,12 @@ ignore = [
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
+[tool.ruff.lint.pylint]
+max-args = 7
+
+[tool.ruff.lint.pep8-naming]
+extend-ignore-names = ["X", "X_*"]
+
 [tool.ruff.lint.isort]
 known-first-party = [
   "src",
