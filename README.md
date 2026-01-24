@@ -115,7 +115,7 @@ It is also worth noting that this template is more focused on experimentation ra
 
 ### Getting started
 
-1. Initialise your GitHub repository with this template. Alternatively, fork (or copy the content of) this repository.
+1. Initialise your GitHub repository with this template. Alternatively, if you are not using GitHub: clone this repository, rename the directory, remove `.git/`, run `git init` and optionally add a remote.
 2. Update
    - project metadata in [`pyproject.toml`](pyproject.toml), such as the description and the authors.
    - the repository name (if the template was forked).
