@@ -14,7 +14,7 @@ classifiers = [
   "Programming Language :: Python :: 3",
 ]
 dependencies = []
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dynamic = ["version"]
 
 [project.optional-dependencies]
@@ -59,9 +59,7 @@ select = [
   "C4", # comprehensions
   "C90", # McCabe cyclomatic complexity
   "D", # pydocstyle
-  # "DOC", # pydoclint # TODO add when no longer in preview
   "E", # pycodestyle error
-  # TODO "EM", # error messages
   "F", # pyflakes
   "FURB", # modernising Python codebase
   "I", # isort
