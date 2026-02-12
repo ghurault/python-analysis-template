@@ -34,10 +34,7 @@ dev = [
   "sqlfluff",
   "uv",
 ]
-all = [
-  "src[analysis]",
-  "src[dev]",
-]
+all = ["src[analysis,dev]"]
 
 [project.urls]
 # Homepage = ""
