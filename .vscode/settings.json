@@ -32,6 +32,7 @@
     "editor.formatOnSave": true
   },
   "autoDocstring.docstringFormat": "google",
+  "black-formatter.importStrategy": "fromEnvironment",
   "editor.formatOnSave": false,
   "editor.rulers": [100], // Default line length
   // "python.defaultInterpreterPath": "python",

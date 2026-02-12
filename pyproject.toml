@@ -25,6 +25,7 @@ analysis = [
   "pandas",
 ]
 dev = [
+  "black",
   "ipykernel",
   "ipywidgets",
   "pdoc",
