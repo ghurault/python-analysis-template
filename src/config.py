@@ -5,11 +5,17 @@ Usage:
     >>> from src import config
 """
 
+# ruff: noqa: F401
+
 # %%
-# Preamble
+# Imports
 
 import logging
-from pathlib import Path
+
+from src.constants import CB_PALETTE, CBB_PALETTE, DATA_DIR, PROJ_ROOT, RES_DIR
+
+# %%
+# Logging
 
 logging.basicConfig(
     format="{asctime} - {levelname} - {name} - {message}",
@@ -24,31 +30,10 @@ logging.captureWarnings(True)
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-# %%
-# Paths
-
-PROJ_ROOT = Path(__file__).resolve().parents[1]
-
 logger.info("PROJ_ROOT path is: %s", PROJ_ROOT)
 
-DATA_DIR = PROJ_ROOT / "data"
-RES_DIR = PROJ_ROOT / "results"
-
 # %%
-# Palettes and plotting defaults
-
-CB_PALETTE = [
-    "#999999",
-    "#E69F00",
-    "#56B4E9",
-    "#009E73",
-    "#F0E442",
-    "#0072B2",
-    "#D55E00",
-    "#CC79A7",
-]
-CBB_PALETTE = CB_PALETTE.copy()
-CBB_PALETTE[0] = "#000000"
+# Plotting defaults
 
 # os.environ["MATPLOTLIBRC"] = str(PROJ_ROOT / "matplotlibrc")
 

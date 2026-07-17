@@ -43,7 +43,8 @@ This repository follows a standard setup I use for data science projects, which 
 ├── scripts/                   # Utility scripts (e.g. env setup)
 ├── src/                       # Local Python package
 │   ├── __init__.py
-│   └── config.py              # Configs, constants, settings
+│   └── config.py              # Configs, settings
+|   |__ constants.py           # Constants
 ├── tests/                     # Unit tests for src/
 │   └── test_*.py
 ├── .devcontainer/             # VS Code Dev container setup
