@@ -23,6 +23,7 @@ analysis = [
   "matplotlib",
   "numpy",
   "pandas",
+  "plotnine",
 ]
 dev = [
   "black",

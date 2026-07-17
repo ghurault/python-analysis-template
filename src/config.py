@@ -13,6 +13,8 @@ Usage:
 import logging
 import os
 
+from plotnine import theme_bw, theme_set
+
 from src.constants import CB_PALETTE, CBB_PALETTE, DATA_DIR, PROJ_ROOT, RES_DIR
 
 # %%
@@ -35,6 +37,8 @@ logger.info("PROJ_ROOT path is: %s", PROJ_ROOT)
 
 # %%
 # Plotting defaults
+
+theme_set(theme_bw(base_size=15))
 
 if os.getenv("MATPLOTLIBRC") is None:
     os.environ["MATPLOTLIBRC"] = str(PROJ_ROOT / "matplotlibrc")
