@@ -137,9 +137,9 @@ extend-ignore-names = ["X", "X_*"]
 known-first-party = [
   "src",
 ] # Add others local/private packages
-# Not distinguishing first_party and local_folder following PEP8 and also for
-# consistency as src is used outside the package
-# required-imports = ["from src import config"]
+known-local-folder = [
+  "_local_helpers",
+] # Use this convention to treat module in analysis directories as local
 
 [tool.pytest.ini_options]
 testpaths = ["src", "tests"]
