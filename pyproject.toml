@@ -49,8 +49,23 @@ all = ["src[analysis,dev]"]
 
 [tool.pyright]
 typeCheckingMode = "standard"
-ignore = ["analysis"]
-reportUnnecessaryTypeIgnoreComment = true
+exclude = ["**/.*", "**/__pycache__", "**/node_modules", "data"] # Mostly for CLI
+reportUnnecessaryTypeIgnoreComment = false # Can have discrepancy between CLI and Language Server if set to true
+
+[[tool.pyright.executionEnvironments]]
+# Override settings for analysis directory (since not possible to have a separate typeCheckingMode)
+root = "analysis"
+reportMissingImports = false
+reportWildcardImportFromLibrary = false
+reportAttributeAccessIssue = false
+reportArgumentType = false
+reportUnusedExpression = false
+reportCallIssue = false
+reportFunctionMemberAccess = false
+reportIncompatibleMethodOverride = false
+reportIncompatibleVariableOverride = false
+reportOverlappingOverload = false
+reportPossiblyUnboundVariable = false
 
 [tool.ruff.lint]
 select = [
