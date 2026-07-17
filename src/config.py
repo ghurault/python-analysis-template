@@ -19,6 +19,8 @@ logging.basicConfig(
 # The global config should not be redefine
 # The config can still be overridden in custom loggers
 
+logging.captureWarnings(True)
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
