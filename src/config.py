@@ -11,6 +11,7 @@ Usage:
 # Imports
 
 import logging
+import os
 
 from src.constants import CB_PALETTE, CBB_PALETTE, DATA_DIR, PROJ_ROOT, RES_DIR
 
@@ -35,7 +36,8 @@ logger.info("PROJ_ROOT path is: %s", PROJ_ROOT)
 # %%
 # Plotting defaults
 
-# os.environ["MATPLOTLIBRC"] = str(PROJ_ROOT / "matplotlibrc")
+if os.getenv("MATPLOTLIBRC") is None:
+    os.environ["MATPLOTLIBRC"] = str(PROJ_ROOT / "matplotlibrc")
 
 # %%
 
