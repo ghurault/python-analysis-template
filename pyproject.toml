@@ -146,5 +146,11 @@ testpaths = ["src", "tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-addopts = "--doctest-modules"
+addopts = [
+  "--color=yes",
+  "--cov-report=term-missing",
+  "--cov=src",
+  "--cov=tests",
+  "--doctest-modules"
+]
 doctest_optionflags = "NORMALIZE_WHITESPACE ELLIPSIS"
