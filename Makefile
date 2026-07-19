@@ -23,6 +23,15 @@ docs:
 tag:
 	./scripts/increment-git-tag.sh
 
+## Delete compiled Python files and caches
+.PHONY: clean
+clean:
+	find . -type f -name "*.py[co]" -delete
+	find . -type d -name "__pycache__" -delete
+	rm -rf pytest_cache
+	rm -rf .ruff_cache
+	rm -rf ./src.egg-info
+
 ## Show this help message
 .PHONY: help
 help:
