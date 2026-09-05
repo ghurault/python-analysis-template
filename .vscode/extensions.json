@@ -4,6 +4,7 @@
     "davidanson.vscode-markdownlint",
     "dorzey.vscode-sqlfluff",
     "esbenp.prettier-vscode",
+    "exiasr.hadolint",
     "kevinrose.vsc-python-indent",
     "mhutchie.git-graph",
     "mkhl.shfmt",

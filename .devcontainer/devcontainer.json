@@ -13,6 +13,7 @@
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
+    "ghcr.io/dhoeric/features/hadolint:1": {},
     "ghcr.io/devcontainers-extra/features/shfmt:1": {}
   },
 
@@ -31,6 +32,7 @@
         "davidanson.vscode-markdownlint",
         "dorzey.vscode-sqlfluff",
         "esbenp.prettier-vscode",
+        "exiasr.hadolint",
         "mhutchie.git-graph",
         "mkhl.shfmt",
         "ms-python.black-formatter",

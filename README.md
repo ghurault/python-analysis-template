@@ -27,6 +27,7 @@ This repository follows a standard setup I use for data science projects, which 
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown files.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
 - [shfmt](https://github.com/mvdan/sh) (VSC extension) as a formatter for shell scripts.
+- [hadolint](https://github.com/hadolint/hadolint) (VSC extension) as a linter for Dockerfiles.
 - [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) as an additional multi-language linter.
 - [typos](https://github.com/crate-ci/typos) (pre-commit and VSC extension) as a code spell checker.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
