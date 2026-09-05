@@ -31,6 +31,7 @@ dev = [
   "ipywidgets",
   "pdoc",
   "pre-commit",
+  "pylint_xxp @ git+https://github.com/ghurault/pylint-xxp.git",
   "pytest",
   "pytest-cov",
   "ruff",
@@ -141,6 +142,11 @@ known-first-party = [
 known-local-folder = [
   "_local_helpers",
 ] # Use this convention to treat module in analysis directories as local
+
+[tool.pylint]
+load-plugins = ["pylint_xxp.check_function_name"]
+disable = "all"
+enable = ["C9001"]
 
 [tool.pytest.ini_options]
 testpaths = ["src", "tests"]

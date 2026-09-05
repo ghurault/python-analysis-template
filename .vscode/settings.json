@@ -35,6 +35,7 @@
   "black-formatter.importStrategy": "fromEnvironment",
   "editor.formatOnSave": false,
   "editor.rulers": [100], // Default line length
+  "pylint.enabled": true,
   // "python.defaultInterpreterPath": "python",
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
