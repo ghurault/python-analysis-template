@@ -158,6 +158,6 @@ addopts = [
   "--cov-report=term-missing",
   "--cov=src",
   "--cov=tests",
-  "--doctest-modules"
+  "--doctest-modules",
 ]
 doctest_optionflags = "NORMALIZE_WHITESPACE ELLIPSIS"
