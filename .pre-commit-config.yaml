@@ -6,13 +6,10 @@ repos:
       - id: conventional-pre-commit
         stages: [commit-msg]
         args: [--verbose]
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.50.1
     hooks:
-      - id: check-toml
-      - id: check-yaml
-      - id: check-executables-have-shebangs
-      - id: check-shebang-scripts-are-executable
+      - id: typos
   - repo: https://github.com/psf/black-pre-commit-mirror
     rev: 26.5.1
     hooks:
@@ -28,37 +25,40 @@ repos:
         args: ["--select", "D", "--ignore", "D202", "--fix-only", "--fix"]
       - id: ruff-check
         name: ruff-check
-  - repo: https://github.com/crate-ci/typos
-    rev: v1.50.1
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
     hooks:
-      - id: typos
+      - id: check-toml
+      - id: check-yaml
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+  - repo: https://github.com/reteps/dockerfmt
+    rev: v0.5.4
+    hooks:
+      - id: dockerfmt
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 4.3.0
+    hooks:
+      # - id: sqlfluff-lint
+      - id: sqlfluff-fix
   - repo: local
     hooks:
+      - id: taplo
+        name: Auto-format TOML files with taplo
+        entry: taplo format
+        language: system
+        types: [toml]
+      # - id: stan-format
+      #   name: Auto-format Stan files with stanc
+      #   entry: scripts/stanc_format.sh
+      #   language: system
+      #   files: \.stan$
       - id: make-docs
         name: make-docs
         entry: bash -c 'make docs'
         language: system
         types: [file]
         files: ^(src\/|README\.md$)
-      # - id: stan-format
-      #   name: Auto-format Stan files with stanc
-      #   entry: scripts/stanc_format.sh
-      #   language: system
-      #   files: \.stan$
-      - id: taplo
-        name: Auto-format TOML files with taplo
-        entry: taplo format
-        language: system
-        types: [toml]
-  - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 4.3.0
-    hooks:
-      # - id: sqlfluff-lint
-      - id: sqlfluff-fix
-  - repo: https://github.com/reteps/dockerfmt
-    rev: v0.5.4
-    hooks:
-      - id: dockerfmt
 default_install_hook_types: [pre-commit, commit-msg]
 # default_language_version:
 #     python: python3.12
