@@ -26,7 +26,7 @@ This repository follows a standard setup I use for data science projects, which 
 - [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown files.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (VSC extension) as a formatter for TOML files.
-- [shfmt](https://github.com/mvdan/sh) (VSC extension) as a formatter for shell scripts.
+- [shfmt](https://github.com/mvdan/sh) (VSC extension) and [ShellCheck](https://github.com/koalaman/shellcheck) (VSC extension) as a formatter and linter for shell scripts, respectively.
 - [hadolint](https://github.com/hadolint/hadolint) (VSC extension) as a linter for Dockerfiles.
 - [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) as an additional multi-language linter.
 - [typos](https://github.com/crate-ci/typos) (pre-commit and VSC extension) as a code spell checker.

@@ -18,6 +18,7 @@
     "njpwerner.autodocstring",
     "sonarsource.sonarlint-vscode",
     "tamasfe.even-better-toml",
+    "timonwong.shellcheck",
     "tekumara.typos-vscode",
     "yzhang.markdown-all-in-one"
   ]
