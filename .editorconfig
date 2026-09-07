@@ -6,3 +6,8 @@ indent_size = 2
 binary_next_line   = true  # like -bn
 switch_case_indent = true  # like -ci
 space_redirects    = true  # like -sr
+
+[Dockerfile]
+indent_size = 2
+insert_final_newline = true
+space_redirects = true
