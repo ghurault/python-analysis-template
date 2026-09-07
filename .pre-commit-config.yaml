@@ -50,6 +50,10 @@ repos:
     hooks:
       # - id: sqlfluff-lint
       - id: sqlfluff-fix
+  - repo: https://github.com/reteps/dockerfmt
+    rev: v0.5.4
+    hooks:
+      - id: dockerfmt
 default_install_hook_types: [pre-commit, commit-msg]
 # default_language_version:
 #     python: python3.12
