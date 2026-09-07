@@ -45,6 +45,11 @@ repos:
       #   entry: scripts/stanc_format.sh
       #   language: system
       #   files: \.stan$
+      - id: taplo
+        name: Auto-format TOML files with taplo
+        entry: taplo format
+        language: system
+        types: [toml]
   - repo: https://github.com/sqlfluff/sqlfluff
     rev: 4.3.0
     hooks:
