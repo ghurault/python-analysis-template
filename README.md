@@ -11,25 +11,26 @@ This repository follows a standard setup I use for data science projects, which 
 - A [research compendium](https://doi.org/10.1080/00031305.2017.1375986) layout, including a local Python package (see [File Structure](#️-file-structure)).
 - [Visual Studio Code](https://code.visualstudio.com/) (VSC) as the preferred IDE, with [recommended extensions](.vscode/extensions.json).
 - A [VS Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers), powered by [Docker](https://www.docker.com/), as a reproducible development environment (using a Debian image).
-- [pre-commit](https://pre-commit.com/) to manage git hooks.
+- [pre-commit](https://pre-commit.com/) to manage git hooks. All formatters described below are enforced by pre-commit; linters are generally optional and run in the IDE, except for Python linting.
 - Python tooling:
-  - [Black](https://black.readthedocs.io/en/stable/index.html) for code formatting (pre-commit and VSC extension).
-    In addition, I mostly follow the [Google style guide](https://google.github.io/styleguide/pyguide.html).
-  - [Ruff](https://docs.astral.sh/ruff/) (pre-commit and VSC extension) for linting.
-  - [pyright](https://microsoft.github.io/pyright/) for type checking (via Pylance VSC extension).
+  - [Black](https://black.readthedocs.io/en/stable/index.html) for formatting, enforced by pre-commit and available as a VSC extension.
+    Python code mostly follows the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
+  - [Ruff](https://docs.astral.sh/ruff/) for linting, enforced by pre-commit and available as a VSC extension.
+  - [pyright](https://microsoft.github.io/pyright/) for type checking via the [Pylance VSC extension](https://microsoft.github.io/pyright/).
   - [uv](https://docs.astral.sh/uv/) to compile requirements.
-  - [pdoc](https://pdoc.dev/docs/pdoc.html) to generate API documentation (including a pre-commit hook for generating a local documentation).
-    Python docstrings are written following the [Google docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and with the help of the [autoDocstring VSC extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
+  - [pdoc](https://pdoc.dev/docs/pdoc.html) to generate API documentation, including a pre-commit hook for generating local documentation.
+    Python docstrings follow the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and can be created with the [autoDocstring VSC extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
   - [pytest](https://docs.pytest.org/en/stable/) for testing, with [doctest](https://docs.python.org/3/library/doctest.html) enabled.
   - Automatic versioning of the local package from git tags via [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/), following [semantic versioning](https://semver.org/).
-- [SQLFluff](https://sqlfluff.com/) as a formatter and linter for SQL files (pre-commit and VSC extension).
-- [prettier](https://prettier.io/) (VSC extension and pre-commit) as a formatter for YAML, JSON and Markdown files.
-- [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown files.
-- [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (pre-commit and VSC extension) as a formatter for TOML files.
-- [shfmt](https://github.com/mvdan/sh) (VSC extension and pre-commit) and [ShellCheck](https://github.com/koalaman/shellcheck) (VSC extension) as a formatter and linter for shell scripts, respectively.
-- [dockerfmt](https://github.com/reteps/dockerfmt) and (pre-commit) and [hadolint](https://github.com/hadolint/hadolint) (VSC extension) as a formatter and linter for Dockerfiles, respectively.
-- [SonarLint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) (VSC extension) as an additional multi-language linter.
-- [typos](https://github.com/crate-ci/typos) (pre-commit and VSC extension) as a code spell checker.
+- Tooling for secondary languages and file formats in this repository:
+  - SQL: [SQLFluff](https://sqlfluff.com/) for formatting, enforced by pre-commit and available as a VSC extension. SQL linting is currently optional.
+  - Markdown: [Prettier](https://prettier.io/) for formatting, enforced by pre-commit and available as a VSC extension, and [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) for optional IDE linting.
+  - JSON and YAML: [Prettier](https://prettier.io/) for formatting, enforced by pre-commit and available as a VSC extension.
+  - TOML: [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) for formatting, enforced by pre-commit and available as a VSC extension.
+  - Shell scripts: [shfmt](https://github.com/mvdan/sh) for formatting, enforced by pre-commit and available as a VSC extension, and [ShellCheck](https://github.com/koalaman/shellcheck) for optional IDE linting.
+  - Dockerfiles: [dockerfmt](https://github.com/reteps/dockerfmt) for formatting, enforced by pre-commit, and [hadolint](https://github.com/hadolint/hadolint) for optional IDE linting.
+- [SonarLint](https://marketplace.visualstudio.com/items?itemName=sonarsource.sonarlint-vscode) for optional multi-language IDE linting.
+- [typos](https://github.com/crate-ci/typos) for spelling checks enforced by pre-commit and available as a VSC extension.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
 - [Conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) (enforced by pre-commit).
 
