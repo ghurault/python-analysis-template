@@ -48,6 +48,11 @@ repos:
         entry: taplo format
         language: system
         types: [toml]
+      - id: shfmt
+        name: Auto-format shell scripts with shfmt
+        entry: shfmt -w
+        language: system
+        types: [shell]
       # - id: stan-format
       #   name: Auto-format Stan files with stanc
       #   entry: scripts/stanc_format.sh
