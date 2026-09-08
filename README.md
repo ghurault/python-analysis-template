@@ -23,7 +23,7 @@ This repository follows a standard setup I use for data science projects, which 
   - [pytest](https://docs.pytest.org/en/stable/) for testing, with [doctest](https://docs.python.org/3/library/doctest.html) enabled.
   - Automatic versioning of the local package from git tags via [setuptools_scm](https://setuptools-scm.readthedocs.io/en/stable/), following [semantic versioning](https://semver.org/).
 - [SQLFluff](https://sqlfluff.com/) as a formatter and linter for SQL files (pre-commit and VSC extension).
-- [prettier](https://prettier.io/) (VSC extension) as a formatter for YAML, JSON and Markdown files.
+- [prettier](https://prettier.io/) (VSC extension and pre-commit) as a formatter for YAML, JSON and Markdown files.
 - [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) (VSC extension) as a linter for Markdown files.
 - [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) (pre-commit and VSC extension) as a formatter for TOML files.
 - [shfmt](https://github.com/mvdan/sh) (VSC extension and pre-commit) and [ShellCheck](https://github.com/koalaman/shellcheck) (VSC extension) as a formatter and linter for shell scripts, respectively.

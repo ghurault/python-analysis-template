@@ -43,6 +43,11 @@ repos:
       - id: sqlfluff-fix
   - repo: local
     hooks:
+      - id: prettier
+        name: prettier
+        entry: prettier --write
+        language: system
+        files: \.(json|jsonc|md|ya?ml)$
       - id: taplo
         name: Auto-format TOML files with taplo
         entry: taplo format
