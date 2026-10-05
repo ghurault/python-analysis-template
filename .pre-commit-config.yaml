@@ -51,7 +51,8 @@ repos:
       - id: taplo
         name: Auto-format TOML files with taplo
         entry: taplo format
-        language: system
+        language: python
+        additional_dependencies: ["taplo == 0.9.3"]
         types: [toml]
       - id: shfmt
         name: Auto-format shell scripts with shfmt

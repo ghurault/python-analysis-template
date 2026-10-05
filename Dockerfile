@@ -12,14 +12,6 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 ENV JAVA_HOME=/usr
 
-# Installing taplo
-ARG TAPLO_VERSION=0.10.0
-RUN curl -fsSL \
-    "https://github.com/tamasfe/taplo/releases/download/${TAPLO_VERSION}/taplo-linux-x86_64.gz" \
-    | gunzip > /usr/local/bin/taplo \
-    && chmod 0755 /usr/local/bin/taplo \
-    && taplo --version
-
 # Install requirements except editables
 COPY requirements.txt /tmp/pip-tmp/
 # hadolint ignore=DL3013
