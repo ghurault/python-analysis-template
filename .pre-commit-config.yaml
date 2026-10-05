@@ -46,7 +46,8 @@ repos:
       - id: prettier
         name: prettier
         entry: prettier --write
-        language: system
+        language: node
+        additional_dependencies: ["prettier@3.9.9"]
         files: \.(json|jsonc|md|ya?ml)$
       - id: taplo
         name: Auto-format TOML files with taplo
