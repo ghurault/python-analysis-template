@@ -137,7 +137,7 @@ It is also worth noting that this template is more focused on experimentation ra
 The `src/` package could contain the following modules or sub-packages depending on the project:
 
 - `utils` for utility functions.
-- `data_processing`, `data` or `datasets` for data processing functions.
+- `datasets` for data loading/processing functions.
 - `features` for extracting features.
 - `models` for defining models.
 - `evaluation` for evaluating performance.
