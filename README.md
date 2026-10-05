@@ -194,9 +194,22 @@ A full project documentation (beyond the API) could be generated using [mkdocs](
 This template is not tied to a specific platform and does not include continuous integration workflows.
 Nevertheless, the template could be extended with the following integrations:
 
-- [GitHub's Dependabot](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide) for dependency updates, or [pip-audit](https://pypi.org/project/pip-audit/).
+- Code quality. This can be achieved by reusing pre-commit hooks, which are already self-contained:
+
+```bash
+pip install pre-commit
+SKIP=make-docs pre-commit run --all-files --show-diff-on-failure --color=always
+```
+
 - Testing and code coverage.
-- Building and hosting documentation.
+
+```bash
+pip install .[test]
+pytest
+```
+
+- Building and hosting documentation. See `make docs` for building the documentation.
+- [GitHub's Dependabot](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide) for dependency updates, or [pip-audit](https://pypi.org/project/pip-audit/).
 
 ### Related
 
