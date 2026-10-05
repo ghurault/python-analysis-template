@@ -13,7 +13,7 @@
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
-    "ghcr.io/dhoeric/features/hadolint:1": {},
+    "ghcr.io/dhoeric/features/hadolint:1": {}, // Required for the VSC extension
     "ghcr.io/devcontainers-extra/features/shfmt:1": {} // For using the VSC extension, otherwise in pre-commit
   },
 
