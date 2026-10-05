@@ -1,4 +1,6 @@
 # Ideally the rev should match the package version in the environment
+# Note that most hooks could be replaced with local python hooks (e.g. see taplo), if accessing GH is an issue.
+
 repos:
   - repo: https://github.com/compilerla/conventional-pre-commit
     rev: v4.4.0
