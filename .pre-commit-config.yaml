@@ -32,6 +32,10 @@ repos:
       - id: check-yaml
       - id: check-executables-have-shebangs
       - id: check-shebang-scripts-are-executable
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.14.1-1
+    hooks:
+      - id: shfmt
   - repo: https://github.com/reteps/dockerfmt
     rev: v0.5.4
     hooks:
@@ -55,11 +59,6 @@ repos:
         language: python
         additional_dependencies: ["taplo == 0.9.3"]
         types: [toml]
-      - id: shfmt
-        name: Auto-format shell scripts with shfmt
-        entry: shfmt -w
-        language: system
-        types: [shell]
       # - id: stan-format
       #   name: Auto-format Stan files with stanc
       #   entry: scripts/stanc_format.sh
