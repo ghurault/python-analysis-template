@@ -71,7 +71,7 @@ The preferred development environment for this project is a **VS Code Dev Contai
 The dependencies specified in [`requirements.txt`](requirements.txt) are automatically installed in the container and the local package is available in editable mode.
 If needed, the container can be rebuilt by searching for "Dev Containers: Rebuild Container...".
 
-For more details regarding Dev Containers, or alternative environment setups (venv, Conda, etc.), please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md).
+For details about the Dev Container or the `venv` fallback, please refer to [`DEVELOPMENT.md`](DEVELOPMENT.md).
 
 Regardless of the environment, install Git hooks after setup with `pre-commit install` to ensure the code is automatically linted and formatted on commit.
 

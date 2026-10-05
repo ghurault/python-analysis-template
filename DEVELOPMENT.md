@@ -6,8 +6,8 @@ In VS Code, a Docker container can be used as a development environment using [D
 The Dev Container is configured in the [`.devcontainer`](.devcontainer/) directory.
 The environment is automatically built as follows:
 
-1. A Docker image of Python is created with packages installed from `requirements.txt` (except local packages). The Python's version can be edited in the [Dockerfile](Dockerfile).
-2. The image is run in a container and the current directory is mounted.
+1. A Docker image is created with packages from `requirements.txt` (except local packages); its base image and Python version are configured in [`.devcontainer`](.devcontainer/).
+2. The image is run in a container with the current directory mounted, and optional Dev Container features.
 3. The local packages are installed in the container, along with some VS Code extensions.
 
 NB: Python packages in `requirements.txt` are installed in the global location of the Docker image.
@@ -31,32 +31,24 @@ And in [`devcontainer.json`](.devcontainer/devcontainer.json):
 "postCreateCommand": "grep -E '(^-e|@ ?git ?+)' requirements.txt | pip install -r /dev/stdin"
 ```
 
-## Alternative environments
+## venv fallback
 
-While the preferred setup uses Docker (via VS Code Dev Containers) to ensure full environment reproducibility, other Python environments (e.g. virtualenv, Conda) are also supported.
-
-This template relies on a pinned `requirements.txt` file for dependency management.
-This approach is broadly compatible and should work across different tools and platforms.
-
-Below are setup instructions for some alternatives to Docker.
-
-### venv setup
+The recommended setup is the VS Code Dev Container.
+You can use `venv` when Docker is unavailable or when you prefer a lightweight local environment.
 
 Run `scripts/setup_venv.sh` (or `make venv`) to set up a Python virtual environment with [venv](https://docs.python.org/3/library/venv.html), install dependencies in `requirements.txt` and the local package.
 By default, the environment is called `.venv` and is created using the default Python interpreter in the current directory.
+Activate it in each new shell with `source .venv/bin/activate` (in Windows PowerShell, use `.\.venv\Scripts\Activate.ps1`).
 
-### Conda setup
+The `venv` setup reuses the pinned Python dependencies and installs the local package in editable mode, but it is not a substitute for the container.
+It uses your selected host Python and operating system.
+Compared with the Dev Container, it does not provide:
 
-To set up the environment with [Conda](https://docs.conda.io/projects/conda/en/stable/) (assuming it is already installed), navigate to the repository directory and run `scripts/setup_conda.sh` (specify the Python version and environment name as appropriate with the `-p` argument):
+- A controlled operating-system environment or isolation from system-level dependencies on the host.
+- Container-configured features, development tools, or VS Code extensions.
+- Automatic execution of container lifecycle commands. Perform any needed setup manually, such as running `pre-commit install` to enable Git hooks.
+- Container-specific environment variables. Configure equivalent values in your shell or VS Code environment if needed.
 
-Then pin the requirements with:
+As a newer alternative to using Python's built-in `venv` directly, [uv](https://docs.astral.sh/uv/) can create an environment with `uv venv` and install pinned dependencies with `uv pip install -r requirements.txt`.
 
-```bash
-conda env export > environment.yml
-```
-
-Finally, the environment can be recreated with:
-
-```bash
-conda create -n myenv -f environment.yml
-```
+More generally, because this template relies on a pinned `requirements.txt` file for dependency management, it should be broadly compatible with different tools and platforms.
