@@ -1,35 +1,29 @@
 {
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.rulers": [88]
   },
   "[shellscript]": {
-    "editor.defaultFormatter": "mkhl.shfmt",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "mkhl.shfmt"
   },
   "[sql]": {
     "editor.defaultFormatter": "dorzey.vscode-sqlfluff",
     "editor.rulers": [88] // For consistency with SQL embedded in Python code
   },
   "[toml]": {
-    "editor.defaultFormatter": "tamasfe.even-better-toml",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "autoDocstring.docstringFormat": "google",
   "black-formatter.importStrategy": "fromEnvironment",
