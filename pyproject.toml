@@ -36,7 +36,6 @@ dev = [
   "pytest-cov",
   "ruff",
   "sqlfluff",
-  "typos",
   "uv",
 ]
 all = ["src[analysis,dev]"]
