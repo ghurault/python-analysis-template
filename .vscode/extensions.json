@@ -2,7 +2,6 @@
   "recommendations": [
     "charliermarsh.ruff",
     "davidanson.vscode-markdownlint",
-    "dorzey.vscode-sqlfluff",
     "esbenp.prettier-vscode",
     "exiasr.hadolint",
     "kevinrose.vsc-python-indent",
@@ -16,6 +15,7 @@
     "ms-toolsai.jupyter",
     "ms-vscode.live-server",
     "njpwerner.autodocstring",
+    "sqlfluff.vscode-sqlfluff",
     "tamasfe.even-better-toml",
     "timonwong.shellcheck",
     "tekumara.typos-vscode",

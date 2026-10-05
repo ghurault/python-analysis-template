@@ -30,7 +30,6 @@
       "extensions": [
         "charliermarsh.ruff",
         "davidanson.vscode-markdownlint",
-        "dorzey.vscode-sqlfluff",
         "esbenp.prettier-vscode",
         "exiasr.hadolint",
         "mhutchie.git-graph",
@@ -43,6 +42,7 @@
         "ms-toolsai.jupyter",
         "ms-vscode.live-server",
         "njpwerner.autodocstring",
+        "sqlfluff.vscode-sqlfluff",
         "tamasfe.even-better-toml",
         "tekumara.typos-vscode",
         "timonwong.shellcheck",

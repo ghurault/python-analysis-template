@@ -37,7 +37,7 @@ dev = [
   "pre-commit",
   "pylint_xxp @ git+https://github.com/ghurault/pylint-xxp.git",
   "ruff",
-  "sqlfluff",
+  "sqlfluff", # Required in the environment for the VSC extension
   "uv",
 ]
 all = ["src[analysis,dev]"]
