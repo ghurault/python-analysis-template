@@ -25,6 +25,10 @@ analysis = [
   "pandas",
   "plotnine",
 ]
+test = [
+  "pytest",
+  "pytest-cov",
+]
 dev = [
   "black",
   "ipykernel",
@@ -32,8 +36,6 @@ dev = [
   "pdoc",
   "pre-commit",
   "pylint_xxp @ git+https://github.com/ghurault/pylint-xxp.git",
-  "pytest",
-  "pytest-cov",
   "ruff",
   "sqlfluff",
   "uv",
