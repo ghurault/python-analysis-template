@@ -66,6 +66,13 @@ repos:
       #   entry: scripts/stanc_format.sh
       #   language: system
       #   files: \.stan$
+      - id: sync-vscode-extensions
+        name: Check VS Code extension recommendations
+        entry: python scripts/sync_vscode_extensions.py
+        language: python
+        additional_dependencies: [json5]
+        pass_filenames: false
+        files: ^(\.devcontainer/devcontainer\.json|\.vscode/extensions\.json)$
       - id: make-docs
         name: make-docs
         entry: bash -c 'make docs'

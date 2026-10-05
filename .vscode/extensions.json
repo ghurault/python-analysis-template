@@ -4,7 +4,6 @@
     "davidanson.vscode-markdownlint",
     "esbenp.prettier-vscode",
     "exiasr.hadolint",
-    "kevinrose.vsc-python-indent",
     "mhutchie.git-graph",
     "mkhl.shfmt",
     "ms-python.black-formatter",
@@ -17,8 +16,8 @@
     "njpwerner.autodocstring",
     "sqlfluff.vscode-sqlfluff",
     "tamasfe.even-better-toml",
-    "timonwong.shellcheck",
     "tekumara.typos-vscode",
+    "timonwong.shellcheck",
     "yzhang.markdown-all-in-one"
   ]
 }
