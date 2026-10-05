@@ -29,7 +29,6 @@ This repository follows a standard setup I use for data science projects, which 
   - TOML: [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) for formatting, enforced by pre-commit and available as a VSC extension.
   - Shell scripts: [shfmt](https://github.com/mvdan/sh) for formatting, enforced by pre-commit and available as a VSC extension, and [ShellCheck](https://github.com/koalaman/shellcheck) for optional IDE linting.
   - Dockerfiles: [dockerfmt](https://github.com/reteps/dockerfmt) for formatting, enforced by pre-commit, and [hadolint](https://github.com/hadolint/hadolint) for optional IDE linting.
-- [SonarLint](https://marketplace.visualstudio.com/items?itemName=sonarsource.sonarlint-vscode) for optional multi-language IDE linting.
 - [typos](https://github.com/crate-ci/typos) for spelling checks enforced by pre-commit and available as a VSC extension.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
 - [Conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) (enforced by pre-commit).

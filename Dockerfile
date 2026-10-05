@@ -4,14 +4,6 @@ FROM mcr.microsoft.com/devcontainers/python:${PYTHON_VERSION}-bookworm
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Install Java Runtime 17 for SonarQube
-# hadolint ignore=DL3008
-RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends openjdk-17-jre \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-ENV JAVA_HOME=/usr
-
 # Install requirements except editables
 COPY requirements.txt /tmp/pip-tmp/
 # hadolint ignore=DL3013
