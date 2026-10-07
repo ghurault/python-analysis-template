@@ -28,6 +28,9 @@ The repository follows a research compendium layout:
   - `src/config.py`: runtime configuration (logging, plotting defaults). Importing it has side effects, so import `src.constants` instead in modules that only need constants.
 - `tests/`: `pytest` unit tests for `src/`, mirroring its modules (`test_<module>.py`).
 - `analysis/`: analysis scripts and notebooks. Move logic reused across analyses into `src/`.
+  - Linting and type checking are laxer than in `src/` (see `pyproject.toml`): wildcard imports, magic values, bare expressions and bandit issues are allowed, and most pyright checks are relaxed. Do not apply `src/` strictness here.
+  - Name helper modules local to an analysis folder `_local_helpers` so Ruff's isort treats them as local imports.
+  - Import `src.config` at the top of analysis scripts: it sets up logging and plotting defaults (plotnine `theme_bw`, and `MATPLOTLIBRC` pointing to the root `matplotlibrc`, with 300 dpi and a colour-blind palette). Use `CB_PALETTE` / `CBB_PALETTE` from `src.constants` rather than hard-coding colours or dpi.
 - `scripts/`: utility scripts for the repository (environment setup, versioning, hooks), not analysis code.
 - `data/`: input data, git-ignored. Read data from here via `DATA_DIR`; never modify or delete files in it.
 - `results/`: outputs (figures, tables, etc.), git-ignored. Write outputs here via `RES_DIR`.
@@ -41,7 +44,7 @@ The repository follows a research compendium layout:
 Run all commands from the repository root.
 
 - `pytest`: run tests in `tests/` and doctests in `src/`, with coverage. Requires the `test` extra (`pip install -e .[test]`).
-- `pre-commit run --all-files`: run all hooks. Use `pre-commit run <hook-id> --all-files` to run a single hook (e.g. `prettier`).
+- `pre-commit run --all-files`: run all hooks. Use `pre-commit run <hook-id> --all-files` to run a single hook (e.g. `prettier`), and `SKIP=<hook-id> pre-commit run --all-files` to skip one (e.g. `make-docs` when `pdoc` is not installed).
 - `make docs`: regenerate the `pdoc` API docs in `docs/` (also run by pre-commit). Do not edit `docs/` by hand.
 - `make reqs`: compile `requirements.txt` from `pyproject.toml`. Run it after changing dependencies in `pyproject.toml`; do not edit `requirements.txt` by hand.
 - `make deps`: install pinned requirements and the local package in editable mode. Do not run unless asked.
@@ -51,7 +54,7 @@ Run all commands from the repository root.
 
 ### Tooling
 
-**Pre-commit Hooks**: This repository uses a `.pre-commit-config.yaml` to orchestrate code quality. All formatters are enforced by pre-commit; linters are optional (IDE only), except for Python. Key hooks include:
+**Pre-commit Hooks**: This repository uses a `.pre-commit-config.yaml` to orchestrate code quality. All formatters are enforced by pre-commit; linters are optional (IDE only), except for Python. Write code that passes all hooks without needing reformatting. Key hooks include:
 
 - `conventional-pre-commit` (commit-msg stage): enforce Conventional Commits message format
 - `typos`: spell-check all text files
@@ -67,9 +70,9 @@ Run all commands from the repository root.
 ### Code Generation & Style
 
 - **Python Standard**: Default to the Google Python Style Guide.
-- **Formatting & Linting**: Assume the codebase is formatted with Black and linted with Ruff. Write code that naturally passes these checks. Key active rule sets include: `B` (bugbear — mutable defaults, etc.), `C4` (comprehensions), `UP` (pyupgrade — f-strings, modern syntax), `SIM` (simplify), `PD` / `NPY` (pandas/NumPy idioms), `N` (naming), `D` (docstrings). See `pyproject.toml` for the full `select` list and exclusions.
+- **Formatting & Linting**: Assume the codebase is formatted with Black and linted with Ruff. Key active rule sets include: `B` (bugbear — mutable defaults, etc.), `C4` (comprehensions), `UP` (pyupgrade — f-strings, modern syntax), `SIM` (simplify), `PD` / `NPY` (pandas/NumPy idioms), `N` (naming), `D` (docstrings), `S` (bandit — security issues), `PLR` (pylint refactoring — magic values, too many arguments/branches/statements), `C90` (McCabe complexity). See `pyproject.toml` for the full `select` list and exclusions.
 - **Type Hints & Pyright**: Write strictly type-valid code designed to pass `pyright` basic checks. However, never make the code compliant to the detriment of readability. Using `# type: ignore` is acceptable in circumstances where strict typing makes the code overwhelmingly complex to read.
-- **Docstrings && Comments**: Write Google-style docstrings.
+- **Docstrings & Comments**: Write Google-style docstrings.
   - For simple, self-explanatory functions, a concise one-line docstring is sufficient. Use full `Args:` and `Returns:` blocks for complex logic where usage isn't immediately obvious from type hints.
   - _Distinction_: Docstrings are for users (explaining **what** it does and **how** to use it). Comments are for developers (explaining **why** a specific implementation choice was made).
   - _Constraint_: Avoid over-commenting. Keep code self-explanatory and reserve comments strictly for non-obvious or tricky logic.
@@ -90,7 +93,7 @@ Run all commands from the repository root.
   - Prefer singular names for single values and plural names for collections (e.g. `user` vs `users`).
     Plural applies to sequences and sets, where the name describes what the iteration yields.
     For mappings, prefer `<value>_by_<key>` (e.g. `fig_by_label`), where the singular/plural rule applies to the value: `fig_by_label` holds one figure per label, `figs_by_label` a collection of them.
-- **Function Naming**: Prefix function names with verbs that describe their action (e.g., `load_data`, `fit_model`, `plot_results`).
+- **Function Naming**: Prefix function names with verbs that describe their action (e.g., `load_data`, `fit_model`, `plot_results`). This is checked by pylint in the IDE (`pylint_xxp` plugin, rule `C9001`), not by pre-commit.
 - **Dataframe Columns**: Follow existing conventions for naming existing dataframe columns. Otherwise, use `PascalCase` and singular nouns for new columns (e.g., `GroupLevel`, `SampleSize`, `MeanEstimate`).
 
 ### Structural Principles
@@ -108,13 +111,13 @@ Run all commands from the repository root.
 - **Logging vs. Printing**: Prefer `logging` (e.g., `logging.info()`) to using `print()`.
 - **EAFP**: Prefer _Easier to Ask for Forgiveness than Permission_: prefer `try`/`except` blocks instead of defensive `if` pre-checks where idiomatic. In particular, avoid returning more than one variable type from a function call (e.g. list or None): if the function is unable to produce the supposed return value it is better to raise an exception that can be caught by the caller instead.
 - **Control Flow**: In an `if/else` statement, position the normal or expected execution path within the `if`-clause and reserve the `else`-clause for exceptional cases or anomalies.
-- **Data Validation**: Use **Pydantic** for structured data validation and settings management.
+- **Data Validation**: If Pydantic is a dependency, use it for structured data validation and settings management.
 - **Plotting**: Prefer `plotnine` for plotting, unless a similar output can be produced with one-liners such as when using pandas' plotting methods.
 - **Assertions**: Use assertion for things that should not happen (if the program is correct), but do not use assertions instead of real error handing (e.g. to validate sensible inputs).
 
 ### Function Signatures & Arguments
 
-- **Limit Arguments**: Strongly avoid functions with more than 10 arguments. If exceeded, consider using `**kwargs`, configuration objects, or dependency injection.
+- **Limit Arguments**: Avoid functions with more than 7 arguments (Ruff `max-args`). If exceeded, consider using `**kwargs`, configuration objects, or dependency injection.
 - **Keyword-Only Arguments**: Try to limit positional parameters to a maximum of 3. Use the `*` operator to enforce keyword-only arguments for everything else.
   - _Example_: `def fit_model(x, y, *, prior, iterations=1000):`
 - **Sensible Defaults**: Expose optional configurations via keyword arguments with sensible defaults.
@@ -123,7 +126,6 @@ Run all commands from the repository root.
 ### Other Languages
 
 Formatters are enforced by pre-commit and, where available, set as the default VS Code formatter in `.vscode/settings.json`.
-Write code so it needs no reformatting once the formatter runs.
 
 - **JSON / JSONC / YAML**: Formatted with Prettier.
 - **Markdown**: Formatted with Prettier.
