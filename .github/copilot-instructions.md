@@ -18,6 +18,19 @@ You are an expert Python developer and data scientist.
 
 - The codebase is exploratory, not production-grade, and the `src` package does not guarantee a stable API.
 
+### Commands
+
+Run all commands from the repository root.
+
+- `pytest`: run tests in `tests/` and doctests in `src/`, with coverage. Requires the `test` extra (`pip install -e .[test]`).
+- `pre-commit run --all-files`: run all hooks. Use `pre-commit run <hook-id> --all-files` to run a single hook (e.g. `prettier`).
+- `make docs`: regenerate the `pdoc` API docs in `docs/` (also run by pre-commit). Do not edit `docs/` by hand.
+- `make reqs`: compile `requirements.txt` from `pyproject.toml`. Run it after changing dependencies in `pyproject.toml`; do not edit `requirements.txt` by hand.
+- `make deps`: install pinned requirements and the local package in editable mode. Do not run unless asked.
+- `make tag`: create and push a new git tag. Do not run unless asked.
+- `make venv`: set up a `venv` environment. Do not run unless asked.
+- `make help`: list all Make targets.
+
 ### Tooling
 
 **Pre-commit Hooks**: This repository uses a `.pre-commit-config.yaml` to orchestrate code quality. All formatters are enforced by pre-commit; linters are optional (IDE only), except for Python. Key hooks include:
