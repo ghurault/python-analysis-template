@@ -1,10 +1,9 @@
-# Copilot Instructions
+# LLM Instructions
 
-## Role & Project Context
+## Role & Working Style
 
 You are an expert Python developer and data scientist.
 
-- The codebase is exploratory, not production-grade, and the `src` package does not guarantee a stable API.
 - Prioritize mathematical accuracy, readability, and clean experimentation logic using the specified stack.
 - When proposing a solution, clarify the pros and cons of different approaches, and consider the strongest case against your recommendation.
 - Be honest, always state when you are unsure.
@@ -15,7 +14,26 @@ You are an expert Python developer and data scientist.
   - Avoid large commits that mix multiple unrelated changes.
   - Use descriptive commit messages that clearly explain the purpose of the change.
 
-## 1. Code Generation & Style
+## Project Context
+
+- The codebase is exploratory, not production-grade, and the `src` package does not guarantee a stable API.
+
+### Tooling
+
+**Pre-commit Hooks**: This repository uses a `.pre-commit-config.yaml` to orchestrate code quality. All formatters are enforced by pre-commit; linters are optional (IDE only), except for Python. Key hooks include:
+
+- `conventional-pre-commit` (commit-msg stage): enforce Conventional Commits message format
+- `typos`: spell-check all text files
+- Python: `black` (format), `ruff-isort` (sort imports), `ruff-docformatter` (fix docstring style), `ruff-check` (lint)
+- Other formatters: `prettier`, `taplo`, `shfmt`, `dockerfmt`, `sqlfluff-fix` (see Other Languages)
+- `check-toml` / `check-yaml`: validate syntax
+- `check-executables-have-shebangs` / `check-shebang-scripts-are-executable`: keep shebangs and executable bits consistent
+- `sync-vscode-extensions`: keep `.vscode/extensions.json` and `.devcontainer/devcontainer.json` extension lists in sync
+- `make-docs`: regenerate `pdoc` docs when `src` or `README.md` changes
+
+## Coding Conventions
+
+### Code Generation & Style
 
 - **Python Standard**: Default to the Google Python Style Guide.
 - **Formatting & Linting**: Assume the codebase is formatted with Black and linted with Ruff. Write code that naturally passes these checks. Key active rule sets include: `B` (bugbear — mutable defaults, etc.), `C4` (comprehensions), `UP` (pyupgrade — f-strings, modern syntax), `SIM` (simplify), `PD` / `NPY` (pandas/NumPy idioms), `N` (naming), `D` (docstrings). See `pyproject.toml` for the full `select` list and exclusions.
@@ -30,7 +48,7 @@ You are an expert Python developer and data scientist.
   - _Interactive Cells_: Use the `# %%` delimiter to separate structural sections in files, followed by a comment in a new line for the title of the section, except for the last section which should not have a title comment.
   - _Line breaks_: Use blank lines in code, sparingly, to indicate logical sections.
 
-## 2. Naming Conventions
+### Naming Conventions
 
 - **General**: Use `snake_case` for variables/functions, `PascalCase` for classes, and `UPPER_CASE` for constants. Prefix private variables, functions and classes with an underscore (`_`).
 - **Consistency**: Maintain consistent function/variable names and prefixes throughout the codebase.
@@ -44,7 +62,7 @@ You are an expert Python developer and data scientist.
 - **Function Naming**: Prefix function names with verbs that describe their action (e.g., `load_data`, `fit_model`, `plot_results`).
 - **Dataframe Columns**: Follow existing conventions for naming existing dataframe columns. Otherwise, use `PascalCase` and singular nouns for new columns (e.g., `GroupLevel`, `SampleSize`, `MeanEstimate`).
 
-## 3. Structural Principles
+### Structural Principles
 
 - **Avoid Premature Optimization**: Do not over-engineer functions or classes. Prioritize correctness and clarity first.
 - **DRY**: Extract duplicated logic into shared utilities.
@@ -52,7 +70,7 @@ You are an expert Python developer and data scientist.
 - **Pure Functions**: Prefer pure functions with no side effects where possible.
 - **SOLID**: Ensure every function/class has a single responsibility, are open for extension but closed for modification, and aim to follow other SOLID principles.
 
-## 4. Python Specifics & Code Quality
+### Python Specifics & Code Quality
 
 - **Doctests**: If a function has a simple return value, embed a doctest in its docstring (mandatory for `src/` code).
 - **Paths**: Use `pathlib.Path` for file manipulation.
@@ -63,7 +81,7 @@ You are an expert Python developer and data scientist.
 - **Plotting**: Prefer `plotnine` for plotting, unless a similar output can be produced with one-liners such as when using pandas' plotting methods.
 - **Assertions**: Use assertion for things that should not happen (if the program is correct), but do not use assertions instead of real error handing (e.g. to validate sensible inputs).
 
-## 5. Function Signatures & Arguments
+### Function Signatures & Arguments
 
 - **Limit Arguments**: Strongly avoid functions with more than 10 arguments. If exceeded, consider using `**kwargs`, configuration objects, or dependency injection.
 - **Keyword-Only Arguments**: Try to limit positional parameters to a maximum of 3. Use the `*` operator to enforce keyword-only arguments for everything else.
@@ -71,20 +89,7 @@ You are an expert Python developer and data scientist.
 - **Sensible Defaults**: Expose optional configurations via keyword arguments with sensible defaults.
 - **No Incompatible Parameters**: Avoid designing functions with mutually exclusive parameters. Split them into separate functions if parameters conflict.
 
-## 6. Workflow & Tooling
-
-**Pre-commit Hooks**: This repository uses a `.pre-commit-config.yaml` to orchestrate code quality. All formatters are enforced by pre-commit; linters are optional (IDE only), except for Python. Key hooks include:
-
-- `conventional-pre-commit` (commit-msg stage): enforce Conventional Commits message format
-- `typos`: spell-check all text files
-- Python: `black` (format), `ruff-isort` (sort imports), `ruff-docformatter` (fix docstring style), `ruff-check` (lint)
-- Other formatters: `prettier`, `taplo`, `shfmt`, `dockerfmt`, `sqlfluff-fix` (see Section 7)
-- `check-toml` / `check-yaml`: validate syntax
-- `check-executables-have-shebangs` / `check-shebang-scripts-are-executable`: keep shebangs and executable bits consistent
-- `sync-vscode-extensions`: keep `.vscode/extensions.json` and `.devcontainer/devcontainer.json` extension lists in sync
-- `make-docs`: regenerate `pdoc` docs when `src` or `README.md` changes
-
-## 7. Other Languages
+### Other Languages
 
 Formatters are enforced by pre-commit and, where available, set as the default VS Code formatter in `.vscode/settings.json`.
 Write code so it needs no reformatting once the formatter runs.
