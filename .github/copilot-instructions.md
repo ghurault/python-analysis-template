@@ -18,6 +18,23 @@ You are an expert Python developer and data scientist.
 
 - The codebase is exploratory, not production-grade, and the `src` package does not guarantee a stable API.
 
+### Repository Scope
+
+The repository follows a research compendium layout:
+
+- `src/`: local Python package with reusable code (data loading, features, models, plotting, etc.).
+  - `src/constants.py`: paths (`PROJ_ROOT`, `DATA_DIR`, `RES_DIR`) and other side-effect-free constants.
+  - `src/config.py`: runtime configuration (logging, plotting defaults). Importing it has side effects, so import `src.constants` instead in modules that only need constants.
+- `tests/`: `pytest` unit tests for `src/`, mirroring its modules (`test_<module>.py`).
+- `analysis/`: analysis scripts and notebooks. Move logic reused across analyses into `src/`.
+- `scripts/`: utility scripts for the repository (environment setup, versioning, hooks), not analysis code.
+- `data/`: input data, git-ignored. Read data from here via `DATA_DIR`; never modify or delete files in it.
+- `results/`: outputs (figures, tables, etc.), git-ignored. Write outputs here via `RES_DIR`.
+- `docs/`: generated API documentation, git-ignored. Do not edit or copy conventions from it.
+- `.devcontainer/`, `Dockerfile`, `.vscode/`: development environment. Keep recommended extensions in sync between `.devcontainer/devcontainer.json` and `.vscode/extensions.json`.
+- `pyproject.toml`: package metadata, direct dependencies and tool configuration (Ruff, pyright, pytest, etc.).
+- Never read or print `.env`, which may contain credentials.
+
 ### Commands
 
 Run all commands from the repository root.
