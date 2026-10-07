@@ -73,23 +73,26 @@ You are an expert Python developer and data scientist.
 
 ## 6. Workflow & Tooling
 
-**Pre-commit Hooks**: This repository uses a `.pre-commit-config.yaml` to orchestrate code quality. Key hooks include:
+**Pre-commit Hooks**: This repository uses a `.pre-commit-config.yaml` to orchestrate code quality. All formatters are enforced by pre-commit; linters are optional (IDE only), except for Python. Key hooks include:
 
-- `typos`: spell-check all text files
-- `black`: format Python
-- `ruff-isort`: sort imports
-- `ruff-docformatter`: fix docstring style
-- `ruff-check`: ruff linter
-- `make-docs`: regenerate `pdoc` docs when `src` or `README.md` changes
 - `conventional-pre-commit` (commit-msg stage): enforce Conventional Commits message format
+- `typos`: spell-check all text files
+- Python: `black` (format), `ruff-isort` (sort imports), `ruff-docformatter` (fix docstring style), `ruff-check` (lint)
+- Other formatters: `prettier`, `taplo`, `shfmt`, `dockerfmt`, `sqlfluff-fix` (see Section 7)
+- `check-toml` / `check-yaml`: validate syntax
+- `check-executables-have-shebangs` / `check-shebang-scripts-are-executable`: keep shebangs and executable bits consistent
+- `sync-vscode-extensions`: keep `.vscode/extensions.json` and `.devcontainer/devcontainer.json` extension lists in sync
+- `make-docs`: regenerate `pdoc` docs when `src` or `README.md` changes
 
 ## 7. Other Languages
 
-Formatters per language are configured in `.vscode/settings.json`; write code so it needs no reformatting once that formatter runs.
+Formatters are enforced by pre-commit and, where available, set as the default VS Code formatter in `.vscode/settings.json`.
+Write code so it needs no reformatting once the formatter runs.
 
 - **JSON / JSONC / YAML**: Formatted with Prettier.
 - **Markdown**: Formatted with Prettier.
   - _Line breaks_: Never break a line in the middle of a sentence. Prefer to write each sentence (or clause, if long) on its own line.
-- **Shell scripts**: Formatted with `shfmt`.
-- **TOML**: Formatted with the `even-better-toml` extension (`taplo`).
-- **SQL**: Formatted with `sqlfluff`.
+- **Shell scripts**: Formatted with `shfmt` (configured in `.editorconfig`). Scripts with a shebang must be executable, and vice versa.
+- **TOML**: Formatted with `taplo` (configured in `taplo.toml`).
+- **SQL**: Formatted with `sqlfluff` (configured in `.sqlfluff`).
+- **Dockerfiles**: Formatted with `dockerfmt`.
