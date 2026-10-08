@@ -13,8 +13,7 @@
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
-    "ghcr.io/dhoeric/features/hadolint:1": {}, // Required for the VSC extension
-    "ghcr.io/devcontainers-extra/features/shfmt:1": {} // For using the VSC extension, otherwise in pre-commit
+    "ghcr.io/dhoeric/features/hadolint:1": {} // Required for the VSC extension
   },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -33,7 +32,6 @@
         "esbenp.prettier-vscode",
         "exiasr.hadolint",
         "mhutchie.git-graph",
-        "mkhl.shfmt",
         "ms-python.black-formatter",
         "ms-python.pylint",
         "ms-python.python",

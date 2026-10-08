@@ -27,7 +27,7 @@ This repository follows a standard setup I use for data science projects, which 
   - Markdown: [Prettier](https://prettier.io/) for formatting, enforced by pre-commit and available as a VSC extension, and [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) for optional IDE linting.
   - JSON and YAML: [Prettier](https://prettier.io/) for formatting, enforced by pre-commit and available as a VSC extension.
   - TOML: [Taplo](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml) for formatting, enforced by pre-commit and available as a VSC extension.
-  - Shell scripts: [shfmt](https://github.com/mvdan/sh) for formatting, enforced by pre-commit and available as a VSC extension, and [ShellCheck](https://github.com/koalaman/shellcheck) for optional IDE linting.
+  - Shell scripts: [shfmt](https://github.com/mvdan/sh) for formatting, enforced by pre-commit, and [ShellCheck](https://github.com/koalaman/shellcheck) for optional IDE linting.
   - Dockerfiles: [dockerfmt](https://github.com/reteps/dockerfmt) for formatting, enforced by pre-commit, and [hadolint](https://github.com/hadolint/hadolint) for optional IDE linting.
 - [typos](https://github.com/crate-ci/typos) for spelling checks enforced by pre-commit and available as a VSC extension.
 - A [Makefile](Makefile) to provide an interface to common tasks (see [Make commands](#️-make-commands)).
