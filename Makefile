@@ -1,3 +1,5 @@
+.DEFAULT_GOAL := help
+
 ## Set up a virtual environment
 .PHONY: venv
 venv:
