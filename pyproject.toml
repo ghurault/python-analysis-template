@@ -40,7 +40,7 @@ dev = [
   "sqlfluff", # Required in the environment for the VSC extension
   "uv",
 ]
-all = ["src[analysis,dev]"]
+all = ["src[analysis,test,dev]"]
 
 [project.urls]
 # Homepage = ""
