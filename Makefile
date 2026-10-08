@@ -13,11 +13,12 @@ reqs:
 ## Install dependencies
 .PHONY: deps
 deps:
-	pip install -r requirements.txt && pip install -e .[all]
+	pip install -r requirements.txt && pip install -e '.[all]'
 
 ## Generate documentation
 .PHONY: docs
 docs:
+	find docs -mindepth 1 -maxdepth 1 ! -name .gitignore -exec rm -rf {} +
 	pdoc --docformat google -o docs/ src
 
 ## Increment git tag
@@ -38,7 +39,7 @@ clean:
 help:
 	@awk '\
 		/^##/ {sub(/^## ?/, "", $$0); doc=$$0; next} \
-		/^[a-zA-Z0-9_.-]+:/ && $$1 !~ /^\./ { \
+		/^[a-zA-Z0-9_.-]+:([^=]|$$)/ && $$1 !~ /^\./ { \
 			target=$$1; sub(/:.*/, "", target); \
 			print target "|" doc; doc="" \
 		} \
