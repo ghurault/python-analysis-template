@@ -36,15 +36,15 @@ logger.info("PROJ_ROOT path is: %s", PROJ_ROOT)
 # %%
 # Plotting defaults
 
+if os.getenv("MATPLOTLIBRC") is None:
+    os.environ["MATPLOTLIBRC"] = str(PROJ_ROOT / "matplotlibrc")
+
 try:
     from plotnine import theme_bw, theme_set  # type: ignore
 
     theme_set(theme_bw(base_size=15))
 except ModuleNotFoundError:
     pass
-
-if os.getenv("MATPLOTLIBRC") is None:
-    os.environ["MATPLOTLIBRC"] = str(PROJ_ROOT / "matplotlibrc")
 
 # %%
 
