@@ -9,8 +9,8 @@ usage() {
   exit 1
 }
 
-# Get the latest git tag
-latest_tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+# Get the highest version tag (version-aware sort, ignoring non-version tags)
+latest_tag=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
 
 # Check if there are no tags
 if [ -z "$latest_tag" ]; then
