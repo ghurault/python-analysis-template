@@ -49,6 +49,7 @@ all = ["src[analysis,test,dev]"]
 # Issues = ""
 
 [tool.setuptools_scm]
+fallback_version = "0.0.0" # Used when git metadata is unavailable (e.g. downloaded archive)
 
 [tool.pyright]
 typeCheckingMode = "standard"
