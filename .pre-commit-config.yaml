@@ -42,6 +42,7 @@ repos:
     rev: v0.5.4
     hooks:
       - id: dockerfmt
+        args: [--write] # Override default args so that .editorconfig settings are used
   - repo: https://github.com/sqlfluff/sqlfluff
     rev: 4.3.0
     hooks:
