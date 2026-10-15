@@ -1,0 +1,4 @@
+# Ignore everything except the files copied by the Dockerfile.
+# Add a negation below when adding a COPY instruction.
+*
+!requirements.txt
