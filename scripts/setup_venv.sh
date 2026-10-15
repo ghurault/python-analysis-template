@@ -1,16 +1,23 @@
 #! /bin/bash
 
+set -euo pipefail
+
 # Default arguments
 VENV_NAME=".venv"
 VENV_LOCATION="."
-PYTHON_PATH="python"
+# Prefer python3 since `python` is missing on many Linux/macOS systems
+if command -v python3 > /dev/null 2>&1; then
+  PYTHON_PATH="python3"
+else
+  PYTHON_PATH="python"
+fi
 
 # Function to display usage
 usage() {
   echo "Usage: $0 [-n venv_name] [-l location] [-p python_path] [-h]"
   echo "  -n venv_name    Name of the virtual environment (default: .venv)"
   echo "  -l location     Location to create the virtual environment (default: current directory)"
-  echo "  -p python_path  Path to the Python interpreter (default: python)"
+  echo "  -p python_path  Path to the Python interpreter (default: python3, or python if unavailable)"
   echo "  -h              Display this help message"
   exit 1
 }
@@ -41,7 +48,7 @@ if [ -d "$VENV_PATH" ]; then
 fi
 
 # Create the virtual environment
-$PYTHON_PATH -m venv "$VENV_PATH"
+"$PYTHON_PATH" -m venv "$VENV_PATH"
 
 # Check the operating system and activate the virtual environment accordingly
 if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]; then
@@ -64,6 +71,6 @@ else
 fi
 
 # Install local package
-pip install -e .[all]
+pip install -e '.[all]'
 
 echo "Virtual environment '$VENV_NAME' is ready."
