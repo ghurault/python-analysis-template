@@ -19,7 +19,7 @@ usage() {
   echo "  -l location     Location to create the virtual environment (default: current directory)"
   echo "  -p python_path  Path to the Python interpreter (default: python3, or python if unavailable)"
   echo "  -h              Display this help message"
-  exit 1
+  exit "${1:-1}"
 }
 
 # Parse command line arguments
@@ -28,7 +28,7 @@ while getopts "n:l:p:h" opt; do
     n) VENV_NAME=$OPTARG ;;
     l) VENV_LOCATION=$OPTARG ;;
     p) PYTHON_PATH=$OPTARG ;;
-    h) usage ;;
+    h) usage 0 ;;
     *) usage ;;
   esac
 done

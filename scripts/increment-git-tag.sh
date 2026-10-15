@@ -8,7 +8,7 @@ usage() {
   echo "  -v version_component  Specify the version component to increment (major, minor, patch). Default is minor."
   echo "  -m tag_message        Provide a message for the tag."
   echo "  -h                    Display this help message."
-  exit 1
+  exit "${1:-1}"
 }
 
 # Set default values
@@ -25,7 +25,7 @@ while getopts ":v:m:h" opt; do
       tag_message=$OPTARG
       ;;
     h)
-      usage
+      usage 0
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
