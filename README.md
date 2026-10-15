@@ -16,7 +16,7 @@ This repository follows a standard setup I use for data science projects, which 
   - [Black](https://black.readthedocs.io/en/stable/index.html) for formatting, enforced by pre-commit and available as a VSC extension.
     Python code mostly follows the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
   - [Ruff](https://docs.astral.sh/ruff/) for linting, enforced by pre-commit and available as a VSC extension.
-  - [pyright](https://microsoft.github.io/pyright/) for type checking via the [Pylance VSC extension](https://microsoft.github.io/pyright/).
+  - [pyright](https://microsoft.github.io/pyright/) for type checking via the [Pylance VSC extension](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance).
   - [uv](https://docs.astral.sh/uv/) to compile requirements.
   - [pdoc](https://pdoc.dev/docs/pdoc.html) to generate API documentation, including a pre-commit hook for generating local documentation.
     Python docstrings follow the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) and can be created with the [autoDocstring VSC extension](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring).
