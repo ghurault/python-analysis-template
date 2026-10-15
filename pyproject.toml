@@ -48,6 +48,11 @@ all = ["src[analysis,test,dev]"]
 # Repository = ""
 # Issues = ""
 
+[tool.setuptools]
+# Declare the package explicitly: a directory named `src` would otherwise make
+# setuptools assume a src-layout and install `config`/`constants` as top-level modules
+packages = ["src"]
+
 [tool.setuptools_scm]
 fallback_version = "0.0.0" # Used when git metadata is unavailable (e.g. downloaded archive)
 
