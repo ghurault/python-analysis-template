@@ -23,7 +23,7 @@ logging.basicConfig(
     style="{",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
-# The global config should not be redefine
+# The global config should not be redefined
 # The config can still be overridden in custom loggers
 
 logging.captureWarnings(True)
