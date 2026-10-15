@@ -44,8 +44,8 @@ This repository follows a standard setup I use for data science projects, which 
 ├── scripts/                   # Utility scripts (e.g. env setup)
 ├── src/                       # Local Python package
 │   ├── __init__.py
-│   └── config.py              # Configs, settings
-|   |__ constants.py           # Constants
+│   ├── config.py              # Configs, settings
+│   └── constants.py           # Constants
 ├── tests/                     # Unit tests for src/
 │   └── test_*.py
 ├── .devcontainer/             # VS Code Dev container setup
@@ -55,7 +55,7 @@ This repository follows a standard setup I use for data science projects, which 
 ├── pyproject.toml             # Configs for package, tools (Ruff, pyright, etc.) and direct deps
 ├── requirements.txt           # Pinned dependencies (generated)
 ├── taplo.toml                 # Configs for TOML formatter
-├── .editorconfig              # Configs for Shell formatter
+├── .editorconfig              # Configs for shell and Dockerfile formatters
 ├── .pre-commit-config.yaml    # Configs for pre-commit
 ├── .sqlfluff                  # Configs for SQLFluff
 ```
@@ -91,7 +91,7 @@ Requirements are managed with:
   1. Add dependencies to `pyproject.toml`.
   2. Run `make reqs` to compile `requirements.txt`.
 
-- **Upgrading packages**: compile new requirements with `uv pip compile pyproject.toml -o requirements.txt --all-extras --upgrade`, then make deps.
+- **Upgrading packages**: compile new requirements with `uv pip compile pyproject.toml -o requirements.txt --all-extras --upgrade`, then `make deps`.
 
 Finally, run `make deps` to install pinned dependencies and the local package in editable mode.
 
