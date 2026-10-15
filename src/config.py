@@ -36,8 +36,15 @@ logger.info("PROJ_ROOT path is: %s", PROJ_ROOT)
 # %%
 # Plotting defaults
 
-if os.getenv("MATPLOTLIBRC") is None:
-    os.environ["MATPLOTLIBRC"] = str(PROJ_ROOT / "matplotlibrc")
+os.environ.setdefault("MATPLOTLIBRC", str(PROJ_ROOT / "matplotlibrc"))
+
+try:
+    import matplotlib as mpl
+
+    # MATPLOTLIBRC is only read on matplotlib's first import, which may precede this one
+    mpl.rc_file(mpl.matplotlib_fname())
+except ModuleNotFoundError:
+    pass
 
 try:
     from plotnine import theme_bw, theme_set  # type: ignore
