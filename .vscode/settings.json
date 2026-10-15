@@ -27,7 +27,7 @@
   "editor.formatOnSave": false,
   "editor.rulers": [100], // Default line length
   "pylint.enabled": true,
-  // "python.defaultInterpreterPath": "python",
+  "python-envs.defaultEnvManager": "ms-python.python:system",
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
   "sqlfluff.config": "${workspaceFolder}/.sqlfluff",
