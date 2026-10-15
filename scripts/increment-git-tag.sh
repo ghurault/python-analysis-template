@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -e
+
 # Function to display usage
 usage() {
   echo "Usage: $0 [-v version_component] -m tag_message"
