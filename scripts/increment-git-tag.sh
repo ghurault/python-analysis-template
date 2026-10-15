@@ -9,25 +9,6 @@ usage() {
   exit 1
 }
 
-# Get the highest version tag (version-aware sort, ignoring non-version tags)
-latest_tag=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
-
-# Check if there are no tags
-if [ -z "$latest_tag" ]; then
-  echo "No tag found"
-  latest_tag="v0.0.0"
-else
-  echo "Current version: $latest_tag"
-fi
-
-# Strip the 'v' prefix if it exists
-if [[ $latest_tag == v* ]]; then
-  latest_tag=${latest_tag:1}
-fi
-
-# Split the version into major, minor, and patch components
-IFS='.' read -r major minor patch <<< "$latest_tag"
-
 # Set default values
 version_component="minor"
 tag_message=""
@@ -54,6 +35,25 @@ while getopts ":v:m:h" opt; do
       ;;
   esac
 done
+
+# Get the highest version tag (version-aware sort, ignoring non-version tags)
+latest_tag=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+
+# Check if there are no tags
+if [ -z "$latest_tag" ]; then
+  echo "No tag found"
+  latest_tag="v0.0.0"
+else
+  echo "Current version: $latest_tag"
+fi
+
+# Strip the 'v' prefix if it exists
+if [[ $latest_tag == v* ]]; then
+  latest_tag=${latest_tag:1}
+fi
+
+# Split the version into major, minor, and patch components
+IFS='.' read -r major minor patch <<< "$latest_tag"
 
 case $version_component in
   major)
