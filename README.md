@@ -112,7 +112,7 @@ The full list of targets can be listed with `make help`.
 > Delete this section after initialising a project from the template.
 
 This template aims to be relatively lightweight and tailored to my needs.
-It is therefore opinionated and also in constant evolution, reflecting with data science journey with Python.
+It is therefore opinionated and also in constant evolution, reflecting my data science journey with Python.
 It is also worth noting that this template is more focused on experimentation rather than sharing a single final product.
 
 ### Getting started
