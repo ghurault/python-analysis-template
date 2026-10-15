@@ -79,6 +79,7 @@ repos:
         entry: bash -c 'make docs'
         language: system
         types: [file]
+        pass_filenames: false
         files: ^(src\/|README\.md$)
 default_install_hook_types: [pre-commit, commit-msg]
 # default_language_version:
