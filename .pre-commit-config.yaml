@@ -31,7 +31,6 @@ repos:
     rev: v6.0.0
     hooks:
       - id: check-added-large-files
-      - id: check-toml
       - id: check-executables-have-shebangs
       - id: check-shebang-scripts-are-executable
   - repo: https://github.com/scop/pre-commit-shfmt
@@ -61,6 +60,12 @@ repos:
         entry: taplo format
         language: python
         additional_dependencies: ["taplo == 0.9.3"]
+        types: [toml]
+      - id: taplo-lint
+        name: Lint TOML files with taplo
+        entry: taplo lint --no-schema
+        language: python
+        additional_dependencies: ["taplo==0.9.3"]
         types: [toml]
       # - id: stan-format
       #   name: Auto-format Stan files with stanc
