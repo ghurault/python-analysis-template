@@ -71,6 +71,6 @@ else
 fi
 
 # Install local package
-pip install -e '.[all]'
+pip install -e '.[analysis]' --group dev
 
 echo "Virtual environment '$VENV_NAME' is ready."

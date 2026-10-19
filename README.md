@@ -203,7 +203,7 @@ SKIP=make-docs pre-commit run --all-files --show-diff-on-failure --color=always
 - Testing and code coverage.
 
 ```bash
-pip install .[test]
+pip install --group test
 pytest
 ```
 

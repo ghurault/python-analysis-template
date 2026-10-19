@@ -19,13 +19,17 @@ requires-python = ">=3.10"
 dynamic = ["version"]
 
 [project.optional-dependencies]
-# Additional dependencies
+# Use this to specify packages used in analysis but not specified in src.
+# This is most useful when CI is setup to control whether analysis dependencies should be installed in the environment or not.
+# Otherwise, all dependencies can be specified as core dependencies above.
 analysis = [
   "matplotlib",
   "numpy",
   "pandas",
   "plotnine",
 ]
+
+[dependency-groups]
 test = [
   "pytest",
   "pytest-cov",
@@ -40,8 +44,8 @@ dev = [
   "ruff",
   "sqlfluff", # Required in the environment for the VSC extension
   "uv",
+  { include-group = "test" },
 ]
-all = ["src[analysis,test,dev]"]
 
 [project.urls]
 # Homepage = ""

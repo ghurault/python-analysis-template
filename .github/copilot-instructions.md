@@ -43,7 +43,7 @@ The repository follows a research compendium layout:
 
 Run all commands from the repository root.
 
-- `pytest`: run tests in `tests/` and doctests in `src/`, with coverage. Requires the `test` extra (`pip install -e .[test]`).
+- `pytest`: run tests in `tests/` and doctests in `src/`, with coverage. Requires the `test` dependency group (`pip install --group test`).
 - `pre-commit run --all-files`: run all hooks. Use `pre-commit run <hook-id> --all-files` to run a single hook (e.g. `prettier`), and `SKIP=<hook-id> pre-commit run --all-files` to skip one (e.g. `make-docs` when `pdoc` is not installed).
 - `make docs`: regenerate the `pdoc` API docs in `docs/` (also run by pre-commit). Do not edit `docs/` by hand.
 - `make reqs`: compile `requirements.txt` from `pyproject.toml`. Run it after changing dependencies in `pyproject.toml`; do not edit `requirements.txt` by hand.

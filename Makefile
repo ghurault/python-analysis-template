@@ -8,12 +8,12 @@ venv:
 ## Compile requirements
 .PHONY: reqs
 reqs:
-	uv pip compile pyproject.toml -o requirements.txt --all-extras
+	uv pip compile pyproject.toml -o requirements.txt --all-extras --group dev
 
 ## Install dependencies
 .PHONY: deps
 deps:
-	pip install -r requirements.txt && pip install -e '.[all]'
+	pip install -r requirements.txt && pip install -e '.[analysis]' --group dev
 
 ## Generate documentation
 .PHONY: docs
